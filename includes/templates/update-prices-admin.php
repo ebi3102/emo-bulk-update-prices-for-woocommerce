@@ -52,7 +52,7 @@ fclose($myfile);
 ?>
 <?php //____________________ Download product lists ________________________________ ?>
 <div class="wrap nosubsub">
-    <div id="col-container-1" class="wp-clearfix">
+    <div id="col-container-1" class="wp-clearfix emo-flex-row">
         <div id="col-left">
             <div class="col-wrap">
                 <div class="form-wrap">

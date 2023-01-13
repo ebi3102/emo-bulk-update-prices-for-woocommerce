@@ -15,22 +15,18 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
-global $emo_ewpu_plugin_url;
-global $emo_ewpu_plugin_directory;
-$emo_ewpu_plugin_url = plugin_dir_url( __FILE__ );
-$emo_ewpu_plugin_directory = __DIR__ ;
-
-global $emo_ewpu_createdFiles_dir;
-global $emo_ewpu_uploadedFiles_dir;
-global $emo_ewpu_createdFiles_url;
-global $emo_ewpu_uploadedFiles_url;
 
 $upload_base = wp_upload_dir();
-$emo_ewpu_createdFiles_dir = $upload_base['basedir'].'/emo_ewpu/CreatedFiles';
-$emo_ewpu_uploadedFiles_dir = $upload_base['basedir'].'/emo_ewpu/uploadedFiles';
-$emo_ewpu_createdFiles_url = $upload_base['baseurl'].'/emo_ewpu/CreatedFiles';
-$emo_ewpu_uploadedFiles_url = $upload_base['baseurl'].'/emo_ewpu/uploadedFiles';
 
+// define URIs and directories
+define('EWPU_URI', plugin_dir_url( __FILE__ ));
+define('EWPU_DIR', __DIR__ );
+define('EWPU_CREATED_DIR', $upload_base['basedir'].'/emo_ewpu/CreatedFiles');
+define('EWOU_UPLOAD_DIR', $upload_base['basedir'].'/emo_ewpu/uploadedFiles');
+define('EWPU_CREATED_URI', $upload_base['baseurl'].'/emo_ewpu/CreatedFiles');
+define('EWOU_UPLOAD_URI', $upload_base['baseurl'].'/emo_ewpu/uploadedFiles');
+
+// define option meta_keys
 define('REGULARMETAKEY', '_regular_price_history');
 define('SALEMETAKEY', '_sale_price_history');
 define('MAINVAR','_main_variation');

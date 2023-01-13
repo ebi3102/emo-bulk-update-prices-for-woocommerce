@@ -279,8 +279,7 @@ function emo_ewpu_woo_get_price_info(WC_Product $_product){
  */
 function emo_ewpu_write_excel(string $fileName, string $sheetName, array $header, array $data){
     //https://stackoverflow.com/questions/37958282/how-to-generate-an-xlsx-using-php
-        global $emo_ewpu_createdFiles_dir;
-        $fname=$emo_ewpu_createdFiles_dir.'/'.$fileName.'.xlsx';
+        $fname=EWPU_CREATED_DIR.'/'.$fileName.'.xlsx';
 //    $styles2 = array( ['font-size'=>6],['font-size'=>8],['font-size'=>10],['font-size'=>16] );
     $writer = new XLSXWriter();
     $writer->setAuthor('Arad Ahan');

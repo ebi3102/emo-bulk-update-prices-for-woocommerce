@@ -15,20 +15,16 @@
 /* Extract all Poducts site */
 global $wpdb;
 
-global $emo_ewpu_createdFiles_dir;
-global $emo_ewpu_uploadedFiles_dir;
-global $emo_ewpu_createdFiles_url;
-global $emo_ewpu_uploadedFiles_url;
 
-if (!file_exists($emo_ewpu_createdFiles_dir)) {
-    mkdir($emo_ewpu_createdFiles_dir, 0777, true);
+if (!file_exists(EWPU_CREATED_DIR)) {
+    mkdir(EWPU_CREATED_DIR, 0777, true);
 }
-if (!file_exists($emo_ewpu_uploadedFiles_dir)) {
-    mkdir($emo_ewpu_uploadedFiles_dir, 0777, true);
+if (!file_exists(EWOU_UPLOAD_DIR)) {
+    mkdir(EWOU_UPLOAD_DIR, 0777, true);
 }
 
-$fileLocation = $emo_ewpu_createdFiles_url."/products.csv";
-$fileLocationDirectory = $emo_ewpu_createdFiles_dir."/products.csv";
+$fileLocation = EWPU_CREATED_URI."/products.csv";
+$fileLocationDirectory = EWPU_CREATED_DIR."/products.csv";
 
 $products = $wpdb->get_results( $wpdb->prepare( "SELECT ID, post_title, post_modified, post_date FROM $wpdb->posts WHERE post_type ='product' AND post_status = 'publish' ORDER BY post_modified DESC; ") );
 $myfile = fopen($fileLocationDirectory, "w");
@@ -73,7 +69,7 @@ fclose($myfile);
 //Upload CSV file
 if(isset($_FILES['price_list'])){
     $errors= array();
-    $target_file = $emo_ewpu_uploadedFiles_dir.'/' . basename($_FILES["price_list"]["name"]);
+    $target_file = EWOU_UPLOAD_DIR.'/' . basename($_FILES["price_list"]["name"]);
     $file_name = $_FILES['price_list']['name'];
     $file_tmp =$_FILES['price_list']['tmp_name'];
     $file_type=$_FILES['price_list']['type'];

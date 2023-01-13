@@ -10,9 +10,8 @@
 
 
 function emo_ewpu_add_admin_page() {
-    global $emo_ewpu_plugin_url;
     //Generate ECB Admin Page
-    add_menu_page( __( 'Update whole prices', 'emo_ewpu' ), __( 'Prices management', 'emo_ewpu' ), 'manage_options', 'emo_ewpu_slug', 'emo_ewpu_update_prices_create_page', $emo_ewpu_plugin_url . 'assets/img/logo-icon.png', 110 );
+    add_menu_page( __( 'Update whole prices', 'emo_ewpu' ), __( 'Prices management', 'emo_ewpu' ), 'manage_options', 'emo_ewpu_slug', 'emo_ewpu_update_prices_create_page', EWPU_URI . 'assets/img/logo-icon.png', 110 );
 
     //Generate Sunset Admin Sub Pages
     add_submenu_page('emo_ewpu_slug', __( 'Update whole prices', 'emo_ewpu' ), __( 'Settings', 'emo_ewpu' ) , 'manage_options' , 'emo_ewpu_slug' , 'emo_ewpu_update_prices_create_page');

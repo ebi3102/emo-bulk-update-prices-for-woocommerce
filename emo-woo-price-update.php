@@ -45,6 +45,13 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
 	add_action( 'plugins_loaded', 'emo_ewpu_init', 11 );
 
 	function emo_ewpu_init() {
+
+        if ( ! function_exists( 'WC' ) || ! version_compare( WC()->version, '3.0', '>=' ) ) {
+			add_action( 'admin_notices', 'emo_ewpu_notice_wc' );
+
+			return;
+		}
+
         //register scripts
         //add_action('wp_enqueue_scripts', 'emo_ewpu_scripts');
         add_action('admin_enqueue_scripts', 'emo_ewpu_scripts');
@@ -60,4 +67,27 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
             load_plugin_textdomain( 'emo_ewpu', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
         }
     }
+} else {
+	add_action( 'admin_notices', 'emo_ewpu_notice_faulty' );
+}
+
+if ( ! function_exists( 'emo_ewpu_notice_wc' ) ) {
+	function emo_ewpu_notice_wc() {
+		?>
+        <div class="error">
+            <p><strong>Emo Woocommerce Update Prices</strong> requires WooCommerce version 3.0 or greater.</p>
+        </div>
+		<?php
+	}
+}
+
+if ( ! function_exists( 'emo_ewpu_notice_faulty' ) ) {
+	function emo_ewpu_notice_faulty() {
+		?>
+        <div class="error">
+            <p>Seems there is an error in installation of <strong>Emo Woocommerce Update Prices</strong>. Please
+                delete the plugin an install it again.</p>
+        </div>
+		<?php
+	}
 }

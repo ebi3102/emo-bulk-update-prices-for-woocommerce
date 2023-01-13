@@ -14,7 +14,7 @@
 //Download Current prices
 /* Extract all Poducts site */
 global $wpdb;
-global $emo_ewpu_plugin_directory;
+
 global $emo_ewpu_createdFiles_dir;
 global $emo_ewpu_uploadedFiles_dir;
 global $emo_ewpu_createdFiles_url;

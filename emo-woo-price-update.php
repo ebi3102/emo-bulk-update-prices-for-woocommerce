@@ -32,28 +32,32 @@ define('SALEMETAKEY', '_sale_price_history');
 define('MAINVAR','_main_variation');
 define('FEATUREPRODUCT', '_feature_product_cat');
 
-global $emo_ewpu_timeSeparator;
-global $emo_ewpu_dateSeparator;
-$emo_ewpu_timeSeparator = '/';
-$emo_ewpu_dateSeparator = '-';
-define('DATAFORMAT', 'Y'.$emo_ewpu_dateSeparator.'m'.$emo_ewpu_dateSeparator.'d'.$emo_ewpu_timeSeparator.'h:i:s');
+// define date and time formats
+define('TIME_SEPARATOR' , '/');
+define('DATE_SEPARATOR', '-');
+define('DATAFORMAT', 'Y'.DATE_SEPARATOR.'m'.DATE_SEPARATOR.'d'.TIME_SEPARATOR.'h:i:s');
 
 include_once("includes/wp_functions.php");
 include_once("includes/functions-admin.php");
 include_once("includes/enqueue.php");
 
+if ( ! function_exists( 'emo_ewpu_init' ) ) {
+	add_action( 'plugins_loaded', 'emo_ewpu_init', 11 );
 
-//register scripts
-//add_action('wp_enqueue_scripts', 'emo_ewpu_scripts');
-add_action('admin_enqueue_scripts', 'emo_ewpu_scripts');
+	function emo_ewpu_init() {
+        //register scripts
+        //add_action('wp_enqueue_scripts', 'emo_ewpu_scripts');
+        add_action('admin_enqueue_scripts', 'emo_ewpu_scripts');
 
-add_action('wp_enqueue_scripts', 'emo_ewpu_scripts');
+        add_action('wp_enqueue_scripts', 'emo_ewpu_scripts');
 
-/**
- * Load the plugin text domain for translation.
- */
-add_action( 'init', 'emo_ewpu_load_textdomain' );
+        /**
+         * Load the plugin text domain for translation.
+         */
+        add_action( 'init', 'emo_ewpu_load_textdomain' );
 
-function emo_ewpu_load_textdomain() {
-    load_plugin_textdomain( 'emo_ewpu', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+        function emo_ewpu_load_textdomain() {
+            load_plugin_textdomain( 'emo_ewpu', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+        }
+    }
 }

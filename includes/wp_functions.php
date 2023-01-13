@@ -19,7 +19,6 @@ use JetBrains\PhpStorm\ArrayShape;
  */
 function emo_ewpu_price_history_array(string $dateTime, array $priceHistory, string $newPrice): array
 {
-    global $emo_ewpu_timeSeparator;
     if(count($priceHistory)>0){
         $endElement = end($priceHistory);
         $lastPrice = end($endElement);
@@ -27,7 +26,7 @@ function emo_ewpu_price_history_array(string $dateTime, array $priceHistory, str
         $lastPrice = '';
     }
 
-    $dateTime_array = explode($emo_ewpu_timeSeparator, $dateTime);
+    $dateTime_array = explode(TIME_SEPARATOR, $dateTime);
     if($priceHistory[$dateTime_array[0]]){
         $priceHistory[$dateTime_array[0]] = array_merge($priceHistory[$dateTime_array[0]],[$dateTime_array[1]=>$newPrice]);
     }else{
@@ -166,7 +165,6 @@ add_action('woocommerce_admin_process_variation_object', 'emo_ewpu_set_new_varia
  */
 function emo_ewpu_filtered_price_history(string $resultType, array $priceHistory): array
 {
-    global $emo_ewpu_timeSeparator;
     $filteredPriceHistory = array();
     foreach($priceHistory as $dateSaved=>$row){
         switch($resultType){
@@ -190,7 +188,7 @@ function emo_ewpu_filtered_price_history(string $resultType, array $priceHistory
                 break;
             case 'all':
                 foreach($row as $timeSaved=>$price ){
-                    $filteredPriceHistory[$dateSaved.$emo_ewpu_timeSeparator.$timeSaved] = $price;
+                    $filteredPriceHistory[$dateSaved.TIME_SEPARATOR.$timeSaved] = $price;
                 }
                 break;
             case 'default':
@@ -329,12 +327,10 @@ function emo_ewpu_start_date(int $period)
  */
 function emo_ewpu_date_to_array( string $dateString, string $resultType='dict'): array
 {
-    global $emo_ewpu_timeSeparator;
-    global $emo_ewpu_dateSeparator;
     //'DATAFORMAT', 'Y-m-d/h:i:s'
-    $currentDate = explode($emo_ewpu_timeSeparator, $dateString);
+    $currentDate = explode(TIME_SEPARATOR, $dateString);
     if($resultType == 'dict'){
-        $currentDate = explode($emo_ewpu_dateSeparator, $currentDate[0]);
+        $currentDate = explode(DATE_SEPARATOR, $currentDate[0]);
         $dateKey = ['year','month','day'];
         $currentDate = array_combine( $dateKey, $currentDate);
         array_walk($currentDate, function (&$value) {

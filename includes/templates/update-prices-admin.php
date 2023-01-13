@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package EWTGP
+ * @package EWPU
  * ========================
  * Admin Update Prices PAGE
  * ========================

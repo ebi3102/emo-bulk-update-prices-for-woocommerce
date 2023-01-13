@@ -378,3 +378,30 @@ function emo_ewpu_resulted_date_price(array $startDate, array $priceHistory): ar
     }
     return array($months, $prices);
 }
+
+/**
+ * Change price calculator
+ */
+function emo_ewpu_change_price($rate_type = 'constant', $increasning_type = 'increase', $price, $change_value){
+	if($price){
+		if($increasning_type == 'increase'){
+			if($rate_type == 'percent'){
+				$newPrice = $price*(1+($change_value/100));
+			}else{
+				$newPrice = $price + $change_value;
+			}
+		}else{
+			if($rate_type == 'percent'){
+				$newPrice = $price*(1-($change_value/100));
+			}else{
+				$newPrice = $price - $change_value;
+			}
+		}
+		$newPrice = round($newPrice);
+		$newPrice = ($newPrice <= 0 )? null:$newPrice;
+	}else{
+		$newPrice = null;
+	}
+    
+    return $newPrice;
+}

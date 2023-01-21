@@ -20,55 +20,77 @@ if( !empty($product_categories) ){
 
 
 if(@$_POST['btnSubmit']){
-    $cat_id = $_POST['cat_id'];
-    $rate_type = $_POST['nimo_nwab_rate'];
-    $change_rate = $_POST['change_rate'];
-    $endYear = $_POST['sale_end_time_year'];
-    $endMonth = $_POST['sale_end_time_month'];
-    $endDay = $_POST['sale_end_time_day'];
-    $startYear = $_POST['sale_start_time_year'];
-    $startMonth = $_POST['sale_start_time_month'];
-    $startDay = $_POST['sale_start_time_day'];
+    if ( ! isset( $_POST['emo_ewpu_nonce_field'] ) 
+        || ! wp_verify_nonce( $_POST['emo_ewpu_nonce_field'], 'emo_ewpu_action' ) 
+    ){
+        echo __('Sorry, your nonce did not verify.', 'emo_ewpu');
+    } else {
+        $cat_id = $_POST['cat_id'];
+        $rate_type = $_POST['nimo_nwab_rate'];
+        $change_rate = $_POST['change_rate'];
+        $endYear = $_POST['sale_end_time_year'];
+        $endMonth = $_POST['sale_end_time_month'];
+        $endDay = $_POST['sale_end_time_day'];
+        $startYear = $_POST['sale_start_time_year'];
+        $startMonth = $_POST['sale_start_time_month'];
+        $startDay = $_POST['sale_start_time_day'];
 
-    $textStartDate = $startYear . '/' . $months->get_month(intval($startMonth)) . '/' .$startDay ;
-    $UTMStartDate = $startYear . '-' . $startMonth . '-' .$startDay ;
+        $textStartDate = $startYear . '/' . $months->get_month(intval($startMonth)) . '/' .$startDay ;
+        $UTMStartDate = $startYear . '-' . $startMonth . '-' .$startDay ;
 
-    $textEndDate = $endYear . '/' . $months->get_month(intval($endMonth)) . '/' .$endDay ;
-    $UTMEndDate = $endYear . '-' . $endMonth . '-' .$endDay ;
+        $textEndDate = $endYear . '/' . $months->get_month(intval($endMonth)) . '/' .$endDay ;
+        $UTMEndDate = $endYear . '-' . $endMonth . '-' .$endDay ;
 
-    $filename = "Discount_".date("Y-m-d_h-i-s").".csv";
+        $filename = "Discount_".date("Y-m-d_h-i-s").".csv";
 
-    if (!file_exists( EWPU_CREATED_DIR )) {
-        mkdir( EWPU_CREATED_DIR, 0777, true);
-    }
-    $filePath = EWPU_CREATED_DIR.'/'.$filename;
-    $fileUrl = EWPU_CREATED_URI.'/'.$filename;
-
-    $csvFile = fopen($filePath, 'w') or die("Unable to open file!");
-
-    $writeCSV = array(array('parent_id', 'product_id', 'product_name', 'Regular_price', 'Sale_price', 'Start_time', 'End_time'));
-
-    //retrieve all related products
-    $cat_products = array();
-    if($cat_id){
-        $relatedProducts = $wpdb->get_results("SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id = " . $cat_id);
-        foreach($relatedProducts as $relatedProduct){
-            array_push($cat_products, $relatedProduct->object_id);
+        if (!file_exists( EWPU_CREATED_DIR )) {
+            mkdir( EWPU_CREATED_DIR, 0777, true);
         }
-    }
+        $filePath = EWPU_CREATED_DIR.'/'.$filename;
+        $fileUrl = EWPU_CREATED_URI.'/'.$filename;
 
-    $products = $cat_products;
+        $csvFile = fopen($filePath, 'w') or die("Unable to open file!");
 
-    foreach($products as $product){
-        $_product = wc_get_product($product);
-        if($_product->get_type() == 'variable'){
-            $variationsPrices = $_product->get_variation_prices();
-            $vRegularPrices = $variationsPrices['regular_price']; //array
-            foreach($vRegularPrices as $vID=>$vRegularPrice){
-                $newSalePrice = emo_ewpu_change_price($rate_type, 'decrease', $vRegularPrice, $change_rate);
-                $variation = wc_get_product_object( 'variation', $vID );
+        $writeCSV = array(array('parent_id', 'product_id', 'product_name', 'Regular_price', 'Sale_price', 'Start_time', 'End_time'));
+
+        //retrieve all related products
+        $cat_products = array();
+        if($cat_id){
+            $relatedProducts = $wpdb->get_results("SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id = " . $cat_id);
+            foreach($relatedProducts as $relatedProduct){
+                array_push($cat_products, $relatedProduct->object_id);
+            }
+        }
+
+        $products = $cat_products;
+
+        foreach($products as $product){
+            $_product = wc_get_product($product);
+            if($_product->get_type() == 'variable'){
+                $variationsPrices = $_product->get_variation_prices();
+                $vRegularPrices = $variationsPrices['regular_price']; //array
+                foreach($vRegularPrices as $vID=>$vRegularPrice){
+                    $newSalePrice = emo_ewpu_change_price($rate_type, 'decrease', $vRegularPrice, $change_rate);
+                    $variation = wc_get_product_object( 'variation', $vID );
+                    //set...
+                    $variation->set_props(
+                        array(
+                            // 'regular_price' => $newRegularPrice,
+                            'sale_price' => $newSalePrice,
+                            'date_on_sale_from'  => $UTMStartDate,
+                            'date_on_sale_to' => $UTMEndDate
+                        )
+                    );
+                    $variation->save();
+                    array_push($writeCSV, array($product, $vID, $variation->get_title(), $vRegularPrice, $newSalePrice, $textStartDate, $textEndDate));
+                }
+
+            }elseif($_product->get_type() == 'simple'){
+                $regularPrice = $_product->get_regular_price();
+                $newSalePrice = emo_ewpu_change_price($rate_type, 'decrease', $regularPrice, $change_rate);
                 //set...
-                $variation->set_props(
+                $productObject = wc_get_product_object( 'simple', $product );
+                $productObject->set_props(
                     array(
                         // 'regular_price' => $newRegularPrice,
                         'sale_price' => $newSalePrice,
@@ -76,33 +98,17 @@ if(@$_POST['btnSubmit']){
                         'date_on_sale_to' => $UTMEndDate
                     )
                 );
-                $variation->save();
-                array_push($writeCSV, array($product, $vID, $variation->get_title(), $vRegularPrice, $newSalePrice, $textStartDate, $textEndDate));
+                $productObject->save();
+                // $_product->set_date_on_sale_to();
+                array_push($writeCSV, array('0', $product, $_product->get_title(), $regularPrice, $newSalePrice, $textStartDate, $textEndDate));
             }
-
-        }elseif($_product->get_type() == 'simple'){
-            $regularPrice = $_product->get_regular_price();
-            $newSalePrice = emo_ewpu_change_price($rate_type, 'decrease', $regularPrice, $change_rate);
-            //set...
-            $productObject = wc_get_product_object( 'simple', $product );
-            $productObject->set_props(
-                array(
-                    // 'regular_price' => $newRegularPrice,
-                    'sale_price' => $newSalePrice,
-                    'date_on_sale_from'  => $UTMStartDate,
-                    'date_on_sale_to' => $UTMEndDate
-                )
-            );
-            $productObject->save();
-            // $_product->set_date_on_sale_to();
-            array_push($writeCSV, array('0', $product, $_product->get_title(), $regularPrice, $newSalePrice, $textStartDate, $textEndDate));
         }
-    }
 
-    foreach ($writeCSV as $row) {
-        fputcsv($csvFile, $row);
+        foreach ($writeCSV as $row) {
+            fputcsv($csvFile, $row);
+        }
+        fclose($csvFile);
     }
-    fclose($csvFile);
 }
 
 
@@ -200,6 +206,9 @@ if(@$_POST['btnSubmit']){
                                     <?php echo __('Day: ','emo_ewpu') ?>
                                     <input type="number" style="width: 60px;" min="1" max="31" name="sale_end_time_day" id="sale_end_time_day">
                                 </label>
+
+                                <?php // nounce ?>
+                                <?php wp_nonce_field( 'emo_ewpu_action', 'emo_ewpu_nonce_field' ); ?>
                             </div>
                         </div>
                         <div style="padding-top: 20px;"><?php submit_button( __('Update', 'emo_ewpu'), 'primary', 'btnSubmit');  ?></div>

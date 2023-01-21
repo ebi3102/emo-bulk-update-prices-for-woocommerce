@@ -222,7 +222,7 @@ if(@$_POST['btnSubmit']){
             <?php echo __(' to check the correctness of the updated changes', 'emo_ewpu') ?>
         </span>
         </strong></p>
-            <button type="button" class="notice-dismiss"><span class="screen-reader-text">رد کردن این اخطار</span></button>
+            <button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php echo __('Dismiss this warning', 'emo_ewpu') ?></span></button>
         </div>
     <?php } ?>
 </div><!-- .wrap nosubsub -->

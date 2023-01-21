@@ -48,7 +48,6 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
 
         if ( ! function_exists( 'WC' ) || ! version_compare( WC()->version, '3.0', '>=' ) ) {
 			add_action( 'admin_notices', 'emo_ewpu_notice_wc' );
-
 			return;
 		}
 

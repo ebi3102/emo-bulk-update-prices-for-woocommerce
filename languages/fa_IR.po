@@ -1,0 +1,223 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"Project-Id-Version: Emo Woocommerce Update Prices\n"
+"POT-Creation-Date: 2023-01-21 16:49+0330\n"
+"PO-Revision-Date: 2023-01-21 17:06+0330\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: emo-woo-price-update.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: fa_IR\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: includes/functions-admin.php:15 includes/functions-admin.php:26
+#: includes/functions-admin.php:27
+msgid "Update whole prices"
+msgstr "به روز رسانی کلی قیمت ها"
+
+#: includes/functions-admin.php:16
+msgid "Prices management"
+msgstr "مدیریت قیمت ها"
+
+#: includes/functions-admin.php:36 includes/functions-admin.php:37
+msgid "Group price update"
+msgstr "به روز رسانی گروهی قیمت"
+
+#: includes/functions-admin.php:46 includes/functions-admin.php:47
+msgid "Group discount"
+msgstr "تخفیف گروهی"
+
+#: includes/templates/group-discount.php:1
+msgid "Group discount settings"
+msgstr "تنظیمات تخفیف گروهی"
+
+#: includes/templates/group-discount.php:15
+#: includes/templates/group-price-update.php:24
+msgid "Select one category"
+msgstr "انتخاب یک دسته"
+
+#: includes/templates/group-discount.php:120
+#: includes/templates/group-price-update.php:146
+msgid "Select a product category"
+msgstr "انتخاب یک دسته محصولات"
+
+#: includes/templates/group-discount.php:126
+#: includes/templates/group-price-update.php:153
+msgid "Fixed rate or percentage"
+msgstr "نرخ ثابت یا درصد"
+
+#: includes/templates/group-discount.php:130
+#: includes/templates/group-price-update.php:157
+msgid "Fixed rate"
+msgstr "نرخ ثابت"
+
+#: includes/templates/group-discount.php:135
+#: includes/templates/group-price-update.php:162
+msgid "Percentage"
+msgstr "درصد"
+
+#: includes/templates/group-discount.php:139
+#: includes/templates/group-price-update.php:166
+msgid "Change value"
+msgstr "مقدار تغییر"
+
+#: includes/templates/group-discount.php:142
+#: includes/templates/group-price-update.php:169
+msgid ""
+"If you have selected the percentage in the previous step, enter the "
+"percentage number for the amount of changes. For example, if it is 10%, "
+"enter the number 10."
+msgstr ""
+"اگر در مرحله قبل درصد را انتخاب نموده اید، عدد درصدی می خواهید قیمت ها را "
+"تغییر دهید وارد نمایید. برای مثال، اگر 10% است، عدد 10 را وارد نمایید"
+
+#: includes/templates/group-discount.php:146
+msgid "Date and time settings"
+msgstr "تنظیمات تاریخ و زمان"
+
+#: includes/templates/group-discount.php:148
+msgid "Set times based on Gregorian date"
+msgstr "تاریخ را به میلادی وارد نمایید"
+
+#: includes/templates/group-discount.php:152
+msgid "From: "
+msgstr "از:"
+
+#: includes/templates/group-discount.php:155
+#: includes/templates/group-discount.php:183
+msgid "Year: "
+msgstr "سال:"
+
+#: includes/templates/group-discount.php:160
+#: includes/templates/group-discount.php:188
+msgid "Month: "
+msgstr "ماه:"
+
+#: includes/templates/group-discount.php:172
+#: includes/templates/group-discount.php:200
+msgid "Day: "
+msgstr "روز:"
+
+#: includes/templates/group-discount.php:180
+msgid "To: "
+msgstr "تا:"
+
+#: includes/templates/group-discount.php:205
+#: includes/templates/group-price-update.php:195
+msgid "Update"
+msgstr "به روز رسانی"
+
+#: includes/templates/group-discount.php:220
+#: includes/templates/group-price-update.php:212
+msgid "Your changes have been applied successfully. Please check the "
+msgstr "تغییرات شما با موفقیت اعمال شد. لطفا برای اطمینان از صحت تغییرات فایل"
+
+#: includes/templates/group-discount.php:222
+#: includes/templates/group-price-update.php:214
+msgid " to check the correctness of the updated changes"
+msgstr "را چک کنید."
+
+#: includes/templates/group-discount.php:225
+#: includes/templates/group-price-update.php:217
+#: includes/templates/update-prices-admin.php:162
+#: includes/templates/update-prices-admin.php:179
+msgid "Dismiss this warning"
+msgstr "رد کردن این خطا"
+
+#: includes/templates/group-price-update.php:11
+msgid "Group update price settings"
+msgstr "تنظیمات به روز رسانی گروهی قیمت ها"
+
+#: includes/templates/group-price-update.php:173
+msgid "On sale products"
+msgstr "محصولات فروش ویژه"
+
+#: includes/templates/group-price-update.php:176
+msgid "Doing changes on the product that are on sale"
+msgstr "این تغییرات را برای محصولاتی که در فروش ویژه هستند اعمال کن"
+
+#: includes/templates/group-price-update.php:181
+msgid "Price increase or decrease"
+msgstr "افزایش یا کاهش قیمت ها"
+
+#: includes/templates/group-price-update.php:185
+msgid "Increase"
+msgstr "افزایش"
+
+#: includes/templates/group-price-update.php:190
+msgid "Decrease"
+msgstr "کاهش"
+
+#: includes/templates/update-prices-admin.php:11
+msgid "Update prices by uploading excel file"
+msgstr "به روز رسانی قیمت ها بوسیله بارگذاری فایل csv"
+
+#: includes/templates/update-prices-admin.php:61
+msgid "Create product price list"
+msgstr "ایجاد لیست قیمت محصولات"
+
+#: includes/templates/update-prices-admin.php:62
+msgid "Create"
+msgstr "ایجاد"
+
+#: includes/templates/update-prices-admin.php:86
+msgid "extension not allowed, please choose a csv file."
+msgstr "این فایل مجاز نمی باشد، لطفا یک فایل csv انتخاب نمایید."
+
+#: includes/templates/update-prices-admin.php:93
+msgid "Success"
+msgstr "موفقیت آمیز"
+
+#: includes/templates/update-prices-admin.php:134
+msgid "Upload products list"
+msgstr "بارگذاری لیست محصولات"
+
+#: includes/templates/update-prices-admin.php:137
+msgid "Upload new price list"
+msgstr "بارگذاری لیست قیمت جدید"
+
+#: includes/templates/update-prices-admin.php:141
+msgid ""
+"It should be a csv file.<br>For getting the sample template you can download "
+"and use product list file"
+msgstr ""
+"این فایل باید با پسوند csv باشد. <br> برای دریافت فایل نمونه شما می توانید "
+"لیست محصولات را دانلود و استفاده نمایید."
+
+#: includes/templates/update-prices-admin.php:144
+msgid "Submit"
+msgstr "ثبت"
+
+#: includes/templates/update-prices-admin.php:174
+msgid "You can download the list of price products from "
+msgstr "شما می توانید لیست قیمت محصولات را از این فایل دانلود نمایید: "
+
+#. Plugin Name of the plugin/theme
+msgid "Emo Woocommerce Update Prices"
+msgstr "به روز رسان قیمت ایمو"
+
+#. Description of the plugin/theme
+msgid ""
+"EWPU is a bulk price updater plugin specially made for WooCommerce products"
+msgstr ""
+"به روز رسان قیمت ایمو یک پلاگین به روز رسان قیمت انبوه است که مخصوص محصولات "
+"ایجاد شده با ووکامرس ساخته شده است."
+
+#. Author of the plugin/theme
+msgid "Ebrahim Moeini"
+msgstr "ابراهیم معینی"
+
+#. Author URI of the plugin/theme
+msgid "https://emoeini.com"
+msgstr ""

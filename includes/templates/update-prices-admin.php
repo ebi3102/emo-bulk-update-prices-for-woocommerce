@@ -15,38 +15,38 @@
 /* Extract all Poducts site */
 global $wpdb;
 
+if(@$_POST['btnSubmit']) {
+    if (!file_exists(EWPU_CREATED_DIR)) {
+        mkdir(EWPU_CREATED_DIR, 0777, true);
+    }
+    if (!file_exists(EWOU_UPLOAD_DIR)) {
+        mkdir(EWOU_UPLOAD_DIR, 0777, true);
+    }
+    $fileLocation = EWPU_CREATED_URI . "/products.csv";
+    $fileLocationDirectory = EWPU_CREATED_DIR . "/products.csv";
 
-if (!file_exists(EWPU_CREATED_DIR)) {
-    mkdir(EWPU_CREATED_DIR, 0777, true);
-}
-if (!file_exists(EWOU_UPLOAD_DIR)) {
-    mkdir(EWOU_UPLOAD_DIR, 0777, true);
-}
+    $products = $wpdb->get_results($wpdb->prepare("SELECT ID, post_title, post_modified, post_date FROM $wpdb->posts WHERE post_type ='product' AND post_status = 'publish' ORDER BY post_modified DESC; "));
+    $myfile = fopen($fileLocationDirectory, "w");
 
-$fileLocation = EWPU_CREATED_URI."/products.csv";
-$fileLocationDirectory = EWPU_CREATED_DIR."/products.csv";
-
-$products = $wpdb->get_results( $wpdb->prepare( "SELECT ID, post_title, post_modified, post_date FROM $wpdb->posts WHERE post_type ='product' AND post_status = 'publish' ORDER BY post_modified DESC; ") );
-$myfile = fopen($fileLocationDirectory, "w");
-
-$data = array('Product ID', 'SKU', 'Product Title', 'Regular Price', 'Sale Price', 'Type');
-fputcsv($myfile, $data);
-foreach ($products as $product) {
-    $_product = wc_get_product( $product->ID );
-    $sku = $_product->get_sku();
-    if($_product->get_type() == "variable"){
-        $variations = $_product->get_children();
-        foreach ( $variations as $vID ) {
-            $variation = wc_get_product_object( 'variation', $vID );
-            $data = array($vID, $variation->get_sku(), $variation->get_name(), $variation->get_regular_price(), $variation->get_sale_price(), "variation");
+    $data = array('Product ID', 'SKU', 'Product Title', 'Regular Price', 'Sale Price', 'Type');
+    fputcsv($myfile, $data);
+    foreach ($products as $product) {
+        $_product = wc_get_product($product->ID);
+        $sku = $_product->get_sku();
+        if ($_product->get_type() == "variable") {
+            $variations = $_product->get_children();
+            foreach ($variations as $vID) {
+                $variation = wc_get_product_object('variation', $vID);
+                $data = array($vID, $variation->get_sku(), $variation->get_name(), $variation->get_regular_price(), $variation->get_sale_price(), "variation");
+                fputcsv($myfile, $data);
+            }
+        } elseif ($_product->get_type() == "simple") {
+            $data = array($product->ID, $sku, $product->post_title, $_product->get_regular_price(), $_product->get_sale_price(), "simple");
             fputcsv($myfile, $data);
         }
-    }elseif($_product->get_type() == "simple"){
-        $data = array($product->ID, $sku, $product->post_title, $_product->get_regular_price(), $_product->get_sale_price(), "simple");
-        fputcsv($myfile, $data);
-        }
+    }
+    fclose($myfile);
 }
-fclose($myfile);
 /* End of Extract all Poducts site */
 
 ?>
@@ -55,12 +55,17 @@ fclose($myfile);
     <div id="col-container-1" class="wp-clearfix emo-flex-row">
         <div id="col-left">
             <div class="col-wrap">
-                <div class="form-wrap">
-                    <div style="width:fit-content; margin: 50px auto;">
-                        <h3><?php echo __( 'Download products list', 'emo_ewpu' ) ?></h3>
-                        <button class="button button-primary"><a style="color:#fff; text-decoration: none;" href="<?php echo $fileLocation ?>"><?php echo __( 'Download', 'emo_ewpu' ) ?></a></button>
+                <form method="post">
+                    <div class="form-wrap">
+                        <div style="width:fit-content; margin: 50px auto;">
+                            <h3><?php echo __( 'Create product price list', 'emo_ewpu' ) ?></h3>
+                            <?php submit_button( __('Create', 'emo_ewpu'), 'primary', 'btnSubmit');  ?>
+                            <?php /*
+                            <button class="button button-primary"><a style="color:#fff; text-decoration: none;" href="<?php echo $fileLocation ?>"><?php echo __( 'Create', 'emo_ewpu' ) ?></a></button>
+                            */ ?>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div><!-- #col-left -->
 
@@ -159,5 +164,20 @@ if(isset($_FILES['price_list'])){
     <?php } ?>
 
     </div>
+
+    <?php
+    if(@$_POST['btnSubmit']){
+        ?>
+        <div class="notice notice-success settings-error is-dismissible">
+            <p><strong><span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
+        <span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
+        <?php echo __('You can download the list of price products from ', 'emo_ewpu') ?>
+        <span><a href="<?php echo $fileLocation ?>"><?php echo "products.csv" ?></a></span>
+            <?php // echo __(' to check the correctness of the updated changes', 'emo_ewpu') ?>
+        </span>
+                </strong></p>
+            <button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php echo __('dismiss', 'emo_ewpu') ?></span></button>
+        </div>
+    <?php } ?>
 </div><!-- .wrap nosubsub -->
 

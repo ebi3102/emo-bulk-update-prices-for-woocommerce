@@ -37,10 +37,6 @@ define('TIME_SEPARATOR' , '/');
 define('DATE_SEPARATOR', '-');
 define('DATAFORMAT', 'Y'.DATE_SEPARATOR.'m'.DATE_SEPARATOR.'d'.TIME_SEPARATOR.'h:i:s');
 
-include_once("includes/wp_functions.php");
-include_once("includes/functions-admin.php");
-include_once("includes/enqueue.php");
-
 if ( ! function_exists( 'emo_ewpu_init' ) ) {
 	add_action( 'plugins_loaded', 'emo_ewpu_init', 11 );
 
@@ -50,13 +46,15 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
 			add_action( 'admin_notices', 'emo_ewpu_notice_wc' );
 			return;
 		}
+        if(is_admin()){
+            include_once("includes/wp_functions.php");
+            include_once("includes/functions-admin.php");
+            include_once("includes/enqueue.php");
 
-        //register scripts
-        //add_action('wp_enqueue_scripts', 'emo_ewpu_scripts');
-        add_action('admin_enqueue_scripts', 'emo_ewpu_scripts');
-
-        add_action('wp_enqueue_scripts', 'emo_ewpu_scripts');
-
+            //register scripts
+            add_action('admin_enqueue_scripts', 'emo_ewpu_scripts');
+        }
+        
         /**
          * Load the plugin text domain for translation.
          */

@@ -1,24 +1,25 @@
-=== Emo Woocommerce Update Prices ===
-Contributors: (ebi3102)
-Tags: woocommerce, woocommerce add-on, update price, bulk update prices
-Requires at least: 5.6
-Tested up to: 5.8.3
-Requires PHP: 7.0
-Stable tag: 5.8.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+=== Emo Woocommerce Update Prices ===<br/>
+Contributors: (ebi3102) <br/>
+Tags: woocommerce, woocommerce add-on, update price, bulk update prices <br/>
+Requires at least: 5.6 <br/>
+Tested up to: 5.8.3 <br/>
+Requires PHP: 7.0 <br/>
+Stable tag: 5.8.0 <br/>
 
-== Description ==
-Emo Woocommerce Update Prices  is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
-Emo Woocommerce Update Prices  is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+== Description == <br/>
+Emo Woocommerce Update Prices  is WordPress plugin that helps to update the prices of woocommerce products in bulk. <br/>
 
-== Installation ==
+
+== Installation == <br/>
 This section describes how to install the plugin and get it working.
 e.g.
-1. Upload `emo-woo-price-update` directory to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. In admin area from side menu click on `Commiunication` and set the settings. 
-== Frequently Asked Questions ==
+<ol>
+<li> Upload `emo-woo-price-update` directory to the `/wp-content/plugins/` directory. </li>
+<li> Activate the plugin through the 'Plugins' menu in WordPress. </li>
+<li> In admin area from side menu click on `Prices management` to see other menus for different updating ways. </li> 
+</ol>
+== Frequently Asked Questions == <br/>
+
 = A question that someone might have =
 An answer to that question.
 = What about foo bar? =

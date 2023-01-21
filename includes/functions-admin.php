@@ -40,6 +40,16 @@ function emo_ewpu_add_admin_page() {
         'emo_ewpu_group_price_update'
     );
 
+	//Generate group on-sale prices
+    add_submenu_page(
+        'emo_ewpu_slug',
+        __( 'Group discount', 'emo_ewpu' ),
+        __( 'Group discount', 'emo_ewpu' ) ,
+        'manage_options' ,
+        'group_discount' ,
+        'emo_ewpu_group_discount'
+    );
+
 
 }
 add_action( 'admin_menu', 'emo_ewpu_add_admin_page' );
@@ -52,6 +62,11 @@ function emo_ewpu_update_prices_create_page() {
 
 function emo_ewpu_group_price_update(){
     $url_template = 'templates/group-price-update.php';
+    require_once $url_template;
+}
+
+function emo_ewpu_group_discount(){
+    $url_template = 'templates/group-discount.php';
     require_once $url_template;
 }
 

@@ -211,8 +211,7 @@ if($_POST['btnSubmit']){
         <span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
         <?php echo __('Your changes have been applied successfully. Please check the ', 'emo_ewpu') ?>
         <span><a href="<?php echo $fileUrl ?>"><?php echo $filename ?></a></span>
-        <?php echo __(' to check the correctness of the updated changes', 'emo_ewpu') ?>
-    
+            <?php echo __(' to check the correctness of the updated changes', 'emo_ewpu') ?>
         </span>
         </strong></p>
         <button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php echo __('Dismiss this warning', 'emo_ewpu') ?></span></button>

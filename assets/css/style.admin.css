@@ -6,3 +6,7 @@
     display: flex;
     align-items: center;
 }
+
+.emo-ewpu form input:invalid{
+    border-color: red;
+}

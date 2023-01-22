@@ -212,9 +212,8 @@ if($_POST['btnSubmit']){
     </div>
 
    <?php
-    if($_POST['btnSubmit']){
+    if(@$_POST['btnSubmit'] && @$fileUrl){
      ?>
-    
     <div class="notice notice-success settings-error is-dismissible"> 
         <p><strong><span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
         <span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">

@@ -163,23 +163,26 @@ if(@$_POST['uploadSubmit'] && @isset($_FILES['price_list'])){
             </div>
         </div><!-- #col-left -->
 
-    <?php
-    if(@$_POST['uploadSubmit'] && @$_FILES["price_list"]["name"]){
-        ?>
-            <div class="notice notice-success settings-error is-dismissible">
-                <p><strong><span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
-            <span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
-            <?php echo $response ?>
-            </span>
-                    </strong></p>
-                <button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php echo __('Dismiss this warning', 'emo_ewpu') ?></span></button>
-            </div>
-    <?php } ?>
 
     </div>
 
     <?php
-    if(@$_POST['btnSubmit']){
+    // Notice when uploading is happened
+    if(@$_POST['uploadSubmit'] && @$_FILES["price_list"]["name"]){
+        ?>
+        <div class="notice notice-success settings-error is-dismissible">
+            <p><strong><span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
+            <span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
+            <?php echo $response ?>
+            </span>
+                </strong></p>
+            <button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php echo __('Dismiss this warning', 'emo_ewpu') ?></span></button>
+        </div>
+    <?php } ?>
+
+    <?php
+    //Notice and download link when product list is created
+    if(@$_POST['btnSubmit'] && @$fileLocation){
         ?>
         <div class="notice notice-success settings-error is-dismissible">
             <p><strong><span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">

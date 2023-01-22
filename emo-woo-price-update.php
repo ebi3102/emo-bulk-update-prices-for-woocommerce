@@ -47,9 +47,9 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
 			return;
 		}
         if(is_admin()){
+            include_once("includes/functions/form-functions.php");
             include_once("includes/functions/wp_functions.php");
             include_once("includes/functions/functions-admin.php");
-            include_once("includes/functions/form-functions.php");
             include_once("includes/enqueue.php");
 
             //register scripts

@@ -152,6 +152,7 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
 function emo_ewpu_get_group_discount_data(bool $is_submit): array
 {
     global $wpdb;
+    $months = new WP_Locale();
     $error = false;
     if(!$is_submit){
         $error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );

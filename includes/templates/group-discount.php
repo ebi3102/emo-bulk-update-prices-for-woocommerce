@@ -1,7 +1,7 @@
 <h1><?php echo __( 'Group discount settings', 'emo_ewpu' ) ?></h1>
 <?php
-$months = new WP_Locale();
 global $wpdb;
+$months = new WP_Locale();
 // $product_categories = get_terms( 'product_cat');
 $product_categories = get_terms( array (
     'taxonomy' => 'product_cat',

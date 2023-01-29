@@ -114,29 +114,15 @@ if($_POST['btnSubmit']){
 
    <?php
     if(@$_POST['btnSubmit'] && @!$result['error']){
-     ?>
-    <div class="notice notice-success settings-error is-dismissible"> 
-        <p><strong><span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
-        <span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
-        <?php echo __('Your changes have been applied successfully. Please check the ', 'emo_ewpu') ?>
-        <span><a href="<?php echo $result['filePath'] ?>"><?php echo $result['fileName'] ?></a></span>
-            <?php echo __(' to check the correctness of the updated changes', 'emo_ewpu') ?>
-        </span>
-        </strong></p>
-        <button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php echo __('Dismiss this warning', 'emo_ewpu') ?></span></button>
-    </div>
-    <?php } ?>
+        $result = ['filePath'=> '#', 'fileName'=>'Product'];
+        $massage = __('Your changes have been applied successfully. Please check the ', 'emo_ewpu');
+        $massage .= "<a href='".$result['filePath']."'>".$result['fileName']."</a>";
+        $massage .= __(' to check the correctness of the updated changes', 'emo_ewpu');
+        echo EMO_EWPU_NoticeTemplate::success ($massage);
+    } ?>
     <?php
-    if(@$_POST['btnSubmit'] && @$result['error']){ ?>
-        <div class="notice notice-warning settings-error is-dismissible">
-            <p><strong><span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
-        <span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
-        <?php echo $result['error']->get_error_message(); ?>
+    if(@$_POST['btnSubmit'] && @$result['error']){ 
+        echo EMO_EWPU_NoticeTemplate::warning ($result['error']->get_error_message());
+    } ?>
 
-        </span>
-                </strong></p>
-            <button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php echo __('Dismiss this warning', 'emo_ewpu') ?></span></button>
-        </div>
-
-    <?php } ?>
 </div><!-- .wrap nosubsub -->

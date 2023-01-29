@@ -169,7 +169,6 @@ if(@$_POST['uploadSubmit'] && @isset($_FILES['price_list'])){
     <?php
     // Notice when uploading is happened
     if(@$_POST['uploadSubmit'] && @$_FILES["price_list"]["name"]){
-        $response = 'Success';
 	    echo EMO_EWPU_NoticeTemplate::success ($response);
     }
 

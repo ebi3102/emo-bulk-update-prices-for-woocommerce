@@ -9,9 +9,47 @@
 
 class EMO_EWPU_NoticeTemplate
 {
+    private static $template = null;
+    private static $massage = null;
+    private static $noticeType = null;
+    private static $is_dismissible = false;
 
-    public function render_template($args)
+    private function __construct(){}
+
+    private static function render_template()
     {
-        
+        if(self::$is_dismissible){
+            $is_dismissible = 'is-dismissible';
+            $closeButton = "<button type='button' class='notice-dismiss'><span class='screen-reader-text'>".
+            __('Dismiss this warning', 'emo_ewpu')."</span></button>";
+        }else{
+            $is_dismissible = '';
+            $closeButton = '';
+        }
+        self::$template = "<div class='notice notice-".self::$noticeType." settings-error ".$is_dismissible."'>";
+        self::$template .= "<p><strong><span style='display: block; margin: 0.5em 0.5em 0 0; clear: both;'>
+        <span style='display: block; margin: 0.5em 0.5em 0 0; clear: both;'>";
+        self::$template .= self::$massage . "</span></strong></p>".$closeButton."</div>";
+        return self::$template; 
     }
+
+    public static function success (string $massage, bool $is_dismissible = true)
+    {
+        self::$noticeType = 'success';
+        self::$is_dismissible = $is_dismissible;
+        self::$massage = $massage;
+        return self::render_template();
+
+    }
+
+    public static function warning (string $massage, bool $is_dismissible = true)
+    {
+        self::$noticeType = 'warning';
+        self::$is_dismissible = $is_dismissible;
+        self::$massage = $massage;
+        return self::render_template();
+
+    }
+
+
 }

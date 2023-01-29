@@ -22,14 +22,12 @@ if(@$_POST['btnSubmit']) {
         echo __('Sorry, your nonce did not verify.', 'emo_ewpu');
     } else {
         
-        $fileLocation = EWPU_CREATED_URI . "/products.csv";
-        $fileLocationDirectory = EWPU_CREATED_DIR . "/products.csv";
-
+        $fileName = 'products.csv';
+        $fileLocation = EWPU_CREATED_URI . $fileName;
         $products = $wpdb->get_results($wpdb->prepare("SELECT ID, post_title, post_modified, post_date FROM $wpdb->posts WHERE post_type ='product' AND post_status = 'publish' ORDER BY post_modified DESC; "));
-        $myfile = fopen($fileLocationDirectory, "w");
-
+        $myfile = new EMO_EWPU_CsvCreator($fileName, "w");
         $data = array('Product ID', 'SKU', 'Product Title', 'Regular Price', 'Sale Price', 'Type');
-        fputcsv($myfile, $data);
+        $myfile->writeToFile($data);
         foreach ($products as $product) {
             $_product = wc_get_product($product->ID);
             $sku = $_product->get_sku();
@@ -38,14 +36,14 @@ if(@$_POST['btnSubmit']) {
                 foreach ($variations as $vID) {
                     $variation = wc_get_product_object('variation', $vID);
                     $data = array($vID, $variation->get_sku(), $variation->get_name(), $variation->get_regular_price(), $variation->get_sale_price(), "variation");
-                    fputcsv($myfile, $data);
+                    $myfile->writeToFile($data);
                 }
             } elseif ($_product->get_type() == "simple") {
                 $data = array($product->ID, $sku, $product->post_title, $_product->get_regular_price(), $_product->get_sale_price(), "simple");
-                fputcsv($myfile, $data);
+                $myfile->writeToFile($data);
             }
         }
-        fclose($myfile);
+        $myfile->closeFile();
     }
 }
 /* End of Extract all Poducts site */
@@ -170,9 +168,8 @@ if(@$_POST['uploadSubmit'] && @isset($_FILES['price_list'])){
 
     //Notice and download link when product list is created
     if(@$_POST['btnSubmit'] && @$fileLocation){
-        $fileLocation = "#";
 	    $massage = __('You can download the list of price products from ', 'emo_ewpu');
-	    $massage .= "<a href='".$fileLocation."'>".products.csv."</a>";
+	    $massage .= "<a href='".$fileLocation."'>".$fileName."</a>";
 	    echo EMO_EWPU_NoticeTemplate::success ($massage);
     } ?>
 </div><!-- .wrap nosubsub -->

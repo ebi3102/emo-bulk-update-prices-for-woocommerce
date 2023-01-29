@@ -16,7 +16,10 @@ class EMO_EWPU_NoticeTemplate
 
     private function __construct(){}
 
-    private static function render_template()
+	/**
+	 * @return string|null
+	 */
+	private static function render_template()
     {
         if(self::$is_dismissible){
             $is_dismissible = 'is-dismissible';
@@ -33,7 +36,14 @@ class EMO_EWPU_NoticeTemplate
         return self::$template; 
     }
 
-    public static function success (string $massage, bool $is_dismissible = true)
+	/**
+	 * Render Success Notice massage
+	 * @param string $massage
+	 * @param bool $is_dismissible
+	 *
+	 * @return string|null
+	 */
+	public static function success (string $massage, bool $is_dismissible = true)
     {
         self::$noticeType = 'success';
         self::$is_dismissible = $is_dismissible;
@@ -42,7 +52,14 @@ class EMO_EWPU_NoticeTemplate
 
     }
 
-    public static function warning (string $massage, bool $is_dismissible = true)
+	/**
+	 * Render Warning Notice massage
+	 * @param string $massage
+	 * @param bool $is_dismissible
+	 *
+	 * @return string|null
+	 */
+	public static function warning (string $massage, bool $is_dismissible = true)
     {
         self::$noticeType = 'warning';
         self::$is_dismissible = $is_dismissible;

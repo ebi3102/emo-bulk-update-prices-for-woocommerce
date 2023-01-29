@@ -56,6 +56,7 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
 
         if(is_admin()){
             include_once("includes/Classes/EMO_EWPU_NoticeTemplate.php");
+            include_once("includes/Classes/EMO_EWPU_CsvCreator.php");
             include_once("includes/functions/form-functions.php");
             include_once("includes/functions/wp_functions.php");
             include_once("includes/functions/functions-admin.php");

@@ -169,31 +169,16 @@ if(@$_POST['uploadSubmit'] && @isset($_FILES['price_list'])){
     <?php
     // Notice when uploading is happened
     if(@$_POST['uploadSubmit'] && @$_FILES["price_list"]["name"]){
-        ?>
-        <div class="notice notice-success settings-error is-dismissible">
-            <p><strong><span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
-            <span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
-            <?php echo $response ?>
-            </span>
-                </strong></p>
-            <button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php echo __('Dismiss this warning', 'emo_ewpu') ?></span></button>
-        </div>
-    <?php } ?>
+        $response = 'Success';
+	    echo EMO_EWPU_NoticeTemplate::success ($response);
+    }
 
-    <?php
     //Notice and download link when product list is created
     if(@$_POST['btnSubmit'] && @$fileLocation){
-        ?>
-        <div class="notice notice-success settings-error is-dismissible">
-            <p><strong><span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
-        <span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">
-        <?php echo __('You can download the list of price products from ', 'emo_ewpu') ?>
-        <span><a href="<?php echo $fileLocation ?>"><?php echo "products.csv" ?></a></span>
-            <?php // echo __(' to check the correctness of the updated changes', 'emo_ewpu') ?>
-        </span>
-                </strong></p>
-            <button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php echo __('Dismiss this warning', 'emo_ewpu') ?></span></button>
-        </div>
-    <?php } ?>
+        $fileLocation = "#";
+	    $massage = __('You can download the list of price products from ', 'emo_ewpu');
+	    $massage .= "<a href='".$fileLocation."'>".products.csv."</a>";
+	    echo EMO_EWPU_NoticeTemplate::success ($massage);
+    } ?>
 </div><!-- .wrap nosubsub -->
 

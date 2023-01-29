@@ -48,8 +48,8 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
     if (!file_exists( EWPU_CREATED_DIR )) {
         mkdir( EWPU_CREATED_DIR, 0777, true);
     }
-    $filePath = EWPU_CREATED_DIR.'/'.$filename;
-    $fileUrl = EWPU_CREATED_URI.'/'.$filename;
+    $filePath = EWPU_CREATED_DIR.$filename;
+    $fileUrl = EWPU_CREATED_URI.$filename;
     $csvFile = fopen($filePath, 'w') or die("Unable to open file!");
 
     $writeCSV = array(array('parent_id', 'product_id', 'product_name', 'price_type', 'old_price', 'new_price'));
@@ -194,8 +194,8 @@ function emo_ewpu_get_group_discount_data(bool $is_submit): array
     if (!file_exists( EWPU_CREATED_DIR )) {
         mkdir( EWPU_CREATED_DIR, 0777, true);
     }
-    $filePath = EWPU_CREATED_DIR.'/'.$filename;
-    $fileUrl = EWPU_CREATED_URI.'/'.$filename;
+    $filePath = EWPU_CREATED_DIR.$filename;
+    $fileUrl = EWPU_CREATED_URI.$filename;
 
     $csvFile = fopen($filePath, 'w') or die("Unable to open file!");
 

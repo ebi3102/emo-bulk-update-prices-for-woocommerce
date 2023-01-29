@@ -78,7 +78,7 @@ if(@$_POST['uploadSubmit'] && @isset($_FILES['price_list'])){
     } else {
         
         $errors= array();
-        $target_file = EWOU_UPLOAD_DIR.'/' . basename($_FILES["price_list"]["name"]);
+        $target_file = EWOU_UPLOAD_DIR. basename($_FILES["price_list"]["name"]);
         $file_name = $_FILES['price_list']['name'];
         $file_tmp =$_FILES['price_list']['tmp_name'];
         $file_type=$_FILES['price_list']['type'];

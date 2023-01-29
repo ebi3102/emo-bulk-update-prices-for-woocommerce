@@ -15,6 +15,13 @@
 /* Extract all Poducts site */
 global $wpdb;
 
+if($_POST['btnSubmit']){
+    $is_submit = true;
+    $fileName = 'products.csv';
+    $fileLocation = EWPU_CREATED_URI . $fileName;
+    $result = emo_ewpu_product_list_extraction($is_submit, $fileName);
+}
+
 if(@$_POST['btnSubmit']) {
     if ( ! isset( $_POST['emo_ewpu_nonce_field'] ) 
         || ! wp_verify_nonce( $_POST['emo_ewpu_nonce_field'], 'emo_ewpu_action' ) 

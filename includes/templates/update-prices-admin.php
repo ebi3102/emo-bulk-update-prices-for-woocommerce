@@ -21,12 +21,7 @@ if(@$_POST['btnSubmit']) {
     ){
         echo __('Sorry, your nonce did not verify.', 'emo_ewpu');
     } else {
-        if (!file_exists(EWPU_CREATED_DIR)) {
-            mkdir(EWPU_CREATED_DIR, 0777, true);
-        }
-        if (!file_exists(EWOU_UPLOAD_DIR)) {
-            mkdir(EWOU_UPLOAD_DIR, 0777, true);
-        }
+        
         $fileLocation = EWPU_CREATED_URI . "/products.csv";
         $fileLocationDirectory = EWPU_CREATED_DIR . "/products.csv";
 
@@ -83,6 +78,7 @@ if(@$_POST['uploadSubmit'] && @isset($_FILES['price_list'])){
     ){
         echo __('Sorry, your nonce did not verify.', 'emo_ewpu');
     } else {
+        
         $errors= array();
         $target_file = EWOU_UPLOAD_DIR.'/' . basename($_FILES["price_list"]["name"]);
         $file_name = $_FILES['price_list']['name'];

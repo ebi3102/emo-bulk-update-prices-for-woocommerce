@@ -46,6 +46,14 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
 			add_action( 'admin_notices', 'emo_ewpu_notice_wc' );
 			return;
 		}
+
+        //Check and create essential directories 
+        if (!file_exists(EWPU_CREATED_DIR))
+            mkdir(EWPU_CREATED_DIR, 0777, true);
+        if (!file_exists(EWOU_UPLOAD_DIR))
+            mkdir(EWOU_UPLOAD_DIR, 0777, true);
+        
+
         if(is_admin()){
             include_once("includes/Classes/EMO_EWPU_NoticeTemplate.php");
             include_once("includes/functions/form-functions.php");

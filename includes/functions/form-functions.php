@@ -261,12 +261,12 @@ function emo_ewpu_get_group_discount_data(bool $is_submit): array
 }
 
 /**
- * Extract all Poducts site
+ * Get products list and store it as a csv file
  * @param boolean $is_submit
  * @param string $fileName
  * @return array
  */
-function emo_ewpu_product_list_extraction(bool $is_submit, string $fileName): array
+function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
 {
     global $wpdb;
     $error = false;
@@ -279,18 +279,20 @@ function emo_ewpu_product_list_extraction(bool $is_submit, string $fileName): ar
         $error = new WP_Error( 'nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ) );
     }
 
-    $products = $wpdb->get_results($wpdb->prepare("SELECT ID, post_title, post_modified, post_date FROM $wpdb->posts WHERE post_type ='product' AND post_status = 'publish' ORDER BY post_modified DESC; "));
-    if(count($products)>0){
+    $products = $wpdb->get_results($wpdb->prepare("SELECT ID, post_title FROM $wpdb->posts WHERE post_type ='product' AND post_status = 'publish' ORDER BY post_modified DESC; "));
+    if(count($products)<= 0){
         $error = new WP_Error( 'noProduct', __( "Sorry, There are no products.", "emo_ewpu" ) );
     }
 
     if($error){
         return ['error'=>$error];
     }
-    $fileLocation = EWPU_CREATED_URI . $fileName;
+    $fileUrl = EWPU_CREATED_URI . $fileName;
+    // $myfile = fopen(EWPU_CREATED_DIR.$fileName, "w");
     $myfile = new EMO_EWPU_CsvCreator($fileName, "w");
     $data = array('Product ID', 'SKU', 'Product Title', 'Regular Price', 'Sale Price', 'Type');
     $myfile->writeToFile($data);
+    // fputcsv($myfile, $data);
     foreach ($products as $product) {
         $_product = wc_get_product($product->ID);
         $sku = $_product->get_sku();
@@ -300,13 +302,16 @@ function emo_ewpu_product_list_extraction(bool $is_submit, string $fileName): ar
                 $variation = wc_get_product_object('variation', $vID);
                 $data = array($vID, $variation->get_sku(), $variation->get_name(), $variation->get_regular_price(), $variation->get_sale_price(), "variation");
                 $myfile->writeToFile($data);
+                // fputcsv($myfile, $data);
             }
         } elseif ($_product->get_type() == "simple") {
             $data = array($product->ID, $sku, $product->post_title, $_product->get_regular_price(), $_product->get_sale_price(), "simple");
             $myfile->writeToFile($data);
+            // fputcsv($myfile, $data);
         }
     }
     $myfile->closeFile();
+    // fclose($myfile);
 
-    return ['error'=>false, 'filePath'=> $fileUrl, 'fileName'=> $filename];
+    return ['error'=>false, 'filePath'=> $fileUrl, 'fileName'=> $fileName];
 }

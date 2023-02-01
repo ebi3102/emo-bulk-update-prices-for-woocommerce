@@ -18,42 +18,8 @@ global $wpdb;
 if($_POST['btnSubmit']){
     $is_submit = true;
     $fileName = 'products.csv';
-    $fileLocation = EWPU_CREATED_URI . $fileName;
-    $result = emo_ewpu_product_list_extraction($is_submit, $fileName);
+    $result = emo_ewpu_get_product_list($is_submit, $fileName);
 }
-
-if(@$_POST['btnSubmit']) {
-    if ( ! isset( $_POST['emo_ewpu_nonce_field'] ) 
-        || ! wp_verify_nonce( $_POST['emo_ewpu_nonce_field'], 'emo_ewpu_action' ) 
-    ){
-        echo __('Sorry, your nonce did not verify.', 'emo_ewpu');
-    } else {
-        
-        $fileName = 'products.csv';
-        $fileLocation = EWPU_CREATED_URI . $fileName;
-        $products = $wpdb->get_results($wpdb->prepare("SELECT ID, post_title, post_modified, post_date FROM $wpdb->posts WHERE post_type ='product' AND post_status = 'publish' ORDER BY post_modified DESC; "));
-        $myfile = new EMO_EWPU_CsvCreator($fileName, "w");
-        $data = array('Product ID', 'SKU', 'Product Title', 'Regular Price', 'Sale Price', 'Type');
-        $myfile->writeToFile($data);
-        foreach ($products as $product) {
-            $_product = wc_get_product($product->ID);
-            $sku = $_product->get_sku();
-            if ($_product->get_type() == "variable") {
-                $variations = $_product->get_children();
-                foreach ($variations as $vID) {
-                    $variation = wc_get_product_object('variation', $vID);
-                    $data = array($vID, $variation->get_sku(), $variation->get_name(), $variation->get_regular_price(), $variation->get_sale_price(), "variation");
-                    $myfile->writeToFile($data);
-                }
-            } elseif ($_product->get_type() == "simple") {
-                $data = array($product->ID, $sku, $product->post_title, $_product->get_regular_price(), $_product->get_sale_price(), "simple");
-                $myfile->writeToFile($data);
-            }
-        }
-        $myfile->closeFile();
-    }
-}
-/* End of Extract all Poducts site */
 
 ?>
 <?php //____________________ Download product lists ________________________________ ?>
@@ -174,10 +140,15 @@ if(@$_POST['uploadSubmit'] && @isset($_FILES['price_list'])){
     }
 
     //Notice and download link when product list is created
-    if(@$_POST['btnSubmit'] && @$fileLocation){
-	    $massage = __('You can download the list of price products from ', 'emo_ewpu');
-	    $massage .= "<a href='".$fileLocation."'>".$fileName."</a>";
-	    echo EMO_EWPU_NoticeTemplate::success ($massage);
-    } ?>
+    if(@$_POST['btnSubmit']){
+        if(@$result['error']){
+            echo EMO_EWPU_NoticeTemplate::warning ($result['error']->get_error_message());
+        }elseif(@$result['filePath']){
+            $massage = __('You can download the list of price products from ', 'emo_ewpu');
+            $massage .= "<a href='".$result['filePath']."'>".$result['fileName']."</a>";
+            echo EMO_EWPU_NoticeTemplate::success ($massage);
+        }
+    }
+    ?>
 </div><!-- .wrap nosubsub -->
 

@@ -18,12 +18,14 @@ class EMO_EWPU_CsvCreator
 
     public function writeToFile($content)
     {
-        return fputcsv($this->handler, $content);
-         
+        fputcsv($this->handler, $content);
     }
 
     public function closeFile()
     {
-        return fclose($this->$handler);
+        echo "<pre>";
+    var_dump($this->handler);
+    echo "</pre>";
+        fclose($this->$handler);
     }
 }

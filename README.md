@@ -3,7 +3,7 @@ Contributors: (ebi3102) <br/>
 Tags: woocommerce, woocommerce add-on, update price, bulk update prices <br/>
 Requires at least: 5.6 <br/>
 Tested up to: 5.8.3 <br/>
-Requires PHP: 7.0 <br/>
+Requires PHP: 8.0 <br/>
 Stable tag: 5.8.0 <br/>
 
 == Description == <br/>

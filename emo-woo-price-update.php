@@ -55,6 +55,9 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
         
 
         if(is_admin()){
+	        include_once( "includes/Classes/Interfaces/ReadFile_Interface.php" );
+	        include_once( "includes/Classes/Interfaces/WriteToFile_Interface.php" );
+	        include_once( "includes/Classes/EMO_EWPU_Parent_FileHandler.php" );
             include_once("includes/Classes/EMO_EWPU_NoticeTemplate.php");
             include_once( "includes/Classes/EMO_EWPU_CsvHandler.php" );
             include_once("includes/Classes/EMO_EWPU_RowCsvCreator.php");

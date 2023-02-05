@@ -288,9 +288,11 @@ function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
         return ['error'=>$error];
     }
     $fileUrl = EWPU_CREATED_URI . $fileName;
+
     $myFile = new EMO_EWPU_CsvHandler($fileName, "w");
     $data = array('Product ID', 'SKU', 'Product Title', 'Regular Price', 'Sale Price', 'Type');
-    $myFile->writeToFile($data);
+    $arg = array('content'=>$data);
+    $myFile->writeToFile($arg);
     foreach ($products as $product) {
         $_product = wc_get_product($product->ID);
         $sku = $_product->get_sku();
@@ -299,11 +301,11 @@ function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
             foreach ($variations as $vID) {
                 $variation = wc_get_product_object('variation', $vID);
                 $data = array($vID, $variation->get_sku(), $variation->get_name(), $variation->get_regular_price(), $variation->get_sale_price(), "variation");
-                $myFile->writeToFile($data);
+                $myFile->writeToFile(array('content'=>$data));
             }
         } elseif ($_product->get_type() == "simple") {
             $data = array($product->ID, $sku, $product->post_title, $_product->get_regular_price(), $_product->get_sale_price(), "simple");
-            $myFile->writeToFile($data);
+            $myFile->writeToFile(array('content'=>$data));
         }
     }
     $myFile->closeFile();

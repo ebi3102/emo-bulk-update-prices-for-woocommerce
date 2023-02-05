@@ -23,9 +23,6 @@ class EMO_EWPU_CsvCreator
 
     public function closeFile()
     {
-        echo "<pre>";
-    var_dump($this->handler);
-    echo "</pre>";
-        fclose($this->$handler);
+	    fclose($this->handler);
     }
 }

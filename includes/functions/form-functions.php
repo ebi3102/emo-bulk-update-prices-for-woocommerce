@@ -288,11 +288,9 @@ function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
         return ['error'=>$error];
     }
     $fileUrl = EWPU_CREATED_URI . $fileName;
-    // $myfile = fopen(EWPU_CREATED_DIR.$fileName, "w");
-    $myfile = new EMO_EWPU_CsvCreator($fileName, "w");
+    $myFile = new EMO_EWPU_CsvCreator($fileName, "w");
     $data = array('Product ID', 'SKU', 'Product Title', 'Regular Price', 'Sale Price', 'Type');
-    $myfile->writeToFile($data);
-    // fputcsv($myfile, $data);
+    $myFile->writeToFile($data);
     foreach ($products as $product) {
         $_product = wc_get_product($product->ID);
         $sku = $_product->get_sku();
@@ -301,17 +299,14 @@ function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
             foreach ($variations as $vID) {
                 $variation = wc_get_product_object('variation', $vID);
                 $data = array($vID, $variation->get_sku(), $variation->get_name(), $variation->get_regular_price(), $variation->get_sale_price(), "variation");
-                $myfile->writeToFile($data);
-                // fputcsv($myfile, $data);
+                $myFile->writeToFile($data);
             }
         } elseif ($_product->get_type() == "simple") {
             $data = array($product->ID, $sku, $product->post_title, $_product->get_regular_price(), $_product->get_sale_price(), "simple");
-            $myfile->writeToFile($data);
-            // fputcsv($myfile, $data);
+            $myFile->writeToFile($data);
         }
     }
-    $myfile->closeFile();
-    // fclose($myfile);
+    $myFile->closeFile();
 
     return ['error'=>false, 'filePath'=> $fileUrl, 'fileName'=> $fileName];
 }

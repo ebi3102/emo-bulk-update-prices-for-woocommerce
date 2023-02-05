@@ -84,15 +84,12 @@ if(@$_POST['uploadSubmit'] && @isset($_FILES['price_list'])){
                         $salePrice_new = (is_numeric($data[4]))? $data[4]:'';
                         $productType = ($data[5]== 'variation' || $data[5] == 'simple')?$data[5]:'';
                         $date = date(DATAFORMAT, time());
-    //                     echo $data[0].'__________'. $regularPrice_new .'___________'. $productType . '<br>';
                         if($regularPrice_new !='' && $productType != ''){
                             emo_ewpu_set_new_price($productID, $productType, 'regular_price' ,$regularPrice_new);
-    //                         emo_ewpu_store_price_history($productID, REGULARMETAKEY, $date, $regularPrice_new);
                         }
 
                         if($salePrice_new !='' && $productType != ''){
                             emo_ewpu_set_new_price($productID, $productType, 'sale_price' ,$salePrice_new);
-    //                         emo_ewpu_store_price_history($productID, SALEMETAKEY, $date, $salePrice_new);
                         }
                     }
                     $row++;

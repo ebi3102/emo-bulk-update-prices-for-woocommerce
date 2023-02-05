@@ -17,7 +17,7 @@ class EMO_EWPU_RowCsvCreator
     public static function openFile($filename, $mode)
     {
         self::$instance = new Self;
-        self::$handler = fopen(self.$createDirectory.$filename, $mode);
+        self::$handler = fopen(self::$createDirectory.$filename, $mode);
         return self::$instance;
     }
 

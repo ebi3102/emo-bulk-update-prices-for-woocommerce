@@ -288,8 +288,9 @@ function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
         return ['error'=>$error];
     }
     $fileUrl = EWPU_CREATED_URI . $fileName;
+    $filePath = EWPU_CREATED_DIR. $fileName;
 
-    $myFile = new EMO_EWPU_CsvHandler($fileName, "w");
+    $myFile = new EMO_EWPU_CsvHandler($filePath, "w");
     $data = array('Product ID', 'SKU', 'Product Title', 'Regular Price', 'Sale Price', 'Type');
     $arg = array('content'=>$data);
     $myFile->writeToFile($arg);
@@ -367,9 +368,11 @@ function emo_ewpu_update_products_price_list(bool $is_submit, bool $is_file, arr
 	move_uploaded_file($file_tmp,$target_file);
 
 	// Read and store new prices
-	if (($handle = fopen($target_file, "r")) !== FALSE) {
+	if (($handle = new EMO_EWPU_CsvHandler($target_file, "r")) !== false) {
 		$row = 0;
-		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+//		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+		$args = ['length'=> 1000, 'separator'=> ','];
+		while (($data = $handle->readFile($args)) !== false) {
 			if($row != 0){
 				$productID = $data[0];
 				$regularPrice_new = (is_numeric($data[3]))? $data[3]:'';
@@ -386,7 +389,8 @@ function emo_ewpu_update_products_price_list(bool $is_submit, bool $is_file, arr
 			}
 			$row++;
 		}
-		fclose($handle);
+//		fclose($handle);
+		$handle->closeFile();
 		$response= __('Your prices are updated successfully.', 'emo_ewpu' );
 		return ['response'=>$response];
 	}else{

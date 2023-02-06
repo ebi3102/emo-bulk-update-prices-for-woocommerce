@@ -17,7 +17,6 @@ class EMO_EWPU_CsvHandler extends EMO_EWPU_Parent_FileHandler implements ReadFil
 	 *      @type string $separator =  ","
 	 *      @type string $enclosure = "\""
 	 *      @type string $escape = "\\"
-	 *      @type string $eol = "\n"
 	 * }
 	 *
 	 * @return array|false Returns an indexed array containing the fields read on success, or false on failure.
@@ -29,9 +28,8 @@ class EMO_EWPU_CsvHandler extends EMO_EWPU_Parent_FileHandler implements ReadFil
 		$separator = ($arg['separator'])? $arg['separator']:',';
 		$enclosure = ($arg['enclosure'])? $arg['enclosure']: "\"";
 		$escape = ($arg['escape'])? $arg['escape']:"\\";
-		$eol = ($arg['eol'])? $arg['eol']:"\n";
 
-		return fgetcsv($this->handler, $length, $separator, $enclosure, $escape, $eol);
+		return fgetcsv($this->handler, $length, $separator, $enclosure, $escape);
 	}
 
 

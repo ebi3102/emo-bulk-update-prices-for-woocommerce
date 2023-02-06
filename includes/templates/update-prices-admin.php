@@ -42,63 +42,16 @@ if($_POST['btnSubmit']){
 
 <?php
 
-//Upload CSV file
 if(@$_POST['uploadSubmit'] && @isset($_FILES['price_list'])){
-    if ( ! isset( $_POST['emo_ewpu_nonce_field'] ) 
-        || ! wp_verify_nonce( $_POST['emo_ewpu_nonce_field'], 'emo_ewpu_action' ) 
-    ){
-        echo __('Sorry, your nonce did not verify.', 'emo_ewpu');
-    } else {
-        
-        $errors= array();
-        $target_file = EWOU_UPLOAD_DIR. basename($_FILES["price_list"]["name"]);
-        $file_name = $_FILES['price_list']['name'];
-        $file_tmp =$_FILES['price_list']['tmp_name'];
-        $file_type=$_FILES['price_list']['type'];
-        $file_ext=strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-        $extensions= array("csv");
-
-        if(in_array($file_ext,$extensions)=== false){
-            $errors[]= __('extension not allowed, please choose a csv file.', 'emo_ewpu' );
-        }
-    //    if($file_size > 2097152){
-    //        $errors[]='File size must be excately 2 MB';
-    //    }
-        if(empty($errors)==true){
-            move_uploaded_file($file_tmp,$target_file);
-            $response= __('Success', 'emo_ewpu' );
-        }else{
-            $response= $errors;
-        }
-
-        // Read and store new prices
-        if(empty($errors)==true){
-
-            if (($handle = fopen($target_file, "r")) !== FALSE) {
-                $row = 0;
-                while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                    if($row != 0){
-                        $productID = $data[0];
-                        $regularPrice_new = (is_numeric($data[3]))? $data[3]:'';
-                        $salePrice_new = (is_numeric($data[4]))? $data[4]:'';
-                        $productType = ($data[5]== 'variation' || $data[5] == 'simple')?$data[5]:'';
-                        $date = date(DATAFORMAT, time());
-                        if($regularPrice_new !='' && $productType != ''){
-                            emo_ewpu_set_new_price($productID, $productType, 'regular_price' ,$regularPrice_new);
-                        }
-
-                        if($salePrice_new !='' && $productType != ''){
-                            emo_ewpu_set_new_price($productID, $productType, 'sale_price' ,$salePrice_new);
-                        }
-                    }
-                    $row++;
-                }
-                fclose($handle);
-            }
-        }
-    }
+	$is_submit = true;
+	$is_file = true;
+	$args = [
+		'extensions'=> ['csv'],
+		'max-size' => 2097152
+	];
+	$result = emo_ewpu_update_products_price_list($is_submit, $is_file, $args);
 }
+
 ?>
 <?php //____________________ Upload New prices ________________________________ ?>
 
@@ -132,8 +85,13 @@ if(@$_POST['uploadSubmit'] && @isset($_FILES['price_list'])){
 
     <?php
     // Notice when uploading is happened
-    if(@$_POST['uploadSubmit'] && @$_FILES["price_list"]["name"]){
-	    echo EMO_EWPU_NoticeTemplate::success ($response);
+    if(@$_POST['uploadSubmit'] && @$_FILES["price_list"]){
+        if(@$result['response']){
+	        echo EMO_EWPU_NoticeTemplate::success ($result['response']);
+        }
+	    if(@$result['error']){
+		    echo EMO_EWPU_NoticeTemplate::warning ($result['error']->get_error_message());
+        }
     }
 
     //Notice and download link when product list is created

@@ -312,3 +312,86 @@ function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
 
     return ['error'=>false, 'filePath'=> $fileUrl, 'fileName'=> $fileName];
 }
+
+
+/**
+ * Get new prices from a csv file and update products price
+ * @param bool $is_submit
+ * @param bool|string $is_file
+ * @param array $args
+ *      @type array $extensions = ['csv']
+ *      @type array $max-size = 2097152
+ *
+ * @return array|WP_Error[]
+ */
+function emo_ewpu_update_products_price_list(bool $is_submit, bool $is_file, array $args):array
+{
+	$error = false;
+	if(!$is_submit){
+		$error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );
+	}
+	if(!$is_file){
+		$error = new WP_Error( 'submitError', __( "There are no file to upload", "emo_ewpu" ) );
+	}
+	if ( ! isset( $_POST['emo_ewpu_nonce_field'] )
+	     || ! wp_verify_nonce( $_POST['emo_ewpu_nonce_field'], 'emo_ewpu_action' )
+	){
+		$error = new WP_Error( 'nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ) );
+	}
+	if(@!$_FILES['price_list']){
+		$error = new WP_Error( 'requirements', __( "There aren't any file to upload", "emo_ewpu" ) );
+	}
+
+	if($error){
+		return ['error'=>$error];
+	}
+
+	$extensions= ($args['extensions'])? $args['extensions']:array("csv");
+	$maxFileSize = ($args['max-size'])? $args['max-size']:2097152;
+
+	$target_file = EWOU_UPLOAD_DIR. basename($_FILES["price_list"]["name"]);
+	$file_name = $_FILES['price_list']['name'];
+	$file_tmp =$_FILES['price_list']['tmp_name'];
+	$file_size = $_FILES['price_list']['size'];
+	$file_ext=strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+
+	if(in_array($file_ext,$extensions)=== false){
+		$errors= new WP_Error( 'file-type', __( "The extension of uploaded file is not allowed, please choose a csv file.", "emo_ewpu" ) );
+		return ['error'=>$errors];
+	}
+    if($file_size > $maxFileSize){
+        $errors= new WP_Error( 'file-size', __( "File size is more than allowed size.", "emo_ewpu" ) );
+	    return ['error'=>$errors];
+    }
+	move_uploaded_file($file_tmp,$target_file);
+
+	// Read and store new prices
+	if (($handle = fopen($target_file, "r")) !== FALSE) {
+		$row = 0;
+		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+			if($row != 0){
+				$productID = $data[0];
+				$regularPrice_new = (is_numeric($data[3]))? $data[3]:'';
+				$salePrice_new = (is_numeric($data[4]))? $data[4]:'';
+				$productType = ($data[5]== 'variation' || $data[5] == 'simple')?$data[5]:'';
+				$date = date(DATAFORMAT, time());
+				if($regularPrice_new !='' && $productType != ''){
+					emo_ewpu_set_new_price($productID, $productType, 'regular_price' ,$regularPrice_new);
+				}
+
+				if($salePrice_new !='' && $productType != ''){
+					emo_ewpu_set_new_price($productID, $productType, 'sale_price' ,$salePrice_new);
+				}
+			}
+			$row++;
+		}
+		fclose($handle);
+		$response= __('Your prices are updated successfully.', 'emo_ewpu' );
+		return ['response'=>$response];
+	}else{
+		$errors = new WP_Error( 'invalid', __( "The plugin is not able to open the uploaded file ", "emo_ewpu" ) );
+		return ['error'=>$errors];
+	}
+
+}

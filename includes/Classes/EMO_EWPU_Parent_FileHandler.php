@@ -4,7 +4,6 @@
  *
  */
 class EMO_EWPU_Parent_FileHandler {
-	protected $createDirectory = EWPU_CREATED_DIR;
 	protected $handler = null;
 
 	/**
@@ -15,7 +14,7 @@ class EMO_EWPU_Parent_FileHandler {
 	 */
 	public function __construct(string $filename, string $mode, bool $use_include_path = false)
 	{
-		$this->handler = fopen($this->createDirectory.$filename, $mode, $use_include_path);
+		$this->handler = fopen($filename, $mode, $use_include_path);
 	}
 
 	/**

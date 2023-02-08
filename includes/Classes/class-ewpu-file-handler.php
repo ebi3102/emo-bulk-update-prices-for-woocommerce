@@ -3,7 +3,7 @@
  * Base class for Handling files.
  *
  */
-class EMO_EWPU_Parent_FileHandler {
+class EWPU_File_Handler {
 	protected $handler = null;
 
 	/**

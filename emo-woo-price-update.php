@@ -60,7 +60,7 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
 	        include_once( "includes/Classes/class-ewpu-file-handler.php" );
             include_once( "includes/Classes/class-ewpu-notice-template.php" );
             include_once( "includes/Classes/class-ewpu-csv-handler.php" );
-            include_once("includes/Classes/EMO_EWPU_RowCsvCreator.php");
+            include_once( "includes/Classes/class-ewpu-add-row-csv.php" );
             include_once("includes/functions/form-functions.php");
             include_once("includes/functions/wp_functions.php");
             include_once("includes/functions/functions-admin.php");

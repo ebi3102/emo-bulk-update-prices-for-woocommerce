@@ -6,7 +6,7 @@
  * ========================
  * Text Domain: emo_ewpu
  */
-class EMO_EWPU_RowCsvCreator
+class EWPU_Add_Row_Csv
 {
     private static $createDirectory = EWPU_CREATED_DIR;
     private static $handler = null;

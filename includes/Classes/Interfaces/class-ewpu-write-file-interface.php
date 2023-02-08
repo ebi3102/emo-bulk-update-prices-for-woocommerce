@@ -2,7 +2,7 @@
 /**
  * Interface for implementing write on a file.
  */
-interface WriteToFile_Interface {
+interface EWPU_Write_File_Interface {
 
 	/**
 	 * @param array $arg

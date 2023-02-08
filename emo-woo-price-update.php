@@ -5,7 +5,7 @@
  * Plugin Name: Emo Woocommerce Update Prices
  * Plugin URI:
  * Description: EWPU is a bulk price updater plugin specially made for WooCommerce products
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Ebrahim Moeini
  * Author URI: https://emoeini.com
  * License:
@@ -59,7 +59,7 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
 	        include_once( "includes/Classes/Interfaces/WriteToFile_Interface.php" );
 	        include_once( "includes/Classes/EMO_EWPU_Parent_FileHandler.php" );
             include_once("includes/Classes/EMO_EWPU_NoticeTemplate.php");
-            include_once( "includes/Classes/EMO_EWPU_CsvHandler.php" );
+            include_once( "includes/Classes/class-ewpu-csv-handler.php" );
             include_once("includes/Classes/EMO_EWPU_RowCsvCreator.php");
             include_once("includes/functions/form-functions.php");
             include_once("includes/functions/wp_functions.php");

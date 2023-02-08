@@ -368,7 +368,7 @@ function emo_ewpu_update_products_price_list(bool $is_submit, bool $is_file, arr
 	move_uploaded_file($file_tmp,$target_file);
 
 	// Read and store new prices
-	if (($handle = new EMO_EWPU_CsvHandler($target_file, "r")) !== false) {
+	if ( ($handle = new EWPU_Csv_Handler($target_file, "r")) !== false) {
 		$row = 0;
 //		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 		$args = ['length'=> 1000, 'separator'=> ','];

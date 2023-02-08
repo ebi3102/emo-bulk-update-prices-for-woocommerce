@@ -6,7 +6,7 @@
  * ========================
  * Text Domain: emo_ewpu
  */
-class EMO_EWPU_CsvHandler extends EMO_EWPU_Parent_FileHandler implements ReadFile_Interface,WriteToFile_Interface
+class EWPU_Csv_Handler extends EMO_EWPU_Parent_FileHandler implements ReadFile_Interface,WriteToFile_Interface
 {
 	/**
 	 * Write array content on a csv file that each element of $content puts on each column of csv file

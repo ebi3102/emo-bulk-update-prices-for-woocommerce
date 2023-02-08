@@ -1,6 +1,6 @@
 <?php
 
-interface ReadFile_Interface {
+interface EWPU_Read_File {
 
 	/**
 	 * @param array $arg

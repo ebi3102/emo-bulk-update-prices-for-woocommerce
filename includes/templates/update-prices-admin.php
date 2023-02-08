@@ -87,21 +87,21 @@ if(@$_POST['uploadSubmit'] && @isset($_FILES['price_list'])){
     // Notice when uploading is happened
     if(@$_POST['uploadSubmit'] && @$_FILES["price_list"]){
         if(@$result['response']){
-	        echo EMO_EWPU_NoticeTemplate::success ($result['response']);
+	        echo EWPU_Notice_Template::success ($result['response']);
         }
 	    if(@$result['error']){
-		    echo EMO_EWPU_NoticeTemplate::warning ($result['error']->get_error_message());
+		    echo EWPU_Notice_Template::warning ($result['error']->get_error_message());
         }
     }
 
     //Notice and download link when product list is created
     if(@$_POST['btnSubmit']){
         if(@$result['error']){
-            echo EMO_EWPU_NoticeTemplate::warning ($result['error']->get_error_message());
+            echo EWPU_Notice_Template::warning ($result['error']->get_error_message());
         }elseif(@$result['filePath']){
             $massage = __('You can download the list of price products from ', 'emo_ewpu');
             $massage .= "<a href='".$result['filePath']."'>".$result['fileName']."</a>";
-            echo EMO_EWPU_NoticeTemplate::success ($massage);
+            echo EWPU_Notice_Template::success ($massage);
         }
     }
     ?>

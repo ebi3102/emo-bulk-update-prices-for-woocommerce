@@ -117,10 +117,10 @@ if($_POST['btnSubmit']){
         $massage = __('Your changes have been applied successfully. Please check the ', 'emo_ewpu');
         $massage .= "<a href='".$result['filePath']."'>".$result['fileName']."</a>";
         $massage .= __(' to check the correctness of the updated changes', 'emo_ewpu');
-        echo EMO_EWPU_NoticeTemplate::success ($massage);
+        echo EWPU_Notice_Template::success ($massage);
     }
     if(@$_POST['btnSubmit'] && @$result['error']){ 
-        echo EMO_EWPU_NoticeTemplate::warning ($result['error']->get_error_message());
+        echo EWPU_Notice_Template::warning ($result['error']->get_error_message());
     } ?>
 
 </div><!-- .wrap nosubsub -->

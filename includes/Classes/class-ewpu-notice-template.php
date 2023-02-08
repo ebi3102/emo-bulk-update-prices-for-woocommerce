@@ -7,7 +7,7 @@
  * Text Domain: emo_ewpu
  */
 
-class EMO_EWPU_NoticeTemplate
+class EWPU_Notice_Template
 {
     private static $template = null;
     private static $massage = null;

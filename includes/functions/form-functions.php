@@ -20,15 +20,22 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
     if(!$is_submit){
         $error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );
     }
-    if ( ! isset( $_POST['emo_ewpu_nonce_field'] )
-        || ! wp_verify_nonce( $_POST['emo_ewpu_nonce_field'], 'emo_ewpu_action' )
+    if ( !EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field')
+        || ! wp_verify_nonce( EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field'), 'emo_ewpu_action' )
     ){
         $error = new WP_Error( 'nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ) );
     }
-    if(@!$_POST['cat_id']){
+
+	$cat_id = EWPU_Request_Handler::get_POST('cat_id');
+	$change_rate = EWPU_Request_Handler::get_POST('change_rate');
+	$rate_type = EWPU_Request_Handler::get_POST('emo_ewpu_rate');
+	$activeSalePrice = EWPU_Request_Handler::get_POST('sale_price');
+	$increasing_type = EWPU_Request_Handler::get_POST('emo_ewpu_increase');
+
+    if(!$cat_id){
         $error = new WP_Error( 'requirements', __( "There are some required fields that not filled", "emo_ewpu" ) );
     }
-    if(@$_POST['change_rate']) {
+    if(!$change_rate) {
         $error = new WP_Error( 'requirements', __( "There are some required fields that not filled", "emo_ewpu" ) );
     }
 
@@ -36,11 +43,6 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
         return ['error'=>$error];
     }
 
-    $cat_id = $_POST['cat_id'];
-    $change_rate = $_POST['change_rate'];
-    $rate_type = $_POST['emo_ewpu_rate'];
-    $activeSalePrice = $_POST['sale_price'];
-    $increasning_type = $_POST['emo_ewpu_increase'];
 
     //create csv file
     $filename = "ChangePrice_".date("Y-m-d_h-i-s").".csv";
@@ -74,7 +76,7 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
                 $variationsPrices = $_product->get_variation_prices();
                 $vRegularPrices = $variationsPrices['regular_price']; //array
                 foreach($vRegularPrices as $vID=>$vRegularPrice){
-                    $newRegularPrice = emo_ewpu_change_price($rate_type, $increasning_type, $vRegularPrice, $change_rate);
+                    $newRegularPrice = emo_ewpu_change_price($rate_type, $increasing_type, $vRegularPrice, $change_rate);
                     $variation = wc_get_product_object( 'variation', $vID );
                     //set...
                     $variation->set_props(
@@ -90,7 +92,7 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
                 if($activeSalePrice){
                     $vSalerPrices = $variationsPrices['sale_price']; //array
                     foreach($vSalerPrices as $vID=>$vSalerPrice){
-                        $newSalePrice = emo_ewpu_change_price($rate_type, $increasning_type, $vSalerPrice, $change_rate);
+                        $newSalePrice = emo_ewpu_change_price($rate_type, $increasing_type, $vSalerPrice, $change_rate);
                         $variation = wc_get_product_object( 'variation', $vID );
                         //set...
                         $variation->set_props(
@@ -106,7 +108,7 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
                 }
             }elseif($_product->get_type() == 'simple'){
                 $regularPrice = $_product->get_regular_price();
-                $newRegularPrice = emo_ewpu_change_price($rate_type, $increasning_type, $regularPrice, $change_rate);
+                $newRegularPrice = emo_ewpu_change_price($rate_type, $increasing_type, $regularPrice, $change_rate);
                 //set...
                 $productObject = wc_get_product_object( 'simple', $product );
                 $productObject->set_props(
@@ -120,7 +122,7 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
 
                 if($activeSalePrice){
                     $salePrice = $_product->get_sale_price();
-                    $newSalePrice = emo_ewpu_change_price($rate_type, $increasning_type, $salePrice, $change_rate);
+                    $newSalePrice = emo_ewpu_change_price($rate_type, $increasing_type, $salePrice, $change_rate);
                     //set...
                     $productObject = wc_get_product_object( 'simple', $product );
                     $productObject->set_props(
@@ -157,31 +159,32 @@ function emo_ewpu_get_group_discount_data(bool $is_submit): array
     if(!$is_submit){
         $error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );
     }
-    if ( ! isset( $_POST['emo_ewpu_nonce_field'] )
-        || ! wp_verify_nonce( $_POST['emo_ewpu_nonce_field'], 'emo_ewpu_action' )
+    if ( ! EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field')
+        || ! wp_verify_nonce( EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field'), 'emo_ewpu_action' )
     ){
         $error = new WP_Error( 'nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ) );
     }
-    if(@!$_POST['cat_id']){
+
+	$cat_id = EWPU_Request_Handler::get_POST('cat_id');
+	$rate_type = EWPU_Request_Handler::get_POST('nimo_nwab_rate');
+	$change_rate = EWPU_Request_Handler::get_POST('change_rate');
+	$endYear = EWPU_Request_Handler::get_POST('sale_end_time_year');
+	$endMonth = EWPU_Request_Handler::get_POST('sale_end_time_month');
+	$endDay = EWPU_Request_Handler::get_POST('sale_end_time_day');
+	$startYear = EWPU_Request_Handler::get_POST('sale_start_time_year');
+	$startMonth = EWPU_Request_Handler::get_POST('sale_start_time_month');
+	$startDay = EWPU_Request_Handler::get_POST('sale_start_time_day');
+
+    if(!$cat_id){
         $error = new WP_Error( 'requirements', __( "There are some required fields that not filled", "emo_ewpu" ) );
     }
-    if(@$_POST['change_rate']) {
+    if(!$change_rate) {
         $error = new WP_Error( 'requirements', __( "There are some required fields that not filled", "emo_ewpu" ) );
     }
 
     if($error){
         return ['error'=>$error];
     }
-
-    $cat_id = $_POST['cat_id'];
-    $rate_type = $_POST['nimo_nwab_rate'];
-    $change_rate = $_POST['change_rate'];
-    $endYear = $_POST['sale_end_time_year'];
-    $endMonth = $_POST['sale_end_time_month'];
-    $endDay = $_POST['sale_end_time_day'];
-    $startYear = $_POST['sale_start_time_year'];
-    $startMonth = $_POST['sale_start_time_month'];
-    $startDay = $_POST['sale_start_time_day'];
 
     $textStartDate = $startYear . '/' . $months->get_month(intval($startMonth)) . '/' .$startDay ;
     $UTMStartDate = $startYear . '-' . $startMonth . '-' .$startDay ;
@@ -197,7 +200,11 @@ function emo_ewpu_get_group_discount_data(bool $is_submit): array
     $filePath = EWPU_CREATED_DIR.$filename;
     $fileUrl = EWPU_CREATED_URI.$filename;
 
-    $csvFile = fopen($filePath, 'w') or die("Unable to open file!");
+//    $csvFile = fopen($filePath, 'w') or die("Unable to open file!");
+	$csvFile = new EWPU_Csv_Handler($filePath, 'w');
+	if(!$csvFile){
+		return ['error'=>new WP_Error( 'unable', __( "Unable to open file!", "emo_ewpu" ) )];
+	}
 
     $writeCSV = array(array('parent_id', 'product_id', 'product_name', 'Regular_price', 'Sale_price', 'Start_time', 'End_time'));
 
@@ -253,9 +260,9 @@ function emo_ewpu_get_group_discount_data(bool $is_submit): array
     }
 
     foreach ($writeCSV as $row) {
-        fputcsv($csvFile, $row);
+		$csvFile->writeToFile(['content'=>$row]);
     }
-    fclose($csvFile);
+	$csvFile->closeFile();
 
     return ['error'=>false, 'filePath'=> $fileUrl, 'fileName'=> $filename];
 }
@@ -273,8 +280,8 @@ function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
     if(!$is_submit){
         $error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );
     }
-    if ( ! isset( $_POST['emo_ewpu_nonce_field'] )
-        || ! wp_verify_nonce( $_POST['emo_ewpu_nonce_field'], 'emo_ewpu_action' )
+    if ( ! EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field')
+        || ! wp_verify_nonce( EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field'), 'emo_ewpu_action' )
     ){
         $error = new WP_Error( 'nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ) );
     }
@@ -334,12 +341,12 @@ function emo_ewpu_update_products_price_list(bool $is_submit, bool $is_file, arr
 	if(!$is_file){
 		$error = new WP_Error( 'submitError', __( "There are no file to upload", "emo_ewpu" ) );
 	}
-	if ( ! isset( $_POST['emo_ewpu_nonce_field'] )
-	     || ! wp_verify_nonce( $_POST['emo_ewpu_nonce_field'], 'emo_ewpu_action' )
+	if ( ! EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field')
+	     || ! wp_verify_nonce( EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field'), 'emo_ewpu_action' )
 	){
 		$error = new WP_Error( 'nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ) );
 	}
-	if(@!$_FILES['price_list']){
+	if(!EWPU_Request_Handler::get_FILE('price_list') || EWPU_Request_Handler::get_FILE('price_list')['error']){
 		$error = new WP_Error( 'requirements', __( "There aren't any file to upload", "emo_ewpu" ) );
 	}
 
@@ -350,10 +357,10 @@ function emo_ewpu_update_products_price_list(bool $is_submit, bool $is_file, arr
 	$extensions= ($args['extensions'])? $args['extensions']:array("csv");
 	$maxFileSize = ($args['max-size'])? $args['max-size']:2097152;
 
-	$target_file = EWOU_UPLOAD_DIR. basename($_FILES["price_list"]["name"]);
-	$file_name = $_FILES['price_list']['name'];
-	$file_tmp =$_FILES['price_list']['tmp_name'];
-	$file_size = $_FILES['price_list']['size'];
+	$target_file = EWOU_UPLOAD_DIR. basename(EWPU_Request_Handler::get_FILE("price_list")["name"]);
+	$file_name = EWPU_Request_Handler::get_FILE('price_list')['name'];
+	$file_tmp =EWPU_Request_Handler::get_FILE('price_list')['tmp_name'];
+	$file_size = EWPU_Request_Handler::get_FILE('price_list')['size'];
 	$file_ext=strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 
@@ -370,7 +377,6 @@ function emo_ewpu_update_products_price_list(bool $is_submit, bool $is_file, arr
 	// Read and store new prices
 	if ( ($handle = new EWPU_Csv_Handler($target_file, "r")) !== false) {
 		$row = 0;
-//		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 		$args = ['length'=> 1000, 'separator'=> ','];
 		while (($data = $handle->readFile($args)) !== false) {
 			if($row != 0){
@@ -389,7 +395,6 @@ function emo_ewpu_update_products_price_list(bool $is_submit, bool $is_file, arr
 			}
 			$row++;
 		}
-//		fclose($handle);
 		$handle->closeFile();
 		$response= __('Your prices are updated successfully.', 'emo_ewpu' );
 		return ['response'=>$response];

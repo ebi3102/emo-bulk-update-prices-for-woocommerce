@@ -18,7 +18,7 @@ if( !empty($product_categories) ){
     }
 }
 
-if(@$_POST['btnSubmit']){
+if(EWPU_Request_Handler::get_POST('btnSubmit')){
     $is_submit = true;
     $result = emo_ewpu_get_group_discount_data($is_submit);
 }
@@ -138,13 +138,13 @@ if(@$_POST['btnSubmit']){
     </div>
 
     <?php
-    if(@$_POST['btnSubmit'] && @!$result['error']){
+    if(EWPU_Request_Handler::get_POST('btnSubmit')&& @!$result['error']){
 	    $massage = __('Your changes have been applied successfully. Please check the ', 'emo_ewpu');
 	    $massage .= "<a href='".$result['filePath']."'>".$result['fileName']."</a>";
 	    $massage .= __(' to check the correctness of the updated changes', 'emo_ewpu');
 	    echo EWPU_Notice_Template::success ($massage);
     }
-    if(@$_POST['btnSubmit'] && @$result['error']){
+    if(EWPU_Request_Handler::get_POST('btnSubmit') && @$result['error']){
 	    echo EWPU_Notice_Template::warning ($result['error']->get_error_message());
     } ?>
 </div><!-- .wrap nosubsub -->

@@ -15,6 +15,9 @@ class EWPU_File_Handler {
 	public function __construct(string $filename, string $mode, bool $use_include_path = false)
 	{
 		$this->handler = fopen($filename, $mode, $use_include_path);
+		if(!$this->handler){
+			return false;
+		}
 	}
 
 	/**

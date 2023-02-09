@@ -17,6 +17,8 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
 {
     global $wpdb;
     $error = false;
+
+	//_________________ General errors________________________
     if(!$is_submit){
         $error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );
     }
@@ -25,6 +27,8 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
     ){
         $error = new WP_Error( 'nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ) );
     }
+
+	//_________________ .General errors________________________
 
 	$cat_id = EWPU_Request_Handler::get_POST('cat_id');
 	$change_rate = EWPU_Request_Handler::get_POST('change_rate');
@@ -52,7 +56,10 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
     }
     $filePath = EWPU_CREATED_DIR.$filename;
     $fileUrl = EWPU_CREATED_URI.$filename;
-    $csvFile = fopen($filePath, 'w') or die("Unable to open file!");
+	$csvFile = new EWPU_Csv_Handler($filePath, 'w');
+	if(!$csvFile){
+		return ['error'=>new WP_Error( 'unable', __( "Unable to open file!", "emo_ewpu" ) )];
+	}
 
     $writeCSV = array(array('parent_id', 'product_id', 'product_name', 'price_type', 'old_price', 'new_price'));
 
@@ -139,9 +146,9 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
 
     }
     foreach ($writeCSV as $row) {
-        fputcsv($csvFile, $row);
+		$csvFile->writeToFile(['content'=>$row]);
     }
-    fclose($csvFile);
+	$csvFile->closeFile();
 
     return ['error'=>false, 'filePath'=> $fileUrl, 'fileName'=> $filename];
 }
@@ -200,7 +207,6 @@ function emo_ewpu_get_group_discount_data(bool $is_submit): array
     $filePath = EWPU_CREATED_DIR.$filename;
     $fileUrl = EWPU_CREATED_URI.$filename;
 
-//    $csvFile = fopen($filePath, 'w') or die("Unable to open file!");
 	$csvFile = new EWPU_Csv_Handler($filePath, 'w');
 	if(!$csvFile){
 		return ['error'=>new WP_Error( 'unable', __( "Unable to open file!", "emo_ewpu" ) )];

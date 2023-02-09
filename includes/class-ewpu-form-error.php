@@ -6,6 +6,7 @@
  * if any methods detect an error will return WP_Error class else false
 */
 class EWPU_Form_Error {
+
 	private function __construct(){}
 
 	public static function submit_status(string $submitName)

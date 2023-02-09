@@ -55,6 +55,7 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
         
 
         if(is_admin()){
+            require_once "vendor/autoload.php";
 	        include_once( "includes/Interfaces/repository/file-handlers/class-ewpu-read-file-interface.php" );
 	        include_once( "includes/Interfaces/repository/file-handlers/class-ewpu-write-file-interface.php" );
 	        include_once( "includes/repository/file-handlers/class-ewpu-file-handler.php" );

@@ -55,16 +55,16 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
         
 
         if(is_admin()){
-	        include_once( "includes/Classes/Interfaces/class-ewpu-read-file-interface.php" );
-	        include_once( "includes/Classes/Interfaces/class-ewpu-write-file-interface.php" );
-	        include_once( "includes/Classes/class-ewpu-file-handler.php" );
-            include_once( "includes/Classes/class-ewpu-notice-template.php" );
-            include_once( "includes/Classes/class-ewpu-csv-handler.php" );
-            include_once( "includes/Classes/class-ewpu-add-row-csv.php" );
+	        include_once( "includes/Interfaces/repository/file-handlers/class-ewpu-read-file-interface.php" );
+	        include_once( "includes/Interfaces/repository/file-handlers/class-ewpu-write-file-interface.php" );
+	        include_once( "includes/repository/file-handlers/class-ewpu-file-handler.php" );
+            include_once( "includes/class-ewpu-notice-template.php" );
+            include_once( "includes/repository/file-handlers/class-ewpu-csv-handler.php" );
+            include_once( "includes/repository/file-handlers/class-ewpu-add-row-csv.php" );
             include_once("includes/functions/form-functions.php");
             include_once("includes/functions/wp_functions.php");
             include_once("includes/functions/functions-admin.php");
-            include_once( "includes/enqueue.php" );
+            include_once( "includes/functions/enqueue.php" );
 
             //register scripts
             add_action('admin_enqueue_scripts', 'emo_ewpu_scripts');

@@ -58,7 +58,7 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
     $products = array();
     if($cat_id){
         $relatedProducts = $wpdb->get_results("SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id = " . $cat_id);
-        if(is_array(relatedProducts) && count(relatedProducts) > 0) {
+        if(is_array($relatedProducts) && count($relatedProducts) > 0) {
             foreach ($relatedProducts as $relatedProduct) {
                 array_push($products, $relatedProduct->object_id);
             }

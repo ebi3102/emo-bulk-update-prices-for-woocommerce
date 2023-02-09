@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * Defines the functionality required to get a http request
+ *
+ * When any methods are called it get request and return a string
+ * or a default value.
+ */
 class EWPU_Request_Handler {
 
 	private function __construct(){}

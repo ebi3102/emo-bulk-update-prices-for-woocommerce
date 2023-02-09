@@ -290,7 +290,7 @@ function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
     $fileUrl = EWPU_CREATED_URI . $fileName;
     $filePath = EWPU_CREATED_DIR. $fileName;
 
-    $myFile = new EMO_EWPU_CsvHandler($filePath, "w");
+    $myFile = new EWPU_Csv_Handler($filePath, "w");
     $data = array('Product ID', 'SKU', 'Product Title', 'Regular Price', 'Sale Price', 'Type');
     $arg = array('content'=>$data);
     $myFile->writeToFile($arg);

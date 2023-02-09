@@ -53,7 +53,7 @@ class EWPU_Csv_Handler extends EWPU_File_Handler implements EWPU_Read_File_Inter
 	    $enclosure = ($arg['enclosure'])? $arg['enclosure']: "\"";
 	    $escape = ($arg['escape'])? $arg['escape']:"\\";
 	    $eol = ($arg['eol'])? $arg['eol']:"\n";
-	    fputcsv($this->handler, $content, $separator, $enclosure, $escape, $eol);
+	    fputcsv($this->handler, $content, $separator, $enclosure, $escape);
     }
 
 

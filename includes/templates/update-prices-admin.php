@@ -84,7 +84,7 @@ if(@EWPU_Request_Handler::get_POST('uploadSubmit') && @EWPU_Request_Handler::get
 
     <?php
     // Notice when uploading is happened
-    if(@EWPU_Request_Handler::get_POST('uploadSubmit') && @$_FILES["price_list"]){
+    if(@EWPU_Request_Handler::get_POST('uploadSubmit') && @EWPU_Request_Handler::get_FILE('price_list')){
         if(@$result['response']){
 	        echo EWPU_Notice_Template::success ($result['response']);
         }

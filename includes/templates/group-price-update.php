@@ -116,7 +116,7 @@ if(EWPU_Request_Handler::get_POST('btnSubmit')){
     </div>
 
    <?php
-    if(@$_POST['btnSubmit'] && @!$result['error']){
+    if(EWPU_Request_Handler::get_POST('btnSubmit') && @!$result['error']){
         $massage = __('Your changes have been applied successfully. Please check the ', 'emo_ewpu');
         $massage .= "<a href='".$result['filePath']."'>".$result['fileName']."</a>";
         $massage .= __(' to check the correctness of the updated changes', 'emo_ewpu');

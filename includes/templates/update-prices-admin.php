@@ -44,7 +44,7 @@ if(EWPU_Request_Handler::get_POST('btnSubmit')){
 
 <?php
 
-if(@EWPU_Request_Handler::get_POST('uploadSubmit') && @EWPU_Request_Handler::get_FILE('price_list')){
+if(EWPU_Request_Handler::get_POST('uploadSubmit') && EWPU_Request_Handler::get_FILE('price_list')){
 	$is_submit = true;
 	$is_file = true;
 	$args = [
@@ -87,7 +87,7 @@ if(@EWPU_Request_Handler::get_POST('uploadSubmit') && @EWPU_Request_Handler::get
 
     <?php
     // Notice when uploading is happened
-    if(@EWPU_Request_Handler::get_POST('uploadSubmit') && @EWPU_Request_Handler::get_FILE('price_list')){
+    if(EWPU_Request_Handler::get_POST('uploadSubmit') && EWPU_Request_Handler::get_FILE('price_list')){
         if(@$result['response']){
 	        echo EWPU_Notice_Template::success ($result['response']);
         }
@@ -97,7 +97,7 @@ if(@EWPU_Request_Handler::get_POST('uploadSubmit') && @EWPU_Request_Handler::get
     }
 
     //Notice and download link when product list is created
-    if(@EWPU_Request_Handler::get_POST('btnSubmit')){
+    if(EWPU_Request_Handler::get_POST('btnSubmit')){
         if(@$result['error']){
             echo EWPU_Notice_Template::warning ($result['error']->get_error_message());
         }elseif(@$result['filePath']){

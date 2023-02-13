@@ -1,5 +1,8 @@
 <h1><?php echo __( 'Group discount settings', 'emo_ewpu' ) ?></h1>
 <?php
+use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
+use EmoWooPriceUpdate\EWPU_Notice_Template;
+
 global $wpdb;
 $months = new WP_Locale();
 // $product_categories = get_terms( 'product_cat');

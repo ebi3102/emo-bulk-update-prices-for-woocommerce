@@ -7,6 +7,7 @@
  * Text Domain: emo_ewpu
  */
 
+ namespace EmoWooPriceUpdate;
 class EWPU_Notice_Template
 {
     private static $template = null;

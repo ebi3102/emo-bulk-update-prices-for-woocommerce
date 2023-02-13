@@ -5,6 +5,8 @@
  *
  * if any methods detect an error will return WP_Error class else false
 */
+
+namespace EmoWooPriceUpdate;
 class EWPU_Form_Error {
 
 	private function __construct(){}

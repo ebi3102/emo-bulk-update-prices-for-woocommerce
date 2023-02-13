@@ -3,6 +3,8 @@
  * Base class for Handling files.
  *
  */
+
+ namespace EmoWooPriceUpdate\Repository\File_Handler;
 class EWPU_File_Handler {
 	protected $handler = null;
 

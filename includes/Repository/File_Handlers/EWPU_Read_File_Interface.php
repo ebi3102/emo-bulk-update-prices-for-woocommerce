@@ -3,6 +3,8 @@
  * Defines a common functions that any class responsible for
  * reading a file.
  */
+
+namespace EmoWooPriceUpdate\Repository\File_Handler;
 interface EWPU_Read_File_Interface {
 
 	/**

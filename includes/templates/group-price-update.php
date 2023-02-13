@@ -7,6 +7,9 @@
  * ========================
  * Text Domain: emo_ewpu
  */
+
+ use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
+ use EmoWooPriceUpdate\EWPU_Notice_Template;
 ?>
 <h1><?php echo __( 'Group update price settings', 'emo_ewpu' ) ?></h1>
 <?php

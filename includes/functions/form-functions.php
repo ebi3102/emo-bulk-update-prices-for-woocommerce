@@ -13,6 +13,8 @@
  * @param boolean $is_submit
  * @return array
  */
+use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
+use EmoWooPriceUpdate\Repository\EWPU_Csv_Handler;
 function emo_ewpu_get_price_update_data(bool $is_submit): array
 {
     global $wpdb;

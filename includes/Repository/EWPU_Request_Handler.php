@@ -5,6 +5,8 @@
  * When any methods are called it get request and return a string
  * or a default value.
  */
+
+ namespace EmoWooPriceUpdate\Repository;
 class EWPU_Request_Handler {
 
 	private function __construct(){}

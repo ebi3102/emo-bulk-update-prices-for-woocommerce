@@ -3,6 +3,8 @@
  * Defines a common functions that any class responsible for
  * writing on a file.
  */
+
+ namespace EmoWooPriceUpdate\Repository\File_Handler;
 interface EWPU_Write_File_Interface {
 
 	/**

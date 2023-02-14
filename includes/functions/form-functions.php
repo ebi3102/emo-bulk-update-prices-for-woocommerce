@@ -15,20 +15,24 @@
  */
 use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
 use EmoWooPriceUpdate\Repository\EWPU_Csv_Handler;
+use EmoWooPriceUpdate\EWPU_Form_Error;
+
 function emo_ewpu_get_price_update_data(bool $is_submit): array
 {
     global $wpdb;
-    $error = false;
 
 	//_________________ General errors________________________
-    if(!$is_submit){
-        $error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );
-    }
-    if ( !EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field')
-        || ! wp_verify_nonce( EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field'), 'emo_ewpu_action' )
-    ){
-        $error = new WP_Error( 'nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ) );
-    }
+//    if(!$is_submit){
+//        $error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );
+//    }
+	$error = EWPU_Form_Error::submit_status('btnSubmit');
+	$error = EWPU_Form_Error::nonce_inspection('emo_ewpu_nonce_field', 'emo_ewpu_action');
+
+//    if ( !EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field')
+//        || ! wp_verify_nonce( EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field'), 'emo_ewpu_action' )
+//    ){
+//        $error = new WP_Error( 'nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ) );
+//    }
 
 	//_________________ .General errors________________________
 

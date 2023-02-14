@@ -15,9 +15,9 @@ class EWPU_Pass_Error_Msg {
 	 *
 	 * @return WP_Error
 	 */
-	public static function error_object(string $error, string $error_data): WP_Error
+	public static function error_object(string $error, string $error_data): \WP_Error
 	{
-		return new WP_Error($error, $error_data);
+		return new \WP_Error($error, $error_data);
 	}
 
 }

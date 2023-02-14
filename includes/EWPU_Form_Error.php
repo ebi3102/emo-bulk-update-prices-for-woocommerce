@@ -10,44 +10,55 @@ namespace EmoWooPriceUpdate;
 use EmoWooPriceUpdate\Repository\EWPU_Nonce_Inspection;
 use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
 use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
+use EmoWooPriceUpdate\Repository\WP_Error;
+
 class EWPU_Form_Error {
 
 
 	private function __construct(){}
 
-//	private function error_inspection(string $conditioner, string $errorName, string $errorMsg )
-//	{
-//		if(EWPU_Request_Handler::get_POST($submitName)){
-//			$error = false;
-//		}else{
-//			$error = EWPU_Pass_Error_Msg::error_object('submitError', __( "There are an error while you update", "emo_ewpu" ));
-//		}
-//		return $error;
-//	}
+	/**
+	 * Inspect the condition if it is true method will be returned false
+	 * and if is false the method will be returned object error
+	 * @param bool $conditioner
+	 * @param string $errorName
+	 * @param string $errorMsg
+	 *
+	 * @return \WP_Error|false
+	 */
+	private function error_inspection(bool $conditioner, string $errorName, string $errorMsg ): \WP_Error|false
+	{
+		if($conditioner){
+			$error = false;
+		}else{
+			$error = EWPU_Pass_Error_Msg::error_object($errorName, $errorMsg);
+		}
+		return $error;
+	}
 
 	/**
 	 * Inspect the status of form which is submitted or not
 	 * @param string $submitName
 	 *
-	 * @return Repository\WP_Error|false
+	 * @return \WP_Error|false
 	 */
-	public static function submit_status(string $submitName): Repository\WP_Error|false
+	public static function submit_status(string $submitName): \WP_Error|false
 	{
-		if(EWPU_Request_Handler::get_POST($submitName)){
-			$error = false;
-		}else{
-			$error = EWPU_Pass_Error_Msg::error_object('submitError', __( "There are an error while you update", "emo_ewpu" ));
-		}
-		return $error;
+		$conditioner = (bool) EWPU_Request_Handler::get_POST( $submitName );
+		return (new self)->error_inspection(
+			$conditioner,
+			'submitError',
+			__( "There are an error while you update", "emo_ewpu" )
+		);
 	}
 
 	/**
 	 * @param string $nonceName
 	 * @param string|int $nonceAction
 	 *
-	 * @return Repository\WP_Error|false
+	 * @return \WP_Error|false
 	 */
-	public static function nonce_inspection(string $nonceName, string|int $nonceAction=-1): Repository\WP_Error|false
+	public static function nonce_inspection(string $nonceName, string|int $nonceAction=-1): \WP_Error|false
 	{
 		$nonce = EWPU_Request_Handler::get_POST($nonceName);
 		$nonceVerification = EWPU_Nonce_Inspection::nonce($nonceName, $nonceAction);
@@ -60,8 +71,20 @@ class EWPU_Form_Error {
 	}
 
 
-	public static function requirement_inspection(string $fieldName){
-
+	/**
+	 * Inspect the requirement of field
+	 * @param string $fieldName
+	 *
+	 * @return \WP_Error|false
+	 */
+	public static function requirement_inspection(string $fieldName): \WP_Error|false
+	{
+		$conditioner = (bool) EWPU_Request_Handler::get_POST( $fieldName );
+		return (new self)->error_inspection(
+			$conditioner,
+			'requirements',
+			__( "There are some required fields that not filled", "emo_ewpu" )
+		);
 	}
 
 

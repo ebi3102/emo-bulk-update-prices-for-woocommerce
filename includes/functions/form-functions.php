@@ -16,43 +16,27 @@
 use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
 use EmoWooPriceUpdate\Repository\EWPU_Csv_Handler;
 use EmoWooPriceUpdate\EWPU_Form_Error;
+use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
 
 function emo_ewpu_get_price_update_data(bool $is_submit): array
 {
     global $wpdb;
 
-	//_________________ General errors________________________
-//    if(!$is_submit){
-//        $error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );
-//    }
-	$error = EWPU_Form_Error::submit_status('btnSubmit');
-	$error = EWPU_Form_Error::nonce_inspection('emo_ewpu_nonce_field', 'emo_ewpu_action');
-
-//    if ( !EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field')
-//        || ! wp_verify_nonce( EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field'), 'emo_ewpu_action' )
-//    ){
-//        $error = new WP_Error( 'nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ) );
-//    }
-
-	//_________________ .General errors________________________
+	$errors[] = EWPU_Form_Error::submit_status('btnSubmit');
+	$errors[] = EWPU_Form_Error::nonce_inspection('emo_ewpu_nonce_field', 'emo_ewpu_action');
+	$errors[] = EWPU_Form_Error::requirement_inspection('cat_id');
+	$errors[] = EWPU_Form_Error::requirement_inspection('change_rate');
+	foreach ($errors as $error){
+		if($error){
+			return ['error'=>$error];
+		}
+	}
 
 	$cat_id = EWPU_Request_Handler::get_POST('cat_id');
 	$change_rate = EWPU_Request_Handler::get_POST('change_rate');
 	$rate_type = EWPU_Request_Handler::get_POST('emo_ewpu_rate');
 	$activeSalePrice = EWPU_Request_Handler::get_POST('sale_price');
 	$increasing_type = EWPU_Request_Handler::get_POST('emo_ewpu_increase');
-
-    if(!$cat_id){
-        $error = new WP_Error( 'requirements', __( "There are some required fields that not filled", "emo_ewpu" ) );
-    }
-    if(!$change_rate) {
-        $error = new WP_Error( 'requirements', __( "There are some required fields that not filled", "emo_ewpu" ) );
-    }
-
-    if($error){
-        return ['error'=>$error];
-    }
-
 
     //create csv file
     $filename = "ChangePrice_".date("Y-m-d_h-i-s").".csv";
@@ -64,7 +48,7 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
     $fileUrl = EWPU_CREATED_URI.$filename;
 	$csvFile = new EWPU_Csv_Handler($filePath, 'w');
 	if(!$csvFile){
-		return ['error'=>new WP_Error( 'unable', __( "Unable to open file!", "emo_ewpu" ) )];
+		return ['error'=> EWPU_Pass_Error_Msg::error_object('unable',  __( "Unable to open file!", "emo_ewpu" )) ];
 	}
 
     $writeCSV = array(array('parent_id', 'product_id', 'product_name', 'price_type', 'old_price', 'new_price'));
@@ -78,8 +62,10 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
                 array_push($products, $relatedProduct->object_id);
             }
         }else{
-            return new WP_Error( 'returnedProducts', __( "The selected product category has not contain any products", "emo_ewpu" ) );
-        }
+	        return ['error'=> EWPU_Pass_Error_Msg::error_object(
+				'returnedProducts',
+				__( "The selected product category has not contain any products", "emo_ewpu" )) ];
+		}
     }
 
     foreach($products as $product){

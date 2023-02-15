@@ -41,9 +41,9 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
     //create csv file
     $filename = "ChangePrice_".date("Y-m-d_h-i-s").".csv";
 
-    if (!file_exists( EWPU_CREATED_DIR )) {
-        mkdir( EWPU_CREATED_DIR, 0777, true);
-    }
+//    if (!file_exists( EWPU_CREATED_DIR )) {
+//        mkdir( EWPU_CREATED_DIR, 0777, true);
+//    }
     $filePath = EWPU_CREATED_DIR.$filename;
     $fileUrl = EWPU_CREATED_URI.$filename;
 	$csvFile = new EWPU_Csv_Handler($filePath, 'w');

@@ -7,10 +7,10 @@
  * Text Domain: emo_ewpu
  */
 
- namespace EmoWooPriceUpdate\Repository\File_Handler;
- use EmoWooPriceUpdate\Repository\File_Handler\EWPU_File_Handler;
- use EmoWooPriceUpdate\Repository\File_Handler\EWPU_Read_File_Interface;
- use EmoWooPriceUpdate\Repository\File_Handler\EWPU_Write_File_Interface;
+ namespace EmoWooPriceUpdate\Repository\File_Handlers;
+ use EmoWooPriceUpdate\Repository\File_Handlers\EWPU_File_Handler;
+ use EmoWooPriceUpdate\Repository\File_Handlers\EWPU_Read_File_Interface;
+ use EmoWooPriceUpdate\Repository\File_Handlers\EWPU_Write_File_Interface;
 class EWPU_Csv_Handler extends EWPU_File_Handler implements EWPU_Read_File_Interface,EWPU_Write_File_Interface
 {
 	/**

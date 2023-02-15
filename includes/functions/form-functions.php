@@ -14,7 +14,7 @@
  * @return array
  */
 use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
-use EmoWooPriceUpdate\Repository\EWPU_Csv_Handler;
+use EmoWooPriceUpdate\Repository\File_Handlers\EWPU_Csv_Handler;
 use EmoWooPriceUpdate\EWPU_Form_Error;
 use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
 

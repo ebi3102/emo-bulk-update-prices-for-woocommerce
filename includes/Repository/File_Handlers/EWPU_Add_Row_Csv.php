@@ -7,7 +7,7 @@
  * Text Domain: emo_ewpu
  */
 
- namespace EmoWooPriceUpdate\Repository\File_Handler;
+ namespace EmoWooPriceUpdate\Repository\File_Handlers;
 class EWPU_Add_Row_Csv
 {
     private static $createDirectory = EWPU_CREATED_DIR;

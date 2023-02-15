@@ -4,7 +4,7 @@
  *
  */
 
- namespace EmoWooPriceUpdate\Repository\File_Handler;
+ namespace EmoWooPriceUpdate\Repository\File_Handlers;
 class EWPU_File_Handler {
 	protected $handler = null;
 

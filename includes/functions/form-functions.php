@@ -209,8 +209,10 @@ function emo_ewpu_get_group_discount_data(bool $is_submit): array
     //retrieve all related products
     $cat_products = array();
     if($cat_id){
-        $relatedProducts = $wpdb->get_results("SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id = " . $cat_id);
-        foreach($relatedProducts as $relatedProduct){
+//        $relatedProducts = $wpdb->get_results("SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id = " . $cat_id);
+	    $relatedProductsDB = new \EmoWooPriceUpdate\Repository\EWPU_Get_Related_Object($cat_id);
+	    $relatedProducts = $relatedProductsDB->results();
+		foreach($relatedProducts as $relatedProduct){
             array_push($cat_products, $relatedProduct->object_id);
         }
     }

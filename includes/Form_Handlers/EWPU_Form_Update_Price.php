@@ -1,11 +1,16 @@
 <?php
 namespace EmoWooPriceUpdate\Form_Handlers;
+use  EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Field_Setter;
+use  EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Submit;
 use EmoWooPriceUpdate\EWPU_Form_Error;
+use  EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Handler;
 use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
 use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
 use EmoWooPriceUpdate\Repository\File_Handlers\EWPU_Csv_Handler;
+use EmoWooPriceUpdate\Repository\EWPU_DB_Get_Related_Object;
 
-class EWPU_Form_Update_Price {
+class EWPU_Form_Update_Price implements EWPU_Form_Field_Setter,EWPU_Form_Submit
+{
 	private $cat_id;
 	private $change_rate;
 	private $rate_type;
@@ -15,41 +20,14 @@ class EWPU_Form_Update_Price {
 	private $filePath;
 	private $fileUrl;
 
-	/**
-	 * Check the security and required items of the form
-	 * @param array $checker_items {
-	 *      The parameters that must be checked before handling a form
-	 *      @type string $submit_status the name of submit button
-	 *      @type array $security {     the fields of WordPress nonce checker
-	 *          @type string nonce
-	 *          @type string nonce action
-	 *      @type array $requirements   the fields of form that are required
-	 *
-	 * @return array|void
-	 */
-
-	// move to a trait class
-	protected function requirement_checker( array $checker_items)
-	{
-		$errors[] = EWPU_Form_Error::submit_status($checker_items['submit_status']);
-		$errors[] = EWPU_Form_Error::nonce_inspection($checker_items['security'][0], ($checker_items['security'][1])? $checker_items['security'][1]: -1);
-		foreach ($checker_items['requirements'] as $item){
-			$errors[] = EWPU_Form_Error::requirement_inspection($item);
-		}
-		foreach ($errors as $error){
-			if($error){
-				return ['error'=>$error];
-			}
-		}
-	}
-
+	use  EWPU_Form_Handler;
 	//create an interface
 
 	/**
 	 * Set all the fields of form
 	 * @param $fields
 	 */
-	private function field_setter($fields)
+	public function field_setter($fields):void
 	{
 		$this->cat_id = EWPU_Request_Handler::get_POST($fields['category']);
 		$this->change_rate = EWPU_Request_Handler::get_POST($fields['change_rate']);
@@ -65,7 +43,7 @@ class EWPU_Form_Update_Price {
 		$this->fileUrl = $info['fileUrl'].$this->fileName;
 	}
 
-	public function submit( array $args)
+	public function submit( array $args):array
 	{
 		$args = array(
 			'checker_items' => array(
@@ -100,6 +78,21 @@ class EWPU_Form_Update_Price {
 			return ['error'=> EWPU_Pass_Error_Msg::error_object('unable',  __( "Unable to open file!", "emo_ewpu" )) ];
 		}
 		$writeCSV = array($args['csv_fields']);
+		if($this->cat_id){
+			$relatedProductsDB = new EWPU_DB_Get_Related_Object($this->cat_id);
+			$relatedProducts = $relatedProductsDB->results();
+			if(is_array($relatedProducts) && count($relatedProducts) > 0) {
+				foreach ($relatedProducts as $relatedProduct) {
+					$products[]= $relatedProduct->object_id;
+				}
+			}else{
+				return ['error'=> EWPU_Pass_Error_Msg::error_object(
+					'returnedProducts',
+					__( "The selected product category has not contain any products", "emo_ewpu" )) ];
+			}
+		}
+
+		return array(1,2);
 
 	}
 

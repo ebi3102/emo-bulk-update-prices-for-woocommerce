@@ -15,11 +15,18 @@ class EWPU_DB {
 
 	public function results()
 	{
-		return $this->db_class->get_results($this->prepare());
+		echo "<pre>";
+		var_dump($this->db_class);
+		echo "</pre>";
+		$products = $this->db_class->get_results($this->query);
+		echo "<pre>";
+		var_dump($products);
+		echo "</pre>";
+		return $products;
 	}
 
-	private function prepare()
+	private function do_prepare()
 	{
-		return $this->db_class->prepare($this->query);
+		return $this->db_class->prepare($this->query[0], $this->query[1]);
 	}
 }

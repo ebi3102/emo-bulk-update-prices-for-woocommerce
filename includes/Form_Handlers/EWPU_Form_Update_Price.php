@@ -2,7 +2,6 @@
 namespace EmoWooPriceUpdate\Form_Handlers;
 use  EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Field_Setter;
 use  EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Submit;
-use EmoWooPriceUpdate\EWPU_Form_Error;
 use  EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Handler;
 use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
 use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
@@ -45,27 +44,6 @@ class EWPU_Form_Update_Price implements EWPU_Form_Field_Setter,EWPU_Form_Submit
 
 	public function submit( array $args):array
 	{
-		$args = array(
-			'checker_items' => array(
-				'submit_status' => 'btnSubmit',
-				'security' => array('emo_ewpu_nonce_field', 'emo_ewpu_action'),
-				'requirements' => array('cat_id', 'change_rate')
-			),
-			'fields' => array(
-				'category'=> 'cat_id',
-				'change_rate'=> 'change_rate',
-				'rate_type' => 'emo_ewpu_rate',
-				'on_sale' => 'sale_price',
-				'change_type' => 'emo_ewpu_increase'
-			),
-			'file_info'=> array(
-				'fileName'=> "ChangePrice_".date("Y-m-d_h-i-s").".csv",
-				'fileUrl'=> EWPU_CREATED_URI,
-				'fileDir'=> EWPU_CREATED_DIR
-			),
-			'csv_fields'=> array('parent_id', 'product_id', 'product_name', 'price_type', 'old_price', 'new_price'),
-		);
-
 		$error = $this->requirement_checker($args['checker_items']);
 		if ($error['error']){
 			return $error['error'];
@@ -91,9 +69,81 @@ class EWPU_Form_Update_Price implements EWPU_Form_Field_Setter,EWPU_Form_Submit
 					__( "The selected product category has not contain any products", "emo_ewpu" )) ];
 			}
 		}
+		foreach($products as $product){
+			$_product = wc_get_product($product);
+			if($_product){
+				if($_product->get_type() == 'variable'){
+					$variationsPrices = $_product->get_variation_prices();
+					$vRegularPrices = $variationsPrices['regular_price']; //array
+					foreach($vRegularPrices as $vID=>$vRegularPrice){
+						$newRegularPrice = emo_ewpu_change_price($this->rate_type, $this->change_type, $vRegularPrice, $this->change_rate);
+						$variation = wc_get_product_object( 'variation', $vID );
+						//set...
+						$variation->set_props(
+							array(
+								'regular_price' => $newRegularPrice,
+								// 'sale_price' => $sale_price,
+							)
+						);
+						$variation->save();
+						array_push($writeCSV, array($product, $vID, $variation->get_title(), 'regular', $vRegularPrice, $newRegularPrice));
+					}
 
-		return array(1,2);
+					if($this->activeSalePrice){
+						$vSalerPrices = $variationsPrices['sale_price']; //array
+						foreach($vSalerPrices as $vID=>$vSalerPrice){
+							$newSalePrice = emo_ewpu_change_price($this->rate_type, $this->change_type, $vSalerPrice, $this->change_rate);
+							$variation = wc_get_product_object( 'variation', $vID );
+							//set...
+							$variation->set_props(
+								array(
+									// 'regular_price' => $newRegularPrice,
+									'sale_price' => $newSalePrice,
+								)
+							);
+							$variation->save();
+							array_push($writeCSV, array($product, $vID, $variation->get_title(), 'sale', $vSalerPrice, $newSalePrice));
+						}
 
+					}
+				}elseif($_product->get_type() == 'simple'){
+					$regularPrice = $_product->get_regular_price();
+					$newRegularPrice = emo_ewpu_change_price($this->rate_type, $this->change_type, $regularPrice, $this->change_rate);
+					//set...
+					$productObject = wc_get_product_object( 'simple', $product );
+					$productObject->set_props(
+						array(
+							'regular_price' => $newRegularPrice,
+							// 'sale_price' => $newSalePrice,
+						)
+					);
+					$productObject->save();
+					array_push($writeCSV, array('0', $product, $_product->get_title(), 'regular', $regularPrice, $newRegularPrice));
+
+					if($this->activeSalePrice){
+						$salePrice = $_product->get_sale_price();
+						$newSalePrice = emo_ewpu_change_price($this->rate_type, $this->change_type, $salePrice, $this->change_rate);
+						//set...
+						$productObject = wc_get_product_object( 'simple', $product );
+						$productObject->set_props(
+							array(
+								// 'regular_price' => $newRegularPrice,
+								'sale_price' => $newSalePrice,
+							)
+						);
+						$productObject->save();
+						array_push($writeCSV, array('0', $product, $_product->get_title(), 'sale', $salePrice, $newSalePrice));
+					}
+				}
+			}
+
+		}
+		foreach ($writeCSV as $row) {
+			$csvFile->writeToFile(['content'=>$row]);
+		}
+		$csvFile->closeFile();
+
+		return ['error'=>false, 'filePath'=> $this->fileUrl, 'fileName'=> $this->fileName];
 	}
 
 

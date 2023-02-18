@@ -31,8 +31,7 @@ if( !empty($product_categories) ){
 }
 
 if(EWPU_Request_Handler::get_POST('btnSubmit')){
-    $is_submit = true;
-    $result = emo_ewpu_get_price_update_data($is_submit);
+    $result = emo_ewpu_get_price_update_data();
 }
 
 

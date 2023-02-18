@@ -20,8 +20,6 @@ use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
 
 function emo_ewpu_get_price_update_data(bool $is_submit): array
 {
-    global $wpdb;
-
 	$errors[] = EWPU_Form_Error::submit_status('btnSubmit');
 	$errors[] = EWPU_Form_Error::nonce_inspection('emo_ewpu_nonce_field', 'emo_ewpu_action');
 	$errors[] = EWPU_Form_Error::requirement_inspection('cat_id');
@@ -41,9 +39,6 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
     //create csv file
     $filename = "ChangePrice_".date("Y-m-d_h-i-s").".csv";
 
-//    if (!file_exists( EWPU_CREATED_DIR )) {
-//        mkdir( EWPU_CREATED_DIR, 0777, true);
-//    }
     $filePath = EWPU_CREATED_DIR.$filename;
     $fileUrl = EWPU_CREATED_URI.$filename;
 	$csvFile = new EWPU_Csv_Handler($filePath, 'w');
@@ -56,7 +51,6 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
     //retrieve all related products
     $products = array();
     if($cat_id){
-//        $relatedProducts = $wpdb->get_results("SELECT object_id FROM $wpdb->term_relationships WHERE term_taxonomy_id = " . $cat_id);
         $relatedProductsDB = new \EmoWooPriceUpdate\Repository\EWPU_DB_Get_Related_Object($cat_id);
 		$relatedProducts = $relatedProductsDB->results();
 		if(is_array($relatedProducts) && count($relatedProducts) > 0) {
@@ -154,7 +148,6 @@ function emo_ewpu_get_price_update_data(bool $is_submit): array
  */
 function emo_ewpu_get_group_discount_data(bool $is_submit): array
 {
-    global $wpdb;
     $months = new WP_Locale();
     $error = false;
     if(!$is_submit){
@@ -276,7 +269,6 @@ function emo_ewpu_get_group_discount_data(bool $is_submit): array
  */
 function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
 {
-    global $wpdb;
     $error = false;
     if(!$is_submit){
         $error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );
@@ -286,8 +278,8 @@ function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
     ){
         $error = new WP_Error( 'nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ) );
     }
-
-    $products = $wpdb->get_results($wpdb->prepare("SELECT ID, post_title FROM $wpdb->posts WHERE post_type ='product' AND post_status = 'publish' ORDER BY post_modified DESC; "));
+	$productsDB = new \EmoWooPriceUpdate\Repository\EWPU_DB_Get_All_Products;
+    $products = $productsDB->results();
     if(count($products)<= 0){
         $error = new WP_Error( 'noProduct', __( "Sorry, There are no products.", "emo_ewpu" ) );
     }

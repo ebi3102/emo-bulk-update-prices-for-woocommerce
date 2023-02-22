@@ -90,10 +90,6 @@ function emo_ewpu_get_group_discount_data(bool $is_submit): array
     $UTMEndDate = $endYear . '-' . $endMonth . '-' .$endDay ;
 
     $filename = "Discount_".date("Y-m-d_h-i-s").".csv";
-
-    if (!file_exists( EWPU_CREATED_DIR )) {
-        mkdir( EWPU_CREATED_DIR, 0777, true);
-    }
     $filePath = EWPU_CREATED_DIR.$filename;
     $fileUrl = EWPU_CREATED_URI.$filename;
 

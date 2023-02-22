@@ -20,13 +20,12 @@ class EWPU_Form_Update_Price implements EWPU_Form_Field_Setter,EWPU_Form_Submit
 	private $fileUrl;
 
 	use  EWPU_Form_Handler;
-	//create an interface
 
-	/**
-	 * Set all the fields of form
-	 * @param $fields
-	 */
-	public function field_setter($fields):void
+		/**
+		 * Set all the fields of form
+		 * @param $fields
+		 */
+		public function field_setter($fields):void
 	{
 		$this->cat_id = EWPU_Request_Handler::get_POST($fields['category']);
 		$this->change_rate = EWPU_Request_Handler::get_POST($fields['change_rate']);

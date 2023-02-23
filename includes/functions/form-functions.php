@@ -12,6 +12,7 @@ use EmoWooPriceUpdate\Repository\File_Handlers\EWPU_Csv_Handler;
 use EmoWooPriceUpdate\EWPU_Form_Error;
 use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
 use EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Update_Price;
+use EmoWooPriceUpdate\Utils\EWPU_Date_Generator;
 
 /**
  * Handle group price update form
@@ -83,11 +84,17 @@ function emo_ewpu_get_group_discount_data(bool $is_submit): array
         return ['error'=>$error];
     }
 
-    $textStartDate = $startYear . '/' . $months->get_month(intval($startMonth)) . '/' .$startDay ;
-    $UTMStartDate = $startYear . '-' . $startMonth . '-' .$startDay ;
+    // $textStartDate = $startYear . '/' . $months->get_month(intval($startMonth)) . '/' .$startDay ;
+    // $UTMStartDate = $startYear . '-' . $startMonth . '-' .$startDay ;
+    $startDate = new EWPU_Date_Generator(intval($startYear), intval($startMonth), intval($startDay));
+    $textStartDate = $startDate->text_Date();
+    $UTMStartDate = $startDate->utm_Date();
 
-    $textEndDate = $endYear . '/' . $months->get_month(intval($endMonth)) . '/' .$endDay ;
-    $UTMEndDate = $endYear . '-' . $endMonth . '-' .$endDay ;
+    // $textEndDate = $endYear . '/' . $months->get_month(intval($endMonth)) . '/' .$endDay ;
+    // $UTMEndDate = $endYear . '-' . $endMonth . '-' .$endDay ;
+    $endtDate = new EWPU_Date_Generator(intval($endYear), intval($endMonth), intval($endDay));
+    $textEndDate = $endtDate->text_Date();
+    $UTMEndDate = $endDate->utm_Date();
 
     $filename = "Discount_".date("Y-m-d_h-i-s").".csv";
     $filePath = EWPU_CREATED_DIR.$filename;

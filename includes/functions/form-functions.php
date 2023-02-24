@@ -84,16 +84,12 @@ function emo_ewpu_get_group_discount_data(bool $is_submit): array
         return ['error'=>$error];
     }
 
-    // $textStartDate = $startYear . '/' . $months->get_month(intval($startMonth)) . '/' .$startDay ;
-    // $UTMStartDate = $startYear . '-' . $startMonth . '-' .$startDay ;
     $startDate = new EWPU_Date_Generator(intval($startYear), intval($startMonth), intval($startDay));
     $textStartDate = $startDate->text_Date();
     $UTMStartDate = $startDate->utm_Date();
 
-    // $textEndDate = $endYear . '/' . $months->get_month(intval($endMonth)) . '/' .$endDay ;
-    // $UTMEndDate = $endYear . '-' . $endMonth . '-' .$endDay ;
-    $endtDate = new EWPU_Date_Generator(intval($endYear), intval($endMonth), intval($endDay));
-    $textEndDate = $endtDate->text_Date();
+    $endDate = new EWPU_Date_Generator(intval($endYear), intval($endMonth), intval($endDay));
+    $textEndDate = $endDate->text_Date();
     $UTMEndDate = $endDate->utm_Date();
 
     $filename = "Discount_".date("Y-m-d_h-i-s").".csv";

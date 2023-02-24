@@ -87,7 +87,7 @@ if(EWPU_Request_Handler::get_POST('btnSubmit')){
                                     <select name="sale_start_time_month" id="sale_start_time_month">
                                         <?php
                                         for($i=1; $i<13; $i++){
-                                            echo "<option value = '".$i."'>".$months->get_month($i) ."</option>";
+                                            echo "<option value = '".$months->get_month($i)."'>".$months->get_month($i) ."</option>";
                                         }
                                         ?>
 

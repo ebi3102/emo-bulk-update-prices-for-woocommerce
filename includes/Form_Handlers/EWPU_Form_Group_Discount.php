@@ -38,7 +38,6 @@ class EWPU_Form_Group_Discount implements EWPU_Form_Field_Setter,EWPU_Form_Submi
 			'end_year' => 'sale_end_time_year',
             'end_month' => 'sale_end_time_month',
             'end_day' => 'sale_end_time_day'
-			
         );
         $this->cat_id = EWPU_Request_Handler::get_POST($fields['category']);
         $this->rate_type = EWPU_Request_Handler::get_POST($fields['rate_type']);
@@ -64,7 +63,41 @@ class EWPU_Form_Group_Discount implements EWPU_Form_Field_Setter,EWPU_Form_Submi
 		$this->fileUrl = $info['fileUrl'].$this->fileName;
 	}
 
-    public function submit()
-    {}
+    public function submit( array $args):array
+    {
+	    $args = array(
+		    'checker_items' => array(
+			    'submit_status' => 'btnSubmit',
+			    'security' => array('emo_ewpu_nonce_field', 'emo_ewpu_action'),
+			    'requirements' => array('cat_id', 'change_rate')
+		    ),
+		    'fields' => array(
+			    'category'=> 'cat_id',
+			    'change_rate'=> 'change_rate',
+			    'rate_type' => 'nimo_nwab_rate',
+			    'start_year' => 'sale_start_time_year',
+			    'start_month' => 'sale_start_time_month',
+			    'start_day' => 'sale_start_time_day',
+			    'end_year' => 'sale_end_time_year',
+			    'end_month' => 'sale_end_time_month',
+			    'end_day' => 'sale_end_time_day'
+		    ),
+		    'file_info'=> array(
+			    'fileName'=> "ChangePrice_".date("Y-m-d_h-i-s").".csv",
+			    'fileUrl'=> EWPU_CREATED_URI,
+			    'fileDir'=> EWPU_CREATED_DIR
+		    ),
+		    'csv_fields'=> array('parent_id', 'product_id', 'product_name', 'price_type', 'old_price', 'new_price'),
+	    );
+
+	    $error = $this->requirement_checker($args['checker_items']);
+	    if ($error['error']){
+		    return $error['error'];
+	    }
+	    $this->field_setter($args['fields']);
+	    $this->file_info($args['file_info']);
+
+		return array();
+    }
 
 }

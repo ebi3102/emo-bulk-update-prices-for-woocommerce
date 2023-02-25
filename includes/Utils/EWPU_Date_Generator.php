@@ -8,7 +8,7 @@ class EWPU_Date_Generator
     private $month;
     private $day;
 
-    public function __construct(int $year, int $month, int $day)
+    public function __construct(int $year, string $month, int $day)
     {
         $this->year = $year;
         $this->month = $month;

@@ -12,7 +12,7 @@ use EmoWooPriceUpdate\Repository\File_Handlers\EWPU_Csv_Handler;
 use EmoWooPriceUpdate\EWPU_Form_Error;
 use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
 use EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Update_Price;
-use EmoWooPriceUpdate\Utils\EWPU_Date_Generator;
+use EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Group_Discount;
 
 /**
  * Handle group price update form
@@ -47,12 +47,39 @@ function emo_ewpu_get_price_update_data(): array
 
 /**
  * Handle group discount form
- * @param boolean $is_submit
  * @return array
  */
-function emo_ewpu_get_group_discount_data(bool $is_submit): array
+function emo_ewpu_get_group_discount_data(): array
 {
-    $months = new WP_Locale();
+	$args = array(
+		'checker_items' => array(
+			'submit_status' => 'btnSubmit',
+			'security' => array('emo_ewpu_nonce_field', 'emo_ewpu_action'),
+			'requirements' => array('cat_id', 'change_rate')
+		),
+		'fields' => array(
+			'category'=> 'cat_id',
+			'change_rate'=> 'change_rate',
+			'rate_type' => 'nimo_nwab_rate',
+			'start_year' => 'sale_start_time_year',
+			'start_month' => 'sale_start_time_month',
+			'start_day' => 'sale_start_time_day',
+			'end_year' => 'sale_end_time_year',
+			'end_month' => 'sale_end_time_month',
+			'end_day' => 'sale_end_time_day'
+		),
+		'file_info'=> array(
+			'fileName'=> "Discount_".date("Y-m-d_h-i-s").".csv",
+			'fileUrl'=> EWPU_CREATED_URI,
+			'fileDir'=> EWPU_CREATED_DIR
+		),
+		'csv_fields'=> array('parent_id', 'product_id', 'product_name', 'Regular_price', 'Sale_price', 'Start_time', 'End_time'),
+	);
+
+	$formHandler = new EWPU_Form_Group_Discount();
+	return $formHandler->submit($args);
+
+	/*
     $error = false;
     if(!$is_submit){
         $error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );
@@ -161,6 +188,7 @@ function emo_ewpu_get_group_discount_data(bool $is_submit): array
 	$csvFile->closeFile();
 
     return ['error'=>false, 'filePath'=> $fileUrl, 'fileName'=> $filename];
+	*/
 }
 
 /**

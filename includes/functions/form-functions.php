@@ -13,6 +13,8 @@ use EmoWooPriceUpdate\EWPU_Form_Error;
 use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
 use EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Update_Price;
 use EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Group_Discount;
+use EmoWooPriceUpdate\Repository\EWPU_DB_Get_All_Products_ID;
+use EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Products_Price_List;
 
 /**
  * Handle group price update form
@@ -88,6 +90,34 @@ function emo_ewpu_get_group_discount_data(): array
  */
 function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
 {
+	$args = array(
+		'checker_items' => array(
+			'submit_status' => 'btnSubmit',
+			'security' => array('emo_ewpu_nonce_field', 'emo_ewpu_action'),
+			'requirements' => array()
+		),
+		'fields' => array(
+			'category'=> 'cat_id',
+			'change_rate'=> 'change_rate',
+			'rate_type' => 'nimo_nwab_rate',
+			'start_year' => 'sale_start_time_year',
+			'start_month' => 'sale_start_time_month',
+			'start_day' => 'sale_start_time_day',
+			'end_year' => 'sale_end_time_year',
+			'end_month' => 'sale_end_time_month',
+			'end_day' => 'sale_end_time_day'
+		),
+		'file_info'=> array(
+			'fileName'=> "Discount_".date("Y-m-d_h-i-s").".csv",
+			'fileUrl'=> EWPU_CREATED_URI,
+			'fileDir'=> EWPU_CREATED_DIR
+		),
+		'csv_fields'=> array('parent_id', 'product_id', 'product_name', 'Regular_price', 'Sale_price', 'Start_time', 'End_time'),
+	);
+
+//	$formHandler = new EWPU_Form_Products_Price_List();
+//	return $formHandler->submit($args);
+
     $error = false;
     if(!$is_submit){
         $error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );
@@ -97,8 +127,8 @@ function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
     ){
         $error = new WP_Error( 'nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ) );
     }
-	$productsDB = new \EmoWooPriceUpdate\Repository\EWPU_DB_Get_All_Products;
-    $products = $productsDB->results();
+
+    $products = (new EWPU_DB_Get_All_Products_ID)->results();
     if(count($products)<= 0){
         $error = new WP_Error( 'noProduct', __( "Sorry, There are no products.", "emo_ewpu" ) );
     }

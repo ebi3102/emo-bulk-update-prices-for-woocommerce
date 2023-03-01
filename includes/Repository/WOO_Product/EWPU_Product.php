@@ -1,12 +1,13 @@
 <?php
 namespace EmoWooPriceUpdate\Repository\WOO_Product;
+use EmoWooPriceUpdate\Repository\WOO_Product\EWPU_Product_Interface;
 
-class EWPU_Product {
+class EWPU_Product implements EWPU_Product_Interface
+{
 	private $product;
 
-
 	public function __construct($id) {
-		$this->product = wc_get_product($id);
+		$this->product = wc_get_product_object('variation', $id);
 	}
 
 	public function get_product_type()
@@ -32,14 +33,6 @@ class EWPU_Product {
     public function get_product_sale_price()
     {
         return $this->product->get_sale_price();
-    }
-
-	public function get_product_children()
-    {
-        if ($this->get_product_type() === 'variable'){
-            return $this->product->get_children();
-        }
-        return false;
     }
 
 }

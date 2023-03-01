@@ -2,7 +2,7 @@
 
 namespace EmoWooPriceUpdate\Repository;
 
-class EWPU_DB {
+abstract class EWPU_DB {
 	protected $db_class;
 	protected $query;
 

@@ -7,7 +7,7 @@ class EWPU_Product implements EWPU_Product_Interface
 	private $product;
 
 	public function __construct($id) {
-		$this->product = wc_get_product_object('variation', $id);
+		$this->product = wc_get_product($id);
 	}
 
 	public function get_product_type()
@@ -35,4 +35,10 @@ class EWPU_Product implements EWPU_Product_Interface
         return $this->product->get_sale_price();
     }
 
+	public function get_product_children()
+	{
+		if($this->get_product_type() == 'variable'){
+			return $this->product->get_children();
+		}
+	}
 }

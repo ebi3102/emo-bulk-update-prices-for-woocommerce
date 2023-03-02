@@ -121,6 +121,7 @@ function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
  */
 function emo_ewpu_update_products_price_list(bool $is_submit, bool $is_file, array $args):array
 {
+	//requirement checks
 	$error = false;
 	if(!$is_submit){
 		$error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );
@@ -140,7 +141,9 @@ function emo_ewpu_update_products_price_list(bool $is_submit, bool $is_file, arr
 	if($error){
 		return ['error'=>$error];
 	}
+	//end requirement checks
 
+	//Upload Handler
 	$extensions= ($args['extensions'])? $args['extensions']:array("csv");
 	$maxFileSize = ($args['max-size'])? $args['max-size']:2097152;
 
@@ -160,6 +163,7 @@ function emo_ewpu_update_products_price_list(bool $is_submit, bool $is_file, arr
 	    return ['error'=>$errors];
     }
 	move_uploaded_file($file_tmp,$target_file);
+	//End Upload Handler
 
 	// Read and store new prices
 	if ( ($handle = new EWPU_Csv_Handler($target_file, "r")) !== false) {

@@ -96,71 +96,16 @@ function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
 			'security' => array('emo_ewpu_nonce_field', 'emo_ewpu_action'),
 			'requirements' => array()
 		),
-		'fields' => array(
-			'category'=> 'cat_id',
-			'change_rate'=> 'change_rate',
-			'rate_type' => 'nimo_nwab_rate',
-			'start_year' => 'sale_start_time_year',
-			'start_month' => 'sale_start_time_month',
-			'start_day' => 'sale_start_time_day',
-			'end_year' => 'sale_end_time_year',
-			'end_month' => 'sale_end_time_month',
-			'end_day' => 'sale_end_time_day'
-		),
 		'file_info'=> array(
-			'fileName'=> "Discount_".date("Y-m-d_h-i-s").".csv",
+			'fileName'=> "products.csv",
 			'fileUrl'=> EWPU_CREATED_URI,
 			'fileDir'=> EWPU_CREATED_DIR
 		),
-		'csv_fields'=> array('parent_id', 'product_id', 'product_name', 'Regular_price', 'Sale_price', 'Start_time', 'End_time'),
+		'csv_fields'=> array('Product ID', 'SKU', 'Product Title', 'Regular Price', 'Sale Price', 'Type'),
 	);
 
-//	$formHandler = new EWPU_Form_Products_Price_List();
-//	return $formHandler->submit($args);
-
-    $error = false;
-    if(!$is_submit){
-        $error = new WP_Error( 'submitError', __( "There are an error while you update", "emo_ewpu" ) );
-    }
-    if ( ! EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field')
-        || ! wp_verify_nonce( EWPU_Request_Handler::get_POST('emo_ewpu_nonce_field'), 'emo_ewpu_action' )
-    ){
-        $error = new WP_Error( 'nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ) );
-    }
-
-    $products = (new EWPU_DB_Get_All_Products_ID)->results();
-    if(count($products)<= 0){
-        $error = new WP_Error( 'noProduct', __( "Sorry, There are no products.", "emo_ewpu" ) );
-    }
-
-    if($error){
-        return ['error'=>$error];
-    }
-    $fileUrl = EWPU_CREATED_URI . $fileName;
-    $filePath = EWPU_CREATED_DIR. $fileName;
-
-    $myFile = new EWPU_Csv_Handler($filePath, "w");
-    $data = array('Product ID', 'SKU', 'Product Title', 'Regular Price', 'Sale Price', 'Type');
-    $arg = array('content'=>$data);
-    $myFile->writeToFile($arg);
-    foreach ($products as $product) {
-        $_product = wc_get_product($product->ID);
-        $sku = $_product->get_sku();
-        if ($_product->get_type() == "variable") {
-            $variations = $_product->get_children();
-            foreach ($variations as $vID) {
-                $variation = wc_get_product_object('variation', $vID);
-                $data = array($vID, $variation->get_sku(), $variation->get_name(), $variation->get_regular_price(), $variation->get_sale_price(), "variation");
-                $myFile->writeToFile(array('content'=>$data));
-            }
-        } elseif ($_product->get_type() == "simple") {
-            $data = array($product->ID, $sku, $product->post_title, $_product->get_regular_price(), $_product->get_sale_price(), "simple");
-            $myFile->writeToFile(array('content'=>$data));
-        }
-    }
-    $myFile->closeFile();
-
-    return ['error'=>false, 'filePath'=> $fileUrl, 'fileName'=> $fileName];
+	$formHandler = new EWPU_Form_Products_Price_List();
+	return $formHandler->submit($args);
 }
 
 

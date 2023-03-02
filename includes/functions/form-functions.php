@@ -84,11 +84,9 @@ function emo_ewpu_get_group_discount_data(): array
 
 /**
  * Get products list and store it as a csv file
- * @param boolean $is_submit
- * @param string $fileName
  * @return array
  */
-function emo_ewpu_get_product_list(bool $is_submit, string $fileName): array
+function emo_ewpu_get_product_list(): array
 {
 	$args = array(
 		'checker_items' => array(

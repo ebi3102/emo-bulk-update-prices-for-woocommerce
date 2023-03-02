@@ -18,9 +18,7 @@
 /* Extract all Poducts site */
 
 if(EWPU_Request_Handler::get_POST('btnSubmit')){
-    $is_submit = true;
-    $fileName = 'products.csv';
-    $result = emo_ewpu_get_product_list($is_submit, $fileName);
+    $result = emo_ewpu_get_product_list();
 }
 
 ?>

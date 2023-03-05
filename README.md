@@ -35,13 +35,19 @@ This section describes how to install the plugin and get it working. e.g.
 
 For updating the prices by file you must use .csv file. Also, these file is downloadable form the plugin in Update whole prices menu
 
+## Reporting Security Issues
+To disclose a security issue to our team put it [here](https://github.com/ebi3102/emo-woo-price-update/issues).
+
 #Screenshots
 
 1. This screenshot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets directory take precedence. 
    1. This picture shows the page of Update whole price menu. In this page the user is able to create and then download all products prices list.
    2. Also, in the second section the user is able to upload a csv file that contains the information of the products whose prices wants to update.
-2. This screenshot description corresponds to screenshot-1.(png|jpg|jpeg|gif).
-   1. 
+2. This screenshot description corresponds to screenshot-2.(png|jpg|jpeg|gif).
+   1. The page of Group price update menu is shown in screenshot-2. In this page a user can update the prices (regular or on-sale) based on the product category.
+3. This screenshot description corresponds to screenshot-3.(png|jpg|jpeg|gif).
+    1. The page of Group discount menu is shown in screenshot-3. In this page a user can set discount to products based on the product category.
+
 #Changelog
    
 * 1.1

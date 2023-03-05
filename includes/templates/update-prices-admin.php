@@ -43,13 +43,7 @@ if(EWPU_Request_Handler::get_POST('btnSubmit')){
 <?php
 
 if(EWPU_Request_Handler::get_POST('uploadSubmit') && EWPU_Request_Handler::get_FILE('price_list')){
-	$is_submit = true;
-	$is_file = true;
-	$args = [
-		'extensions'=> ['csv'],
-		'max-size' => 2097152
-	];
-	$result = emo_ewpu_update_products_price_list($is_submit, $is_file, $args);
+    $result = emo_ewpu_update_products_price_list();
 }
 
 ?>

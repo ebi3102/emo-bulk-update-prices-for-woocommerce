@@ -51,8 +51,9 @@ class EWPU_Uploader {
         }
 		if(move_uploaded_file($this->file['tmp_name'],$this->filePath)){
 			$this->file_url = $this->upload_uri.$this->fileName;
-		}
-        $this->error = EWPU_Pass_Error_Msg::error_object( 'unable', __( "Unable to upload file", "emo_ewpu" ) );
+		}else{
+            $this->error = EWPU_Pass_Error_Msg::error_object( 'unable', __( "Unable to upload file", "emo_ewpu" ) );
+        }
 	}
 
     /**
@@ -68,7 +69,11 @@ class EWPU_Uploader {
      */
     public function getFileUrl():mixed
     {
-        return $this->file_url;
+        if(!$this->error){
+            return $this->file_url;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -89,9 +94,9 @@ class EWPU_Uploader {
     public function hasError(): bool
     {
         if(!$this->error){
-            return true;
-        }else{
             return false;
+        }else{
+            return true;
         }
     }
 

@@ -58,13 +58,6 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
 	        // Include the autoloader that we can dynamically include the rest of the classes.
 	        require_once EWPU_DIR. '/vendor/autoload.php';
 
-	        // include_once( "includes/interfaces/repository/file-handlers/class-ewpu-read-file-interface.php" );
-	        // include_once( "includes/interfaces/repository/file-handlers/class-ewpu-write-file-interface.php" );
-	        // include_once( "includes/repository/file-handlers/class-ewpu-file-handler.php" );
-	        // include_once( "includes/repository/class-ewpu-request-handler.php" );
-            // include_once( "includes/class-ewpu-notice-template.php" );
-            // include_once( "includes/repository/file-handlers/class-ewpu-csv-handler.php" );
-            // include_once( "includes/repository/file-handlers/class-ewpu-add-row-csv.php" );
             include_once("includes/functions/form-functions.php");
             include_once("includes/functions/wp_functions.php");
             include_once("includes/functions/functions-admin.php");

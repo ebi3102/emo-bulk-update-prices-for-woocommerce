@@ -1,4 +1,4 @@
-=== Emo Woocommerce Update Prices ===<br/>
+=== Emo Woo Update Prices ===<br/>
 
 Contributors: (ebi3102)
 Tags: woocommerce, woocommerce add-on, update price, bulk update prices

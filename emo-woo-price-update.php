@@ -1,7 +1,7 @@
 <?php
 /**
  * @package EWPU
- * Plugin Name: Emo Woocommerce Update Prices
+ * Plugin Name: Emo Woo Update Prices
  * Plugin URI:
  * Description: EWPU is a bulk price updater plugin specially made for WooCommerce products
  * Version: 1.1.1

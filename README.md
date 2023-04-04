@@ -1,4 +1,4 @@
-=== Emo Woocommerce Update Prices ===<br/>
+=== Emo Woo Update Prices ===<br/>
 
 Welcome to the Emo Woo Price Update repository on GitHub. You can find all versions that developed in this repository and also in develop branch there are the unstable version of plugin
 

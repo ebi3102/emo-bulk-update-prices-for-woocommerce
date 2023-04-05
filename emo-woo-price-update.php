@@ -1,9 +1,9 @@
 <?php
 /**
  * @package EWPU
- * Plugin Name: Emo Woo Update Prices
+ * Plugin Name: Emo Bulk Update Prices for WooCommerce
  * Plugin URI:
- * Description: Emo Woo Update Prices is a bulk price updater plugin specially made for WooCommerce products
+ * Description: Emo Bulk Update Prices for WooCommerce is a bulk price updater plugin specially made for WooCommerce products
  * Version: 1.1.1
  * Author: Ebrahim Moeini
  * Author URI: https://emoeini.com
@@ -84,7 +84,7 @@ if ( ! function_exists( 'emo_ewpu_notice_wc' ) ) {
 	function emo_ewpu_notice_wc() {
 		?>
         <div class="error">
-            <p><strong>Emo Woocommerce Update Prices</strong> requires WooCommerce version 3.0 or greater.</p>
+            <p><strong>Emo Bulk Update Prices for WooCommerce</strong> requires WooCommerce version 3.0 or greater.</p>
         </div>
 		<?php
 	}
@@ -94,7 +94,7 @@ if ( ! function_exists( 'emo_ewpu_notice_faulty' ) ) {
 	function emo_ewpu_notice_faulty() {
 		?>
         <div class="error">
-            <p>Seems there is an error in installation of <strong>Emo Woocommerce Update Prices</strong>. Please
+            <p>Seems there is an error in installation of <strong>Emo Bulk Update Prices for WooCommerce</strong>. Please
                 delete the plugin an install it again.</p>
         </div>
 		<?php

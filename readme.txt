@@ -1,4 +1,4 @@
-=== Emo Woo Update Prices ===<br/>
+=== Emo Bulk Update Prices for WooCommerce ===<br/>
 
 Contributors: (ebi3102)
 Tags: woocommerce, woocommerce add-on, update price, bulk update prices
@@ -10,8 +10,8 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
-Emo Woocommerce Update Prices  is WordPress plugin that helps to update the prices of woocommerce products in bulk. Emo Woocommerce Update Prices  is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
-Emo Woocommerce Update Prices  is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+Emo Bulk Update Prices for WooCommerce  is WordPress plugin that helps to update the prices of woocommerce products in bulk. Emo Bulk Update Prices for WooCommerce  is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+Emo Bulk Update Prices for WooCommerce  is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 
 Tags: woocommerce, woocommerce add-on, update price, bulk update prices
@@ -28,7 +28,7 @@ Stable tag: 5.8.0
 == Installation==
 
 This section describes how to install the plugin and get it working. e.g.
-1. Upload `emo-woo-price-update` directory to the `/wp-content/plugins/` directory.
+1. Upload ` emo-bulk-update-prices-for-woocommerce` directory to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress. </li>
 3. In admin area from side menu click on `Prices management` to see other menus for different updating ways. </li>
 

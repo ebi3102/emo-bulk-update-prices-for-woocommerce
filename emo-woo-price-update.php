@@ -7,7 +7,8 @@
  * Version: 1.1.1
  * Author: Ebrahim Moeini
  * Author URI: https://emoeini.com
- * License:
+ * License: GPLv3
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: emo_ewpu
  * Domain Path: /languages
  **/

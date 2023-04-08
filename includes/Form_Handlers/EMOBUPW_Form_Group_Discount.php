@@ -3,7 +3,7 @@
 namespace EMO_BUPW\Form_Handlers;
 
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Field_Setter;
-use  EMO_BUPW\Form_Handlers\EWPU_Form_Submit;
+use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Submit;
 use  EMO_BUPW\Form_Handlers\EWPU_Form_Handler;
 use EMO_BUPW\Repository\EWPU_DB_Get_Related_Object;
 use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
@@ -11,7 +11,7 @@ use EMO_BUPW\Repository\EWPU_Request_Handler;
 use EMO_BUPW\Repository\File_Handlers\EWPU_Csv_Handler;
 use EMO_BUPW\Utils\EWPU_Date_Generator;
 
-class EMOBUPW_Form_Group_Discount implements EMO_BUPW_Form_Field_Setter,EWPU_Form_Submit
+class EMOBUPW_Form_Group_Discount implements EMO_BUPW_Form_Field_Setter,EMO_BUPW_Form_Submit
 {
     private $cat_id;
 	private $rate_type;

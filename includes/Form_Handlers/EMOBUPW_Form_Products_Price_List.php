@@ -8,7 +8,7 @@ use EMO_BUPW\Repository\File_Handlers\EWPU_Csv_Handler;
 use EMO_BUPW\Repository\File_Handlers\EWPU_Products_Price_List_Creator;
 use EMO_BUPW\Repository\EWPU_DB_Get_All_Products_ID;
 
-class EWPU_Form_Products_Price_List implements EWPU_Form_Submit {
+class EMOBUPW_Form_Products_Price_List implements EMO_BUPW_Form_Submit {
 
 	use  EWPU_Form_Handler;
 

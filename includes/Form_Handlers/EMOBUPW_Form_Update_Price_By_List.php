@@ -7,7 +7,7 @@ use EMO_BUPW\Repository\EWPU_Request_Handler;
 use EMO_BUPW\Repository\EWPU_Uploader;
 use EMO_BUPW\Repository\File_Handlers\EWPU_Csv_Handler;
 
-class EMOBUPW_Form_Update_Price_By_List implements EMO_BUPW_Form_Field_Setter, EWPU_Form_Submit {
+class EMOBUPW_Form_Update_Price_By_List implements EMO_BUPW_Form_Field_Setter, EMO_BUPW_Form_Submit {
     private $file;
     private $filePath;
     private $fileUrl;

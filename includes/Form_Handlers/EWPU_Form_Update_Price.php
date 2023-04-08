@@ -75,7 +75,7 @@ class EWPU_Form_Update_Price implements EWPU_Form_Field_Setter,EWPU_Form_Submit
 					$variationsPrices = $_product->get_variation_prices();
 					$vRegularPrices = $variationsPrices['regular_price']; //array
 					foreach($vRegularPrices as $vID=>$vRegularPrice){
-						$newRegularPrice = emo_ewpu_change_price($this->rate_type, $this->change_type, $vRegularPrice, $this->change_rate);
+						$newRegularPrice = emo_bupw_change_price($this->rate_type, $this->change_type, $vRegularPrice, $this->change_rate);
 						$variation = wc_get_product_object( 'variation', $vID );
 						//set...
 						$variation->set_props(
@@ -91,7 +91,7 @@ class EWPU_Form_Update_Price implements EWPU_Form_Field_Setter,EWPU_Form_Submit
 					if($this->activeSalePrice){
 						$vSalerPrices = $variationsPrices['sale_price']; //array
 						foreach($vSalerPrices as $vID=>$vSalerPrice){
-							$newSalePrice = emo_ewpu_change_price($this->rate_type, $this->change_type, $vSalerPrice, $this->change_rate);
+							$newSalePrice = emo_bupw_change_price($this->rate_type, $this->change_type, $vSalerPrice, $this->change_rate);
 							$variation = wc_get_product_object( 'variation', $vID );
 							//set...
 							$variation->set_props(
@@ -107,7 +107,7 @@ class EWPU_Form_Update_Price implements EWPU_Form_Field_Setter,EWPU_Form_Submit
 					}
 				}elseif($_product->get_type() == 'simple'){
 					$regularPrice = $_product->get_regular_price();
-					$newRegularPrice = emo_ewpu_change_price($this->rate_type, $this->change_type, $regularPrice, $this->change_rate);
+					$newRegularPrice = emo_bupw_change_price($this->rate_type, $this->change_type, $regularPrice, $this->change_rate);
 					//set...
 					$productObject = wc_get_product_object( 'simple', $product );
 					$productObject->set_props(
@@ -121,7 +121,7 @@ class EWPU_Form_Update_Price implements EWPU_Form_Field_Setter,EWPU_Form_Submit
 
 					if($this->activeSalePrice){
 						$salePrice = $_product->get_sale_price();
-						$newSalePrice = emo_ewpu_change_price($this->rate_type, $this->change_type, $salePrice, $this->change_rate);
+						$newSalePrice = emo_bupw_change_price($this->rate_type, $this->change_type, $salePrice, $this->change_rate);
 						//set...
 						$productObject = wc_get_product_object( 'simple', $product );
 						$productObject->set_props(

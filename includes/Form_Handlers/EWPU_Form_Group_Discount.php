@@ -92,7 +92,7 @@ class EWPU_Form_Group_Discount implements EWPU_Form_Field_Setter,EWPU_Form_Submi
 			    $variationsPrices = $_product->get_variation_prices();
 			    $vRegularPrices = $variationsPrices['regular_price']; //array
 			    foreach($vRegularPrices as $vID=>$vRegularPrice){
-				    $newSalePrice = emo_ewpu_change_price($this->rate_type, 'decrease', $vRegularPrice, $this->change_rate);
+				    $newSalePrice = emo_bupw_change_price($this->rate_type, 'decrease', $vRegularPrice, $this->change_rate);
 				    $variation = wc_get_product_object( 'variation', $vID );
 				    //set...
 				    $variation->set_props(
@@ -109,7 +109,7 @@ class EWPU_Form_Group_Discount implements EWPU_Form_Field_Setter,EWPU_Form_Submi
 
 		    }elseif($_product->get_type() == 'simple'){
 			    $regularPrice = $_product->get_regular_price();
-			    $newSalePrice = emo_ewpu_change_price($this->rate_type, 'decrease', $regularPrice, $this->change_rate);
+			    $newSalePrice = emo_bupw_change_price($this->rate_type, 'decrease', $regularPrice, $this->change_rate);
 			    //set...
 			    $productObject = wc_get_product_object( 'simple', $product );
 			    $productObject->set_props(

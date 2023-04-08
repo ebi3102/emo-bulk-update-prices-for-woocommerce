@@ -50,10 +50,10 @@ class EWPU_Form_Update_Price_By_List implements EWPU_Form_Field_Setter, EWPU_For
                     $salePrice_new = (is_numeric($data[4]))? $data[4]:'';
                     $productType = ($data[5]== 'variation' || $data[5] == 'simple')?$data[5]:'';
                     if($regularPrice_new !='' && $productType != ''){
-                        emo_ewpu_set_new_price($productID, $productType, 'regular_price' ,$regularPrice_new);
+                        emo_bupw_set_new_price($productID, $productType, 'regular_price' ,$regularPrice_new);
                     }
                     if($salePrice_new !='' && $productType != ''){
-                        emo_ewpu_set_new_price($productID, $productType, 'sale_price' ,$salePrice_new);
+                        emo_bupw_set_new_price($productID, $productType, 'sale_price' ,$salePrice_new);
                     }
                 }
                 $row++;

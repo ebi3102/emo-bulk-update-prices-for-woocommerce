@@ -69,7 +69,7 @@ class EWPU_Form_Group_Discount implements EWPU_Form_Field_Setter,EWPU_Form_Submi
 
 	    $csvFile = new EWPU_Csv_Handler($this->filePath, 'w');
 	    if(!$csvFile){
-		    return ['error'=> EWPU_Pass_Error_Msg::error_object('unable',  __( "Unable to open file!", "emo_ewpu" )) ];
+		    return ['error'=> EWPU_Pass_Error_Msg::error_object('unable',  __( "Unable to open file!", "emo-bulk-update-prices-for-woocommerce" )) ];
 	    }
 	    $writeCSV = array($args['csv_fields']);
 
@@ -83,7 +83,7 @@ class EWPU_Form_Group_Discount implements EWPU_Form_Field_Setter,EWPU_Form_Submi
 		    }else{
 			    return ['error'=> EWPU_Pass_Error_Msg::error_object(
 				    'returnedProducts',
-				    __( "The selected product category has not contain any products", "emo_ewpu" )) ];
+				    __( "The selected product category has not contain any products", "emo-bulk-update-prices-for-woocommerce" )) ];
 		    }
 	    }
 	    foreach($products as $product){

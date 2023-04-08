@@ -33,7 +33,7 @@ class EWPU_Form_Products_Price_List implements EWPU_Form_Submit {
         if(count($productsObj)<= 0){
             return ['error'=> EWPU_Pass_Error_Msg::error_object(
                 'returnedProducts',
-                __( "The selected product category has not contain any products", "emo_ewpu" )) ];
+                __( "The selected product category has not contain any products", "emo-bulk-update-prices-for-woocommerce" )) ];
         }
 		$productsCreator = new EWPU_Products_Price_List_Creator($file);
 		$productsCreator->setHeader($args['csv_fields']);

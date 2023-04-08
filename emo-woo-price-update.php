@@ -8,7 +8,7 @@
  * Author: Ebrahim Moeini
  * Author URI: https://emoeini.com
  * License:
- * Text Domain: emo_ewpu
+ * Text Domain: emo-bulk-update-prices-for-woocommerce
  * Domain Path: /languages
  **/
 //namespace EMO_Woo_Price_Update;
@@ -73,7 +73,7 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
         add_action( 'init', 'emo_ewpu_load_textdomain' );
 
         function emo_ewpu_load_textdomain() {
-            load_plugin_textdomain( 'emo_ewpu', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+            load_plugin_textdomain( 'emo-bulk-update-prices-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
         }
     }
 } else {

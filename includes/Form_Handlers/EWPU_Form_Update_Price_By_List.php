@@ -59,14 +59,14 @@ class EWPU_Form_Update_Price_By_List implements EWPU_Form_Field_Setter, EWPU_For
                 $row++;
             }
             $handle->closeFile();
-            $response= __('Your prices are updated successfully.', 'emo_ewpu' );
+            $response= __('Your prices are updated successfully.', 'emo-bulk-update-prices-for-woocommerce' );
             return [
                 'response'=>$response,
                 'fileName' => $uploadedFile->getFileName(),
                 'fileUrl' => $uploadedFile->getFileUrl()
                 ];
         }else{
-            $errors = EWPU_Pass_Error_Msg::error_object( 'invalid', __( "The plugin is not able to open the uploaded file ", "emo_ewpu" ) );
+            $errors = EWPU_Pass_Error_Msg::error_object( 'invalid', __( "The plugin is not able to open the uploaded file ", "emo-bulk-update-prices-for-woocommerce" ) );
             return ['error'=>$errors];
         }
 	}

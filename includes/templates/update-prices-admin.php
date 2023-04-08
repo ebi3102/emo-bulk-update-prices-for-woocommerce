@@ -5,13 +5,13 @@
  * ========================
  * Admin Update Prices PAGE
  * ========================
- * Text Domain: emo_ewpu
+ * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
 
  use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
  use EmoWooPriceUpdate\EWPU_Notice_Template;
 ?>
-<h1><?php echo __( 'Update prices by uploading excel file', 'emo_ewpu' ) ?></h1>
+<h1><?php echo __( 'Update prices by uploading excel file', 'emo-bulk-update-prices-for-woocommerce' ) ?></h1>
 <?php
 
 //Download Current prices
@@ -30,10 +30,10 @@ if(EWPU_Request_Handler::get_POST('btnSubmit')){
                 <form method="post">
                     <div class="form-wrap">
                         <div style="width:fit-content; margin: 50px auto;">
-                            <h3><?php echo __( 'Create product price list', 'emo_ewpu' ) ?></h3>
+                            <h3><?php echo __( 'Create product price list', 'emo-bulk-update-prices-for-woocommerce' ) ?></h3>
                             <?php // nounce ?>
                             <?php wp_nonce_field( 'emo_ewpu_action', 'emo_ewpu_nonce_field' ); ?>
-                            <?php submit_button( __('Create', 'emo_ewpu'), 'primary', 'btnSubmit');  ?>
+                            <?php submit_button( __('Create', 'emo-bulk-update-prices-for-woocommerce'), 'primary', 'btnSubmit');  ?>
                         </div>
                     </div>
                 </form>
@@ -53,19 +53,19 @@ if(EWPU_Request_Handler::get_POST('uploadSubmit') && EWPU_Request_Handler::get_F
             <div class="col-wrap">
                 <div class="form-wrap">
                     <div style="width:fit-content; margin: 50px auto;">
-                        <h3><?php echo __( 'Upload products list', 'emo_ewpu' ) ?></h3>
+                        <h3><?php echo __( 'Upload products list', 'emo-bulk-update-prices-for-woocommerce' ) ?></h3>
                         <form action="" method="post" enctype="multipart/form-data">
                             <div>
-                                <label for="price_list"><?php echo __( 'Upload new price list', 'emo_ewpu' ) ?></label>
+                                <label for="price_list"><?php echo __( 'Upload new price list', 'emo-bulk-update-prices-for-woocommerce' ) ?></label>
                                 <input id="price_list" type="file" name="price_list">
                             </div>
                             <p>
-                                <description><?php echo __( 'It should be a csv file.<br>For getting the sample template you can download and use product list file', 'emo_ewpu' ) ?></description>
+                                <description><?php echo __( 'It should be a csv file.<br>For getting the sample template you can download and use product list file', 'emo-bulk-update-prices-for-woocommerce' ) ?></description>
                             </p>
                             <?php // nounce ?>
                             <?php wp_nonce_field( 'emo_ewpu_action', 'emo_ewpu_nonce_field' ); ?>
                             <div>
-                                <input type="submit" name="uploadSubmit" class="button button-primary" value="<?php echo __( 'Submit', 'emo_ewpu' ) ?>">
+                                <input type="submit" name="uploadSubmit" class="button button-primary" value="<?php echo __( 'Submit', 'emo-bulk-update-prices-for-woocommerce' ) ?>">
                             </div>
                         </form>
 
@@ -93,7 +93,7 @@ if(EWPU_Request_Handler::get_POST('uploadSubmit') && EWPU_Request_Handler::get_F
         if(@$result['error']){
             echo EWPU_Notice_Template::warning ($result['error']->get_error_message());
         }elseif(@$result['filePath']){
-            $massage = __('You can download the list of price products from ', 'emo_ewpu');
+            $massage = __('You can download the list of price products from ', 'emo-bulk-update-prices-for-woocommerce');
             $massage .= "<a href='".$result['filePath']."'>".$result['fileName']."</a>";
             echo EWPU_Notice_Template::success ($massage);
         }

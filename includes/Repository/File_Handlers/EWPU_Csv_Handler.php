@@ -4,7 +4,7 @@
  * ========================
  * CSV CREATOR
  * ========================
- * Text Domain: emo_ewpu
+ * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
 
 /**

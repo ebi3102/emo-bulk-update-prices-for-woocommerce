@@ -48,7 +48,7 @@ class EWPU_Form_Error {
 		return (new self)->error_inspection(
 			$conditioner,
 			'submitError',
-			__( "There are an error while you update", "emo_ewpu" )
+			__( "There are an error while you update", "emo-bulk-update-prices-for-woocommerce" )
 		);
 	}
 
@@ -65,7 +65,7 @@ class EWPU_Form_Error {
 		if($nonce || $nonceVerification){
 			$error = false;
 		}else{
-			$error = EWPU_Pass_Error_Msg::error_object('nonce', __( "Sorry, your nonce did not verify.", "emo_ewpu" ));
+			$error = EWPU_Pass_Error_Msg::error_object('nonce', __( "Sorry, your nonce did not verify.", "emo-bulk-update-prices-for-woocommerce" ));
 		}
 		return $error;
 	}
@@ -83,7 +83,7 @@ class EWPU_Form_Error {
 		return (new self)->error_inspection(
 			$conditioner,
 			'requirements',
-			__( "There are some required fields that not filled", "emo_ewpu" )
+			__( "There are some required fields that not filled", "emo-bulk-update-prices-for-woocommerce" )
 		);
 	}
 

@@ -31,10 +31,10 @@ class EWPU_Uploader {
 
     private function inspection(){
         if(in_array(strtolower(pathinfo($this->filePath,PATHINFO_EXTENSION)),$this->allowedExts)=== false){
-            $this->error= EWPU_Pass_Error_Msg::error_object( 'file-type', __( "The extension of uploaded file is not allowed, please choose a csv file.", "emo_ewpu" ) );
+            $this->error= EWPU_Pass_Error_Msg::error_object( 'file-type', __( "The extension of uploaded file is not allowed, please choose a csv file.", "emo-bulk-update-prices-for-woocommerce" ) );
         }
         if($this->file['size'] > $this->allowedsize){
-            $this->error= EWPU_Pass_Error_Msg::error_object( 'file-size', __( "File size is more than allowed size.", "emo_ewpu" ) );
+            $this->error= EWPU_Pass_Error_Msg::error_object( 'file-size', __( "File size is more than allowed size.", "emo-bulk-update-prices-for-woocommerce" ) );
         }
     }
 
@@ -52,7 +52,7 @@ class EWPU_Uploader {
 		if(move_uploaded_file($this->file['tmp_name'],$this->filePath)){
 			$this->file_url = $this->upload_uri.$this->fileName;
 		}else{
-            $this->error = EWPU_Pass_Error_Msg::error_object( 'unable', __( "Unable to upload file", "emo_ewpu" ) );
+            $this->error = EWPU_Pass_Error_Msg::error_object( 'unable', __( "Unable to upload file", "emo-bulk-update-prices-for-woocommerce" ) );
         }
 	}
 

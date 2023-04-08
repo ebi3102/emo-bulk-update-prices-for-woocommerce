@@ -4,7 +4,7 @@
  * ========================
  * Notice Template
  * ========================
- * Text Domain: emo_ewpu
+ * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
 
  namespace EmoWooPriceUpdate;
@@ -25,7 +25,7 @@ class EWPU_Notice_Template
         if(self::$is_dismissible){
             $is_dismissible = 'is-dismissible';
             $closeButton = "<button type='button' class='notice-dismiss'><span class='screen-reader-text'>".
-            __('Dismiss this warning', 'emo_ewpu')."</span></button>";
+            __('Dismiss this warning', 'emo-bulk-update-prices-for-woocommerce')."</span></button>";
         }else{
             $is_dismissible = '';
             $closeButton = '';

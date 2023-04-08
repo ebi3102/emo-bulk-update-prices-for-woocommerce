@@ -4,7 +4,7 @@
  * ========================
  * CSV Row CREATOR
  * ========================
- * Text Domain: emo_ewpu
+ * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
 
  namespace EmoWooPriceUpdate\Repository\File_Handlers;

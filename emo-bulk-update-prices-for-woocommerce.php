@@ -27,11 +27,6 @@ define('EMO_BUPW_UPLOAD_DIR', $upload_base['basedir'] . '/emo_bupw/uploadedFiles
 define('EMO_BUPW_CREATED_URI', $upload_base['baseurl'] . '/emo_bupw/CreatedFiles/');
 define('EMO_BUPW_UPLOAD_URI', $upload_base['baseurl'] . '/emo_bupw/uploadedFiles/');
 
-// define date and time formats
-define('TIME_SEPARATOR' , '/');
-define('DATE_SEPARATOR', '-');
-define('DATAFORMAT', 'Y'.DATE_SEPARATOR.'m'.DATE_SEPARATOR.'d'.TIME_SEPARATOR.'h:i:s');
-
 if ( ! function_exists( 'emo_ewpu_init' ) ) {
 	add_action( 'plugins_loaded', 'emo_ewpu_init', 11 );
 

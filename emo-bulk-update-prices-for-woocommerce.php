@@ -27,12 +27,6 @@ define('EMO_BUPW_UPLOAD_DIR', $upload_base['basedir'] . '/emo_bupw/uploadedFiles
 define('EMO_BUPW_CREATED_URI', $upload_base['baseurl'] . '/emo_bupw/CreatedFiles/');
 define('EMO_BUPW_UPLOAD_URI', $upload_base['baseurl'] . '/emo_bupw/uploadedFiles/');
 
-// define option meta_keys
-define('REGULARMETAKEY', '_regular_price_history');
-define('SALEMETAKEY', '_sale_price_history');
-define('MAINVAR','_main_variation');
-define('FEATUREPRODUCT', '_feature_product_cat');
-
 // define date and time formats
 define('TIME_SEPARATOR' , '/');
 define('DATE_SEPARATOR', '-');

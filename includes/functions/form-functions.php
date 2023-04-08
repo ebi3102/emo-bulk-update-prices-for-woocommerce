@@ -6,7 +6,7 @@
  * ========================
  * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
-use EMO_BUPW\Form_Handlers\EMOBUPW_Form_Update_Price;
+use EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Update_Price;
 use EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Group_Discount;
 use EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Products_Price_List;
 use EMO_BUPW\Form_Handlers\EMOBUPW_Form_Update_Price_By_List;
@@ -44,7 +44,7 @@ if ( ! function_exists( 'emo_bupw_get_price_update_data' )) {
 				'new_price'
 			),
 		);
-		$formHandler = new EMOBUPW_Form_Update_Price();
+		$formHandler = new EMO_BUPW_Form_Update_Price();
 
 		return $formHandler->submit( $args );
 	}

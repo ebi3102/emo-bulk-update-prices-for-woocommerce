@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package EWPU
+ * @package EMO_BUPW
  * ========================
  * Admin Update Prices PAGE
  * ========================
@@ -18,7 +18,7 @@
 /* Extract all Poducts site */
 
 if(EWPU_Request_Handler::get_POST('btnSubmit')){
-    $result = emo_ewpu_get_product_list();
+    $result = emo_bupw_get_product_list();
 }
 
 ?>
@@ -32,7 +32,7 @@ if(EWPU_Request_Handler::get_POST('btnSubmit')){
                         <div style="width:fit-content; margin: 50px auto;">
                             <h3><?php echo __( 'Create product price list', 'emo-bulk-update-prices-for-woocommerce' ) ?></h3>
                             <?php // nounce ?>
-                            <?php wp_nonce_field( 'emo_ewpu_action', 'emo_ewpu_nonce_field' ); ?>
+                            <?php wp_nonce_field( 'emo_bupw_action', 'emo_bupw_nonce_field' ); ?>
                             <?php submit_button( __('Create', 'emo-bulk-update-prices-for-woocommerce'), 'primary', 'btnSubmit');  ?>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ if(EWPU_Request_Handler::get_POST('btnSubmit')){
 <?php
 
 if(EWPU_Request_Handler::get_POST('uploadSubmit') && EWPU_Request_Handler::get_FILE('price_list')){
-    $result = emo_ewpu_update_products_price_list();
+    $result = emo_bupw_update_products_price_list();
 }
 
 ?>
@@ -63,7 +63,7 @@ if(EWPU_Request_Handler::get_POST('uploadSubmit') && EWPU_Request_Handler::get_F
                                 <description><?php echo __( 'It should be a csv file.<br>For getting the sample template you can download and use product list file', 'emo-bulk-update-prices-for-woocommerce' ) ?></description>
                             </p>
                             <?php // nounce ?>
-                            <?php wp_nonce_field( 'emo_ewpu_action', 'emo_ewpu_nonce_field' ); ?>
+                            <?php wp_nonce_field( 'emo_bupw_action', 'emo_bupw_nonce_field' ); ?>
                             <div>
                                 <input type="submit" name="uploadSubmit" class="button button-primary" value="<?php echo __( 'Submit', 'emo-bulk-update-prices-for-woocommerce' ) ?>">
                             </div>

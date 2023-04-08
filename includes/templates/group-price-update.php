@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package EWPU
+ * @package EMO_BUPW
  * ========================
  * Admin Update Prices PAGE
  * ========================
- * Text Domain: emo_ewpu
+ * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
 
  use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
@@ -31,7 +31,7 @@ if( !empty($product_categories) ){
 }
 
 if(EWPU_Request_Handler::get_POST('btnSubmit')){
-    $result = emo_ewpu_get_price_update_data();
+    $result = emo_bupw_get_price_update_data();
 }
 
 
@@ -100,7 +100,7 @@ if(EWPU_Request_Handler::get_POST('btnSubmit')){
                             </label>
 
                             <?php // nounce ?>
-                            <?php wp_nonce_field( 'emo_ewpu_action', 'emo_ewpu_nonce_field' ); ?>
+                            <?php wp_nonce_field( 'emo_bupw_action', 'emo_bupw_nonce_field' ); ?>
                         </div>
 
                         <div style="padding-top: 20px;">

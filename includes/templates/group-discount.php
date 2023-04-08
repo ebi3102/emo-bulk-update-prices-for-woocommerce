@@ -22,7 +22,7 @@ if( !empty($product_categories) ){
 }
 
 if(EWPU_Request_Handler::get_POST('btnSubmit')){
-    $result = emo_ewpu_get_group_discount_data();
+    $result = emo_bupw_get_group_discount_data();
 }
 
 ?>
@@ -135,7 +135,7 @@ if(EWPU_Request_Handler::get_POST('btnSubmit')){
                                 </label>
 
                                 <?php // nounce ?>
-                                <?php wp_nonce_field( 'emo_ewpu_action', 'emo_ewpu_nonce_field' ); ?>
+                                <?php wp_nonce_field( 'emo_bupw_action', 'emo_bupw_nonce_field' ); ?>
                             </div>
                         </div>
                         <div style="padding-top: 20px;"><?php submit_button( __('Update', 'emo-bulk-update-prices-for-woocommerce'), 'primary', 'btnSubmit');  ?></div>

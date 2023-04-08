@@ -18,7 +18,7 @@
 /* Extract all Poducts site */
 
 if(EWPU_Request_Handler::get_POST('btnSubmit')){
-    $result = emo_ewpu_get_product_list();
+    $result = emo_bupw_get_product_list();
 }
 
 ?>
@@ -43,7 +43,7 @@ if(EWPU_Request_Handler::get_POST('btnSubmit')){
 <?php
 
 if(EWPU_Request_Handler::get_POST('uploadSubmit') && EWPU_Request_Handler::get_FILE('price_list')){
-    $result = emo_ewpu_update_products_price_list();
+    $result = emo_bupw_update_products_price_list();
 }
 
 ?>

@@ -22,7 +22,7 @@ if( !empty($product_categories) ){
 }
 
 if(EWPU_Request_Handler::get_POST('btnSubmit')){
-    $result = emo_ewpu_get_group_discount_data();
+    $result = emo_bupw_get_group_discount_data();
 }
 
 ?>

@@ -22,10 +22,10 @@ $upload_base = wp_upload_dir();
 // define URIs and directories
 define('EMO_BUPW_URI', plugin_dir_url( __FILE__ ));
 define('EMO_BUPW_DIR', __DIR__ );
-define('EWPU_CREATED_DIR', $upload_base['basedir'].'/emo_bupw/CreatedFiles/');
-define('EWOU_UPLOAD_DIR', $upload_base['basedir'].'/emo_bupw/uploadedFiles/');
-define('EWPU_CREATED_URI', $upload_base['baseurl'].'/emo_bupw/CreatedFiles/');
-define('EWOU_UPLOAD_URI', $upload_base['baseurl'].'/emo_bupw/uploadedFiles/');
+define('EMO_BUPW_CREATED_DIR', $upload_base['basedir'] . '/emo_bupw/CreatedFiles/');
+define('EMO_BUPW_UPLOAD_DIR', $upload_base['basedir'] . '/emo_bupw/uploadedFiles/');
+define('EMO_BUPW_CREATED_URI', $upload_base['baseurl'] . '/emo_bupw/CreatedFiles/');
+define('EMO_BUPW_UPLOAD_URI', $upload_base['baseurl'] . '/emo_bupw/uploadedFiles/');
 
 // define option meta_keys
 define('REGULARMETAKEY', '_regular_price_history');
@@ -49,10 +49,10 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
 		}
 
         //Check and create essential directories 
-        if (!file_exists(EWPU_CREATED_DIR))
-            mkdir(EWPU_CREATED_DIR, 0777, true);
-        if (!file_exists(EWOU_UPLOAD_DIR))
-            mkdir(EWOU_UPLOAD_DIR, 0777, true);
+        if (!file_exists(EMO_BUPW_CREATED_DIR))
+            mkdir(EMO_BUPW_CREATED_DIR, 0777, true);
+        if (!file_exists(EMO_BUPW_UPLOAD_DIR))
+            mkdir(EMO_BUPW_UPLOAD_DIR, 0777, true);
         
 
         if(is_admin()){

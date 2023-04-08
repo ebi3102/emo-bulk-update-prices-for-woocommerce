@@ -10,7 +10,7 @@
  namespace EmoWooPriceUpdate\Repository\File_Handlers;
 class EWPU_Add_Row_Csv
 {
-    private static $createDirectory = EWPU_CREATED_DIR;
+    private static $createDirectory = EMO_BUPW_CREATED_DIR;
     private static $handler = null;
     private static $instance = null;
 

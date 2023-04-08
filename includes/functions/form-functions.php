@@ -33,8 +33,8 @@ function emo_ewpu_get_price_update_data(): array
 		),
 		'file_info'=> array(
 			'fileName'=> "ChangePrice_".date("Y-m-d_h-i-s").".csv",
-			'fileUrl'=> EWPU_CREATED_URI,
-			'fileDir'=> EWPU_CREATED_DIR
+			'fileUrl'=> EMO_BUPW_CREATED_URI,
+			'fileDir'=> EMO_BUPW_CREATED_DIR
 		),
 		'csv_fields'=> array('parent_id', 'product_id', 'product_name', 'price_type', 'old_price', 'new_price'),
 	);
@@ -67,8 +67,8 @@ function emo_ewpu_get_group_discount_data(): array
 		),
 		'file_info'=> array(
 			'fileName'=> "Discount_".date("Y-m-d_h-i-s").".csv",
-			'fileUrl'=> EWPU_CREATED_URI,
-			'fileDir'=> EWPU_CREATED_DIR
+			'fileUrl'=> EMO_BUPW_CREATED_URI,
+			'fileDir'=> EMO_BUPW_CREATED_DIR
 		),
 		'csv_fields'=> array('parent_id', 'product_id', 'product_name', 'Regular_price', 'Sale_price', 'Start_time', 'End_time'),
 	);
@@ -91,8 +91,8 @@ function emo_ewpu_get_product_list(): array
 		),
 		'file_info'=> array(
 			'fileName'=> "products.csv",
-			'fileUrl'=> EWPU_CREATED_URI,
-			'fileDir'=> EWPU_CREATED_DIR
+			'fileUrl'=> EMO_BUPW_CREATED_URI,
+			'fileDir'=> EMO_BUPW_CREATED_DIR
 		),
 		'csv_fields'=> array('Product ID', 'SKU', 'Product Title', 'Regular Price', 'Sale Price', 'Type'),
 	);
@@ -118,8 +118,8 @@ function emo_ewpu_update_products_price_list():array
             'file' => 'price_list'
         ),
         'file_info'=> array(
-            'fileUrl'=> EWOU_UPLOAD_URI,
-            'fileDir'=> EWOU_UPLOAD_DIR,
+            'fileUrl'=> EMO_BUPW_UPLOAD_URI,
+            'fileDir'=> EMO_BUPW_UPLOAD_DIR,
             'extensions'=> ['csv'],
             'max-size' => 2097152
         )

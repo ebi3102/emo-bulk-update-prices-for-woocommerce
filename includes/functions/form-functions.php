@@ -6,10 +6,10 @@
  * ========================
  * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
-use EMO_BUPW\Form_Handlers\EWPU_Form_Update_Price;
-use EMO_BUPW\Form_Handlers\EWPU_Form_Group_Discount;
+use EMO_BUPW\Form_Handlers\EMOBUPW_Form_Update_Price;
+use EMO_BUPW\Form_Handlers\EMOBUPW_Form_Group_Discount;
 use EMO_BUPW\Form_Handlers\EWPU_Form_Products_Price_List;
-use EMO_BUPW\Form_Handlers\EWPU_Form_Update_Price_By_List;
+use EMO_BUPW\Form_Handlers\EMOBUPW_Form_Update_Price_By_List;
 
 /**
  * Handle group price update form
@@ -44,7 +44,7 @@ if ( ! function_exists( 'emo_bupw_get_price_update_data' )) {
 				'new_price'
 			),
 		);
-		$formHandler = new EWPU_Form_Update_Price();
+		$formHandler = new EMOBUPW_Form_Update_Price();
 
 		return $formHandler->submit( $args );
 	}
@@ -89,7 +89,7 @@ if ( ! function_exists( 'emo_bupw_get_group_discount_data' )) {
 			),
 		);
 
-		$formHandler = new EWPU_Form_Group_Discount();
+		$formHandler = new EMOBUPW_Form_Group_Discount();
 
 		return $formHandler->submit( $args );
 	}
@@ -143,7 +143,7 @@ if ( ! function_exists( 'emo_bupw_update_products_price_list' )) {
 				'max-size'   => 2097152
 			)
 		);
-		$formHandler = new EWPU_Form_Update_Price_By_List();
+		$formHandler = new EMOBUPW_Form_Update_Price_By_List();
 
 		return $formHandler->submit( $args );
 	}

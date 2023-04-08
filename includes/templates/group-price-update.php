@@ -100,7 +100,7 @@ if(EWPU_Request_Handler::get_POST('btnSubmit')){
                             </label>
 
                             <?php // nounce ?>
-                            <?php wp_nonce_field( 'emo_ewpu_action', 'emo_ewpu_nonce_field' ); ?>
+                            <?php wp_nonce_field( 'emo_bupw_action', 'emo_bupw_nonce_field' ); ?>
                         </div>
 
                         <div style="padding-top: 20px;">

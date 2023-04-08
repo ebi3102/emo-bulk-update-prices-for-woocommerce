@@ -1,10 +1,10 @@
 <?php
 /**
- * @package EWPU
+ * @package EMO_BUPW
  * ========================
  * Forms Functions
  * ========================
- * Text Domain: emo_ewpu
+ * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
 use EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Update_Price;
 use EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Group_Discount;
@@ -20,7 +20,7 @@ if ( ! function_exists( 'emo_bupw_get_price_update_data' )) {
 		$args        = array(
 			'checker_items' => array(
 				'submit_status' => 'btnSubmit',
-				'security'      => array( 'emo_ewpu_nonce_field', 'emo_ewpu_action' ),
+				'security'      => array( 'emo_bupw_nonce_field', 'emo_bupw_action' ),
 				'requirements'  => array( 'cat_id', 'change_rate' )
 			),
 			'fields'        => array(
@@ -59,7 +59,7 @@ if ( ! function_exists( 'emo_bupw_get_group_discount_data' )) {
 		$args = array(
 			'checker_items' => array(
 				'submit_status' => 'btnSubmit',
-				'security'      => array( 'emo_ewpu_nonce_field', 'emo_ewpu_action' ),
+				'security'      => array( 'emo_bupw_nonce_field', 'emo_bupw_action' ),
 				'requirements'  => array( 'cat_id', 'change_rate' )
 			),
 			'fields'        => array(
@@ -104,7 +104,7 @@ if ( ! function_exists( 'emo_bupw_get_product_list' )) {
 		$args = array(
 			'checker_items' => array(
 				'submit_status' => 'btnSubmit',
-				'security'      => array( 'emo_ewpu_nonce_field', 'emo_ewpu_action' ),
+				'security'      => array( 'emo_bupw_nonce_field', 'emo_bupw_action' ),
 				'requirements'  => array()
 			),
 			'file_info'     => array(
@@ -130,7 +130,7 @@ if ( ! function_exists( 'emo_bupw_update_products_price_list' )) {
 		$args        = array(
 			'checker_items' => array(
 				'submit_status' => 'uploadSubmit',
-				'security'      => array( 'emo_ewpu_nonce_field', 'emo_ewpu_action' ),
+				'security'      => array( 'emo_bupw_nonce_field', 'emo_bupw_action' ),
 				'requirements'  => array()
 			),
 			'fields'        => array(

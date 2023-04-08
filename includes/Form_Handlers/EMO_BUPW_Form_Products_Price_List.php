@@ -11,7 +11,7 @@ use EMO_BUPW\Repository\EWPU_DB_Get_All_Products_ID;
 if (!class_exists('EMO_BUPW_Form_Products_Price_List')) {
 	class EMO_BUPW_Form_Products_Price_List implements EMO_BUPW_Form_Submit {
 
-		use  EWPU_Form_Handler;
+		use  EMO_BUPW_Form_Handler;
 
 		private function file_info( array $info ) {
 			$this->fileName = $info['fileName'];

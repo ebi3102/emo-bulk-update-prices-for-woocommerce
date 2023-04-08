@@ -12,7 +12,7 @@ if (!class_exists('EMO_BUPW_Form_Update_Price_By_List')) {
 		private $filePath;
 		private $fileUrl;
 
-		use  EWPU_Form_Handler;
+		use  EMO_BUPW_Form_Handler;
 
 		/**
 		 * @inheritDoc

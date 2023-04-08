@@ -4,7 +4,7 @@ namespace EMO_BUPW\Form_Handlers;
 
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Field_Setter;
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Submit;
-use  EMO_BUPW\Form_Handlers\EWPU_Form_Handler;
+use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Handler;
 use EMO_BUPW\Repository\EWPU_DB_Get_Related_Object;
 use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
 use EMO_BUPW\Repository\EWPU_Request_Handler;
@@ -24,7 +24,7 @@ if (!class_exists('EMO_BUPW_Form_Group_Discount')) {
 		private $startDay;
 
 
-		use EWPU_Form_Handler;
+		use EMO_BUPW_Form_Handler;
 
 		/**
 		 * Set all the fields of form

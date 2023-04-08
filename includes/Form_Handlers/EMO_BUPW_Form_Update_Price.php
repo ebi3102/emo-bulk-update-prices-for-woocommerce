@@ -2,7 +2,7 @@
 namespace EMO_BUPW\Form_Handlers;
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Field_Setter;
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Submit;
-use  EMO_BUPW\Form_Handlers\EWPU_Form_Handler;
+use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Handler;
 use EMO_BUPW\Repository\EWPU_Request_Handler;
 use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
 use EMO_BUPW\Repository\File_Handlers\EWPU_Csv_Handler;
@@ -19,7 +19,7 @@ if (!class_exists('EMO_BUPW_Form_Update_Price')) {
 		private $filePath;
 		private $fileUrl;
 
-		use  EWPU_Form_Handler;
+		use  EMO_BUPW_Form_Handler;
 
 		/**
 		 * Set all the fields of form

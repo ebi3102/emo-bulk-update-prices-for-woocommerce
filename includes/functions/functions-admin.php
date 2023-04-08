@@ -15,7 +15,7 @@ if ( ! function_exists( 'emo_bupw_add_admin_page' )) {
 		add_menu_page(
 			__( 'Update whole prices', 'emo-bulk-update-prices-for-woocommerce' ),
 			__( 'Prices management', 'emo-bulk-update-prices-for-woocommerce' ),
-			'manage_options', 'emo_ewpu_slug',
+			'manage_options', 'emo_bupw_slug',
 			'emo_bupw_update_prices_create_page',
 			EMO_BUPW_URI . 'assets/img/logo-icon.png',
 			110
@@ -23,17 +23,17 @@ if ( ! function_exists( 'emo_bupw_add_admin_page' )) {
 
 		//Generate update prices by file page
 		add_submenu_page(
-			'emo_ewpu_slug',
+			'emo_bupw_slug',
 			__( 'Update whole prices', 'emo-bulk-update-prices-for-woocommerce' ),
 			__( 'Update whole prices', 'emo-bulk-update-prices-for-woocommerce' ),
 			'manage_options',
-			'emo_ewpu_slug',
+			'emo_bupw_slug',
 			'emo_bupw_update_prices_create_page'
 		);
 
 		//Generate group update prices
 		add_submenu_page(
-			'emo_ewpu_slug',
+			'emo_bupw_slug',
 			__( 'Group price update', 'emo-bulk-update-prices-for-woocommerce' ),
 			__( 'Group price update', 'emo-bulk-update-prices-for-woocommerce' ),
 			'manage_options',
@@ -43,7 +43,7 @@ if ( ! function_exists( 'emo_bupw_add_admin_page' )) {
 
 		//Generate group on-sale prices
 		add_submenu_page(
-			'emo_ewpu_slug',
+			'emo_bupw_slug',
 			__( 'Group discount', 'emo-bulk-update-prices-for-woocommerce' ),
 			__( 'Group discount', 'emo-bulk-update-prices-for-woocommerce' ),
 			'manage_options',

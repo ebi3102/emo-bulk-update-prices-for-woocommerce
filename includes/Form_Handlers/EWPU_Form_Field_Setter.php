@@ -1,6 +1,6 @@
 <?php
 
-namespace EmoWooPriceUpdate\Form_Handlers;
+namespace EMO_BUPW\Form_Handlers;
 
 interface EWPU_Form_Field_Setter {
 	/**

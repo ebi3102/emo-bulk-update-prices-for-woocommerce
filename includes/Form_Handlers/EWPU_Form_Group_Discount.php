@@ -1,15 +1,15 @@
 <?php
 
-namespace EmoWooPriceUpdate\Form_Handlers;
+namespace EMO_BUPW\Form_Handlers;
 
-use  EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Field_Setter;
-use  EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Submit;
-use  EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Handler;
-use EmoWooPriceUpdate\Repository\EWPU_DB_Get_Related_Object;
-use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
-use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
-use EmoWooPriceUpdate\Repository\File_Handlers\EWPU_Csv_Handler;
-use EmoWooPriceUpdate\Utils\EWPU_Date_Generator;
+use  EMO_BUPW\Form_Handlers\EWPU_Form_Field_Setter;
+use  EMO_BUPW\Form_Handlers\EWPU_Form_Submit;
+use  EMO_BUPW\Form_Handlers\EWPU_Form_Handler;
+use EMO_BUPW\Repository\EWPU_DB_Get_Related_Object;
+use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
+use EMO_BUPW\Repository\EWPU_Request_Handler;
+use EMO_BUPW\Repository\File_Handlers\EWPU_Csv_Handler;
+use EMO_BUPW\Utils\EWPU_Date_Generator;
 
 class EWPU_Form_Group_Discount implements EWPU_Form_Field_Setter,EWPU_Form_Submit
 {

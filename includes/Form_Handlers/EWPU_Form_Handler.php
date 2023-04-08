@@ -1,8 +1,8 @@
 <?php
 
-namespace EmoWooPriceUpdate\Form_Handlers;
+namespace EMO_BUPW\Form_Handlers;
 
-use EmoWooPriceUpdate\EWPU_Form_Error;
+use EMO_BUPW\EWPU_Form_Error;
 
 trait EWPU_Form_Handler {
 	/**

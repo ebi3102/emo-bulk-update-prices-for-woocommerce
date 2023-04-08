@@ -4,7 +4,7 @@
  * reading a file.
  */
 
-namespace EmoWooPriceUpdate\Repository\File_Handlers;
+namespace EMO_BUPW\Repository\File_Handlers;
 interface EWPU_Read_File_Interface {
 
 	/**

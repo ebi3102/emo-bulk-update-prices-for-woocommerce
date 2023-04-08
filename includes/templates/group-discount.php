@@ -1,7 +1,7 @@
 <h1><?php echo __( 'Group discount settings', 'emo-bulk-update-prices-for-woocommerce' ) ?></h1>
 <?php
-use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
-use EmoWooPriceUpdate\EWPU_Notice_Template;
+use EMO_BUPW\Repository\EWPU_Request_Handler;
+use EMO_BUPW\EWPU_Notice_Template;
 
 global $wpdb;
 $months = new WP_Locale();

@@ -6,11 +6,11 @@
  * if any methods detect an error will return WP_Error class else false
 */
 
-namespace EmoWooPriceUpdate;
-use EmoWooPriceUpdate\Repository\EWPU_Nonce_Inspection;
-use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
-use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
-use EmoWooPriceUpdate\Repository\WP_Error;
+namespace EMO_BUPW;
+use EMO_BUPW\Repository\EWPU_Nonce_Inspection;
+use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
+use EMO_BUPW\Repository\EWPU_Request_Handler;
+use EMO_BUPW\Repository\WP_Error;
 
 class EWPU_Form_Error {
 

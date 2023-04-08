@@ -1,6 +1,6 @@
 <?php
 
-namespace EmoWooPriceUpdate\Repository;
+namespace EMO_BUPW\Repository;
 
 abstract class EWPU_DB {
 	protected $db_class;

@@ -8,8 +8,8 @@
  * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
 
- use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
- use EmoWooPriceUpdate\EWPU_Notice_Template;
+ use EMO_BUPW\Repository\EWPU_Request_Handler;
+ use EMO_BUPW\EWPU_Notice_Template;
 ?>
 <h1><?php echo __( 'Update prices by uploading excel file', 'emo-bulk-update-prices-for-woocommerce' ) ?></h1>
 <?php

@@ -4,7 +4,7 @@
  * writing on a file.
  */
 
- namespace EmoWooPriceUpdate\Repository\File_Handlers;
+ namespace EMO_BUPW\Repository\File_Handlers;
 interface EWPU_Write_File_Interface {
 
 	/**

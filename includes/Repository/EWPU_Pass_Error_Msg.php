@@ -2,7 +2,7 @@
 /**
  * Get error message and pass it to WordPress WP_Erroe
 */
-namespace EmoWooPriceUpdate\Repository;
+namespace EMO_BUPW\Repository;
 
 class EWPU_Pass_Error_Msg {
 

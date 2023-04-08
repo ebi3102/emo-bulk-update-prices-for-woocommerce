@@ -1,10 +1,10 @@
 <?php
 
-namespace EmoWooPriceUpdate\Repository\File_Handlers;
+namespace EMO_BUPW\Repository\File_Handlers;
 
-use EmoWooPriceUpdate\Repository\WOO_Product\EWPU_Product;
-use EmoWooPriceUpdate\Repository\WOO_Product\EWPU_Product_Interface;
-use EmoWooPriceUpdate\Repository\WOO_Product\EWPU_Variation;
+use EMO_BUPW\Repository\WOO_Product\EWPU_Product;
+use EMO_BUPW\Repository\WOO_Product\EWPU_Product_Interface;
+use EMO_BUPW\Repository\WOO_Product\EWPU_Variation;
 
 class EWPU_Products_Price_List_Creator {
 

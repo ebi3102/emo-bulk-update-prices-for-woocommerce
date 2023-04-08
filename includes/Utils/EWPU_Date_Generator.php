@@ -1,6 +1,6 @@
 <?php
 
-namespace EmoWooPriceUpdate\Utils;
+namespace EMO_BUPW\Utils;
 
 class EWPU_Date_Generator
 {

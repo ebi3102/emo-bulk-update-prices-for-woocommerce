@@ -1,6 +1,6 @@
 <?php
 
-namespace EmoWooPriceUpdate\Repository\WOO_Product;
+namespace EMO_BUPW\Repository\WOO_Product;
 
 interface EWPU_Product_Interface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace EmoWooPriceUpdate\Repository;
+namespace EMO_BUPW\Repository;
 
 class EWPU_Nonce_Inspection {
 	private function __construct() {}

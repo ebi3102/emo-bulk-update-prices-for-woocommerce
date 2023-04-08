@@ -1,7 +1,7 @@
 <?php
 
-namespace EmoWooPriceUpdate\Repository\WOO_Product;
-use EmoWooPriceUpdate\Repository\WOO_Product\EWPU_Product_Interface;
+namespace EMO_BUPW\Repository\WOO_Product;
+use EMO_BUPW\Repository\WOO_Product\EWPU_Product_Interface;
 class EWPU_Variation implements EWPU_Product_Interface
 {
     private $product;

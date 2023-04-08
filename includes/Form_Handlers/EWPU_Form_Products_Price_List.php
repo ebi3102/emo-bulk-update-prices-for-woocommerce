@@ -1,12 +1,12 @@
 <?php
 
-namespace EmoWooPriceUpdate\Form_Handlers;
+namespace EMO_BUPW\Form_Handlers;
 
 
-use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
-use EmoWooPriceUpdate\Repository\File_Handlers\EWPU_Csv_Handler;
-use EmoWooPriceUpdate\Repository\File_Handlers\EWPU_Products_Price_List_Creator;
-use EmoWooPriceUpdate\Repository\EWPU_DB_Get_All_Products_ID;
+use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
+use EMO_BUPW\Repository\File_Handlers\EWPU_Csv_Handler;
+use EMO_BUPW\Repository\File_Handlers\EWPU_Products_Price_List_Creator;
+use EMO_BUPW\Repository\EWPU_DB_Get_All_Products_ID;
 
 class EWPU_Form_Products_Price_List implements EWPU_Form_Submit {
 

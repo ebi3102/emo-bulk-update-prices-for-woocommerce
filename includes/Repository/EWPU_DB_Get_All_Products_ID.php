@@ -1,7 +1,7 @@
 <?php
 
-namespace EmoWooPriceUpdate\Repository;
-use EmoWooPriceUpdate\Repository\EWPU_DB;
+namespace EMO_BUPW\Repository;
+use EMO_BUPW\Repository\EWPU_DB;
 
 class EWPU_DB_Get_All_Products_ID extends EWPU_DB
 {

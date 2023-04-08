@@ -6,7 +6,7 @@
  * or a default value.
  */
 
- namespace EmoWooPriceUpdate\Repository;
+ namespace EMO_BUPW\Repository;
 class EWPU_Request_Handler {
 
 	private function __construct(){}

@@ -1,8 +1,8 @@
 <?php
 
-namespace EmoWooPriceUpdate\Repository;
+namespace EMO_BUPW\Repository;
 
-use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
+use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
 
 class EWPU_Uploader {
     private $file;

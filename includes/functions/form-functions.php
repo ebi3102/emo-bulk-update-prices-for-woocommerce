@@ -6,10 +6,10 @@
  * ========================
  * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
-use EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Update_Price;
-use EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Group_Discount;
-use EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Products_Price_List;
-use EmoWooPriceUpdate\Form_Handlers\EWPU_Form_Update_Price_By_List;
+use EMO_BUPW\Form_Handlers\EWPU_Form_Update_Price;
+use EMO_BUPW\Form_Handlers\EWPU_Form_Group_Discount;
+use EMO_BUPW\Form_Handlers\EWPU_Form_Products_Price_List;
+use EMO_BUPW\Form_Handlers\EWPU_Form_Update_Price_By_List;
 
 /**
  * Handle group price update form

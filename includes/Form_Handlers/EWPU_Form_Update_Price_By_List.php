@@ -1,11 +1,11 @@
 <?php
 
-namespace EmoWooPriceUpdate\Form_Handlers;
+namespace EMO_BUPW\Form_Handlers;
 
-use EmoWooPriceUpdate\Repository\EWPU_Pass_Error_Msg;
-use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;
-use EmoWooPriceUpdate\Repository\EWPU_Uploader;
-use EmoWooPriceUpdate\Repository\File_Handlers\EWPU_Csv_Handler;
+use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
+use EMO_BUPW\Repository\EWPU_Request_Handler;
+use EMO_BUPW\Repository\EWPU_Uploader;
+use EMO_BUPW\Repository\File_Handlers\EWPU_Csv_Handler;
 
 class EWPU_Form_Update_Price_By_List implements EWPU_Form_Field_Setter, EWPU_Form_Submit {
     private $file;

@@ -7,7 +7,7 @@
  * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
 
- namespace EmoWooPriceUpdate\Repository\File_Handlers;
+ namespace EMO_BUPW\Repository\File_Handlers;
 class EWPU_Add_Row_Csv
 {
     private static $createDirectory = EMO_BUPW_CREATED_DIR;

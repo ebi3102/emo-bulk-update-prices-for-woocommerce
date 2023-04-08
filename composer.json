@@ -2,7 +2,7 @@
     "name": "emo/emo-woo-price-update",
     "autoload": {
         "psr-4": {
-            "EmoWooPriceUpdate\\": "includes/"
+            "EMO_BUPW\\": "includes/"
         }
     },
     "authors": [

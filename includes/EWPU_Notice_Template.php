@@ -7,7 +7,7 @@
  * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
 
- namespace EmoWooPriceUpdate;
+ namespace EMO_BUPW;
 class EWPU_Notice_Template
 {
     private static $template = null;

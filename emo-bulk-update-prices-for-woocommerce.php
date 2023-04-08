@@ -1,6 +1,6 @@
 <?php
 /**
- * @package EWPU
+ * @package EMO_BUPW
  * Plugin Name: Emo Bulk Update Prices for WooCommerce
  * Plugin URI:
  * Description: Emo Bulk Update Prices for WooCommerce is a bulk price updater plugin specially made for WooCommerce products
@@ -20,12 +20,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 $upload_base = wp_upload_dir();
 
 // define URIs and directories
-define('EWPU_URI', plugin_dir_url( __FILE__ ));
+define('EMO_BUPW_URI', plugin_dir_url( __FILE__ ));
 define('EWPU_DIR', __DIR__ );
-define('EWPU_CREATED_DIR', $upload_base['basedir'].'/emo_ewpu/CreatedFiles/');
-define('EWOU_UPLOAD_DIR', $upload_base['basedir'].'/emo_ewpu/uploadedFiles/');
-define('EWPU_CREATED_URI', $upload_base['baseurl'].'/emo_ewpu/CreatedFiles/');
-define('EWOU_UPLOAD_URI', $upload_base['baseurl'].'/emo_ewpu/uploadedFiles/');
+define('EWPU_CREATED_DIR', $upload_base['basedir'].'/emo_bupw/CreatedFiles/');
+define('EWOU_UPLOAD_DIR', $upload_base['basedir'].'/emo_bupw/uploadedFiles/');
+define('EWPU_CREATED_URI', $upload_base['baseurl'].'/emo_bupw/CreatedFiles/');
+define('EWOU_UPLOAD_URI', $upload_base['baseurl'].'/emo_bupw/uploadedFiles/');
 
 // define option meta_keys
 define('REGULARMETAKEY', '_regular_price_history');

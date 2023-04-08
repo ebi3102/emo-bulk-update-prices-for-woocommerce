@@ -15,8 +15,8 @@ function emo_ewpu_add_admin_page() {
         __( 'Update whole prices', 'emo-bulk-update-prices-for-woocommerce' ), 
         __( 'Prices management', 'emo-bulk-update-prices-for-woocommerce' ), 
         'manage_options', 'emo_ewpu_slug', 
-        'emo_ewpu_update_prices_create_page', 
-        EWPU_URI . 'assets/img/logo-icon.png', 
+        'emo_ewpu_update_prices_create_page',
+	    EMO_BUPW_URI . 'assets/img/logo-icon.png',
         110 
     );
 

@@ -21,7 +21,7 @@ $upload_base = wp_upload_dir();
 
 // define URIs and directories
 define('EMO_BUPW_URI', plugin_dir_url( __FILE__ ));
-define('EWPU_DIR', __DIR__ );
+define('EMO_BUPW_DIR', __DIR__ );
 define('EWPU_CREATED_DIR', $upload_base['basedir'].'/emo_bupw/CreatedFiles/');
 define('EWOU_UPLOAD_DIR', $upload_base['basedir'].'/emo_bupw/uploadedFiles/');
 define('EWPU_CREATED_URI', $upload_base['baseurl'].'/emo_bupw/CreatedFiles/');
@@ -57,7 +57,7 @@ if ( ! function_exists( 'emo_ewpu_init' ) ) {
 
         if(is_admin()){
 	        // Include the autoloader that we can dynamically include the rest of the classes.
-	        require_once EWPU_DIR. '/vendor/autoload.php';
+	        require_once EMO_BUPW_DIR . '/vendor/autoload.php';
 
             include_once("includes/functions/form-functions.php");
             include_once("includes/functions/wp_functions.php");

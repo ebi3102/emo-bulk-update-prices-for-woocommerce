@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package EWPU
+ * @package EMO_BUPW
  * ========================
  * Admin Update Prices PAGE
  * ========================

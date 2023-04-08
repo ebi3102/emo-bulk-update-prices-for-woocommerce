@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @package EWPU
+ * @package EMO_BUPW
  * ========================
  * Admin Update Prices PAGE
  * ========================
- * Text Domain: emo_ewpu
+ * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
 
  use EmoWooPriceUpdate\Repository\EWPU_Request_Handler;

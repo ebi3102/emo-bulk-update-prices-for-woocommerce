@@ -22,7 +22,7 @@
 		  * @return string|null
 		  */
 		 public static function get_request( string $key, $default = null ): string|null {
-			 return ! empty( $_REQUEST[ $key ] ) ? esc_sql( $_REQUEST[ $key ] ) : $default;
+			 return ! empty( $_REQUEST[ $key ] ) ? esc_sql( sanitize_text_field($_REQUEST[ $key ]) ) : $default;
 		 }
 
 		 /**
@@ -34,7 +34,7 @@
 		  * @return string|null
 		  */
 		 public static function get_POST( string $key, $default = null ): string|null {
-			 return ! empty( $_POST[ $key ] ) ? esc_sql( $_POST[ $key ] ) : $default;
+			 return ! empty( $_POST[ $key ] ) ? esc_sql( sanitize_text_field($_POST[ $key ]) ) : $default;
 		 }
 
 		 /**
@@ -46,7 +46,7 @@
 		  * @return string|null
 		  */
 		 public static function get_GET( string $key, $default = null ): string|null {
-			 return ! empty( $_GET[ $key ] ) ? esc_sql( $_GET[ $key ] ) : $default;
+			 return ! empty( $_GET[ $key ] ) ? esc_sql( sanitize_text_field($_GET[ $key ]) ) : $default;
 		 }
 
 		 /**

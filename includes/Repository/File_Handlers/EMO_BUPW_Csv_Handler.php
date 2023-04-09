@@ -8,11 +8,11 @@
  */
 
  namespace EMO_BUPW\Repository\File_Handlers;
- use EMO_BUPW\Repository\File_Handlers\EWPU_File_Handler;
+ use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_File_Handler;
  use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Read_File_Interface;
  use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Write_File_Interface;
  if (!class_exists('EMO_BUPW_Csv_Handler')) {
-	 class EMO_BUPW_Csv_Handler extends EWPU_File_Handler implements EMO_BUPW_Read_File_Interface, EMO_BUPW_Write_File_Interface {
+	 class EMO_BUPW_Csv_Handler extends EMO_BUPW_File_Handler implements EMO_BUPW_Read_File_Interface, EMO_BUPW_Write_File_Interface {
 		 /**
 		  * Write array content on a csv file that each element of $content puts on each column of csv file
 		  *

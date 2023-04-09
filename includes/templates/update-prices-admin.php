@@ -8,7 +8,7 @@
  * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
 
- use EMO_BUPW\Repository\EWPU_Request_Handler;
+ use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
  use EMO_BUPW\EWPU_Notice_Template;
 ?>
 <h1><?php echo __( 'Update prices by uploading excel file', 'emo-bulk-update-prices-for-woocommerce' ) ?></h1>
@@ -17,7 +17,7 @@
 //Download Current prices
 /* Extract all Poducts site */
 
-if(EWPU_Request_Handler::get_POST('btnSubmit')){
+if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
     $result = emo_bupw_get_product_list();
 }
 
@@ -42,7 +42,7 @@ if(EWPU_Request_Handler::get_POST('btnSubmit')){
 
 <?php
 
-if(EWPU_Request_Handler::get_POST('uploadSubmit') && EWPU_Request_Handler::get_FILE('price_list')){
+if( EMO_BUPW_Request_Handler::get_POST('uploadSubmit') && EMO_BUPW_Request_Handler::get_FILE('price_list')){
     $result = emo_bupw_update_products_price_list();
 }
 
@@ -79,7 +79,7 @@ if(EWPU_Request_Handler::get_POST('uploadSubmit') && EWPU_Request_Handler::get_F
 
     <?php
     // Notice when uploading is happened
-    if(EWPU_Request_Handler::get_POST('uploadSubmit') && EWPU_Request_Handler::get_FILE('price_list')){
+    if( EMO_BUPW_Request_Handler::get_POST('uploadSubmit') && EMO_BUPW_Request_Handler::get_FILE('price_list')){
         if(@$result['response']){
 	        echo EWPU_Notice_Template::success ($result['response']);
         }
@@ -89,7 +89,7 @@ if(EWPU_Request_Handler::get_POST('uploadSubmit') && EWPU_Request_Handler::get_F
     }
 
     //Notice and download link when product list is created
-    if(EWPU_Request_Handler::get_POST('btnSubmit')){
+    if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
         if(@$result['error']){
             echo EWPU_Notice_Template::warning ($result['error']->get_error_message());
         }elseif(@$result['filePath']){

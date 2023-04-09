@@ -7,7 +7,7 @@ use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Submit;
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Handler;
 use EMO_BUPW\Repository\EMO_BUPW_DB_Get_Related_Object;
 use EMO_BUPW\Repository\EMO_BUPW_Pass_Error_Msg;
-use EMO_BUPW\Repository\EWPU_Request_Handler;
+use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
 use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Csv_Handler;
 use EMO_BUPW\Utils\EWPU_Date_Generator;
 
@@ -32,15 +32,15 @@ if (!class_exists('EMO_BUPW_Form_Group_Discount')) {
 		 * @param $fields
 		 */
 		public function field_setter( $fields ): void {
-			$this->cat_id      = EWPU_Request_Handler::get_POST( $fields['category'] );
-			$this->rate_type   = EWPU_Request_Handler::get_POST( $fields['rate_type'] );
-			$this->change_rate = EWPU_Request_Handler::get_POST( $fields['change_rate'] );
-			$this->endYear     = EWPU_Request_Handler::get_POST( $fields['end_year'] );
-			$this->endMonth    = EWPU_Request_Handler::get_POST( $fields['end_month'] );
-			$this->endDay      = EWPU_Request_Handler::get_POST( $fields['end_day'] );
-			$this->startYear   = EWPU_Request_Handler::get_POST( $fields['start_year'] );
-			$this->startMonth  = EWPU_Request_Handler::get_POST( $fields['start_month'] );
-			$this->startDay    = EWPU_Request_Handler::get_POST( $fields['start_day'] );
+			$this->cat_id      = EMO_BUPW_Request_Handler::get_POST( $fields['category'] );
+			$this->rate_type   = EMO_BUPW_Request_Handler::get_POST( $fields['rate_type'] );
+			$this->change_rate = EMO_BUPW_Request_Handler::get_POST( $fields['change_rate'] );
+			$this->endYear     = EMO_BUPW_Request_Handler::get_POST( $fields['end_year'] );
+			$this->endMonth    = EMO_BUPW_Request_Handler::get_POST( $fields['end_month'] );
+			$this->endDay      = EMO_BUPW_Request_Handler::get_POST( $fields['end_day'] );
+			$this->startYear   = EMO_BUPW_Request_Handler::get_POST( $fields['start_year'] );
+			$this->startMonth  = EMO_BUPW_Request_Handler::get_POST( $fields['start_month'] );
+			$this->startDay    = EMO_BUPW_Request_Handler::get_POST( $fields['start_day'] );
 		}
 
 		private function file_info( array $info ) {

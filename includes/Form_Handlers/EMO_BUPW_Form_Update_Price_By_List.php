@@ -3,7 +3,7 @@
 namespace EMO_BUPW\Form_Handlers;
 
 use EMO_BUPW\Repository\EMO_BUPW_Pass_Error_Msg;
-use EMO_BUPW\Repository\EWPU_Request_Handler;
+use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
 use EMO_BUPW\Repository\EWPU_Uploader;
 use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Csv_Handler;
 if (!class_exists('EMO_BUPW_Form_Update_Price_By_List')) {
@@ -18,7 +18,7 @@ if (!class_exists('EMO_BUPW_Form_Update_Price_By_List')) {
 		 * @inheritDoc
 		 */
 		function field_setter( $fields ): void {
-			$this->file = EWPU_Request_Handler::get_FILE( $fields['file'] );
+			$this->file = EMO_BUPW_Request_Handler::get_FILE( $fields['file'] );
 		}
 
 		private function file_info( array $info ) {

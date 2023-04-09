@@ -9,7 +9,7 @@
 namespace EMO_BUPW;
 use EMO_BUPW\Repository\EMO_BUPW_Nonce_Inspection;
 use EMO_BUPW\Repository\EMO_BUPW_Pass_Error_Msg;
-use EMO_BUPW\Repository\EWPU_Request_Handler;
+use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
 use EMO_BUPW\Repository\WP_Error;
 
 class EWPU_Form_Error {
@@ -44,7 +44,7 @@ class EWPU_Form_Error {
 	 */
 	public static function submit_status(string $submitName): \WP_Error|false
 	{
-		$conditioner = (bool) EWPU_Request_Handler::get_POST( $submitName );
+		$conditioner = (bool) EMO_BUPW_Request_Handler::get_POST( $submitName );
 		return (new self)->error_inspection(
 			$conditioner,
 			'submitError',
@@ -60,7 +60,7 @@ class EWPU_Form_Error {
 	 */
 	public static function nonce_inspection(string $nonceName, string|int $nonceAction=-1): \WP_Error|false
 	{
-		$nonce = EWPU_Request_Handler::get_POST($nonceName);
+		$nonce = EMO_BUPW_Request_Handler::get_POST($nonceName);
 		$nonceVerification = EMO_BUPW_Nonce_Inspection::nonce($nonceName, $nonceAction);
 		if($nonce || $nonceVerification){
 			$error = false;
@@ -79,7 +79,7 @@ class EWPU_Form_Error {
 	 */
 	public static function requirement_inspection(string $fieldName): \WP_Error|false
 	{
-		$conditioner = (bool) EWPU_Request_Handler::get_POST( $fieldName );
+		$conditioner = (bool) EMO_BUPW_Request_Handler::get_POST( $fieldName );
 		return (new self)->error_inspection(
 			$conditioner,
 			'requirements',

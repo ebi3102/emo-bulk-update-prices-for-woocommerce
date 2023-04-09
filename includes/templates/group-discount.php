@@ -1,6 +1,6 @@
 <h1><?php echo __( 'Group discount settings', 'emo-bulk-update-prices-for-woocommerce' ) ?></h1>
 <?php
-use EMO_BUPW\Repository\EWPU_Request_Handler;
+use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
 use EMO_BUPW\EWPU_Notice_Template;
 
 global $wpdb;
@@ -21,7 +21,7 @@ if( !empty($product_categories) ){
     }
 }
 
-if(EWPU_Request_Handler::get_POST('btnSubmit')){
+if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
     $result = emo_bupw_get_group_discount_data();
 }
 
@@ -148,13 +148,13 @@ if(EWPU_Request_Handler::get_POST('btnSubmit')){
     </div>
 
     <?php
-    if(EWPU_Request_Handler::get_POST('btnSubmit')&& @!$result['error']){
+    if( EMO_BUPW_Request_Handler::get_POST('btnSubmit') && @!$result['error']){
 	    $massage = __('Your changes have been applied successfully. Please check the ', 'emo-bulk-update-prices-for-woocommerce');
 	    $massage .= "<a href='".$result['filePath']."'>".$result['fileName']."</a>";
 	    $massage .= __(' to check the correctness of the updated changes', 'emo-bulk-update-prices-for-woocommerce');
 	    echo EWPU_Notice_Template::success ($massage);
     }
-    if(EWPU_Request_Handler::get_POST('btnSubmit') && @$result['error']){
+    if( EMO_BUPW_Request_Handler::get_POST('btnSubmit') && @$result['error']){
 	    echo EWPU_Notice_Template::warning ($result['error']->get_error_message());
     } ?>
 </div><!-- .wrap nosubsub -->

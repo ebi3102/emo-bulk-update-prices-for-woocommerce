@@ -3,7 +3,7 @@ namespace EMO_BUPW\Form_Handlers;
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Field_Setter;
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Submit;
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Handler;
-use EMO_BUPW\Repository\EWPU_Request_Handler;
+use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
 use EMO_BUPW\Repository\EMO_BUPW_Pass_Error_Msg;
 use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Csv_Handler;
 use EMO_BUPW\Repository\EMO_BUPW_DB_Get_Related_Object;
@@ -27,11 +27,11 @@ if (!class_exists('EMO_BUPW_Form_Update_Price')) {
 		 * @param $fields
 		 */
 		public function field_setter( $fields ): void {
-			$this->cat_id          = EWPU_Request_Handler::get_POST( $fields['category'] );
-			$this->change_rate     = EWPU_Request_Handler::get_POST( $fields['change_rate'] );
-			$this->rate_type       = EWPU_Request_Handler::get_POST( $fields['rate_type'] );
-			$this->activeSalePrice = EWPU_Request_Handler::get_POST( $fields['on_sale'] );
-			$this->change_type     = EWPU_Request_Handler::get_POST( $fields['change_type'] );
+			$this->cat_id          = EMO_BUPW_Request_Handler::get_POST( $fields['category'] );
+			$this->change_rate     = EMO_BUPW_Request_Handler::get_POST( $fields['change_rate'] );
+			$this->rate_type       = EMO_BUPW_Request_Handler::get_POST( $fields['rate_type'] );
+			$this->activeSalePrice = EMO_BUPW_Request_Handler::get_POST( $fields['on_sale'] );
+			$this->change_type     = EMO_BUPW_Request_Handler::get_POST( $fields['change_type'] );
 		}
 
 		private function file_info( array $info ) {

@@ -8,10 +8,13 @@
 
  namespace EMO_BUPW;
  use EMO_BUPW\EMO_BUPW_Form_Error;
-class EMOBUPW_Form_File_Error extends EMO_BUPW_Form_Error {
+ if (!class_exists('EMO_BUPW_Form_File_Error')) {
+	 class EMO_BUPW_Form_File_Error extends EMO_BUPW_Form_Error {
 
-	public static function extensions_inspection(){}
+		 public static function extensions_inspection() {
+		 }
 
-	public static function file_size_inspection(){}
-
-}
+		 public static function file_size_inspection() {
+		 }
+	 }
+ }

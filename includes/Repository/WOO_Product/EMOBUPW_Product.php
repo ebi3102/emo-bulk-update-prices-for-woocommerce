@@ -1,8 +1,8 @@
 <?php
 namespace EMO_BUPW\Repository\WOO_Product;
-use EMO_BUPW\Repository\WOO_Product\EWPU_Product_Interface;
+use EMO_BUPW\Repository\WOO_Product\EMO_BUPW_Product_Interface;
 
-class EWPU_Product implements EWPU_Product_Interface
+class EMOBUPW_Product implements EMO_BUPW_Product_Interface
 {
 	private $product;
 

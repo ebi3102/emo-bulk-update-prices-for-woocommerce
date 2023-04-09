@@ -3,7 +3,7 @@
 namespace EMO_BUPW\Form_Handlers;
 
 
-use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
+use EMO_BUPW\Repository\EMO_BUPW_Pass_Error_Msg;
 use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Csv_Handler;
 use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Products_Price_List_Creator;
 use EMO_BUPW\Repository\EMO_BUPW_DB_Get_All_Products_ID;
@@ -32,7 +32,7 @@ if (!class_exists('EMO_BUPW_Form_Products_Price_List')) {
 			$productsObj = ( new EMO_BUPW_DB_Get_All_Products_ID )->results();
 			if ( count( $productsObj ) <= 0 ) {
 				return [
-					'error' => EWPU_Pass_Error_Msg::error_object(
+					'error' => EMO_BUPW_Pass_Error_Msg::error_object(
 						'returnedProducts',
 						__( "The selected product category has not contain any products", "emo-bulk-update-prices-for-woocommerce" ) )
 				];

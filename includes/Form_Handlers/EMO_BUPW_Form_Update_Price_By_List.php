@@ -2,7 +2,7 @@
 
 namespace EMO_BUPW\Form_Handlers;
 
-use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
+use EMO_BUPW\Repository\EMO_BUPW_Pass_Error_Msg;
 use EMO_BUPW\Repository\EWPU_Request_Handler;
 use EMO_BUPW\Repository\EWPU_Uploader;
 use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Csv_Handler;
@@ -66,7 +66,7 @@ if (!class_exists('EMO_BUPW_Form_Update_Price_By_List')) {
 					'fileUrl'  => $uploadedFile->getFileUrl()
 				];
 			} else {
-				$errors = EWPU_Pass_Error_Msg::error_object( 'invalid', __( "The plugin is not able to open the uploaded file ", "emo-bulk-update-prices-for-woocommerce" ) );
+				$errors = EMO_BUPW_Pass_Error_Msg::error_object( 'invalid', __( "The plugin is not able to open the uploaded file ", "emo-bulk-update-prices-for-woocommerce" ) );
 
 				return [ 'error' => $errors ];
 			}

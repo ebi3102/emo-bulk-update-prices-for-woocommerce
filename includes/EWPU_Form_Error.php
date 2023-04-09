@@ -8,7 +8,7 @@
 
 namespace EMO_BUPW;
 use EMO_BUPW\Repository\EMO_BUPW_Nonce_Inspection;
-use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
+use EMO_BUPW\Repository\EMO_BUPW_Pass_Error_Msg;
 use EMO_BUPW\Repository\EWPU_Request_Handler;
 use EMO_BUPW\Repository\WP_Error;
 
@@ -31,7 +31,7 @@ class EWPU_Form_Error {
 		if($conditioner){
 			$error = false;
 		}else{
-			$error = EWPU_Pass_Error_Msg::error_object($errorName, $errorMsg);
+			$error = EMO_BUPW_Pass_Error_Msg::error_object($errorName, $errorMsg);
 		}
 		return $error;
 	}
@@ -65,7 +65,7 @@ class EWPU_Form_Error {
 		if($nonce || $nonceVerification){
 			$error = false;
 		}else{
-			$error = EWPU_Pass_Error_Msg::error_object('nonce', __( "Sorry, your nonce did not verify.", "emo-bulk-update-prices-for-woocommerce" ));
+			$error = EMO_BUPW_Pass_Error_Msg::error_object('nonce', __( "Sorry, your nonce did not verify.", "emo-bulk-update-prices-for-woocommerce" ));
 		}
 		return $error;
 	}

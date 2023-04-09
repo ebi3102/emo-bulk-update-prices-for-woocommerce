@@ -6,7 +6,7 @@ use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Field_Setter;
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Submit;
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Handler;
 use EMO_BUPW\Repository\EMO_BUPW_DB_Get_Related_Object;
-use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
+use EMO_BUPW\Repository\EMO_BUPW_Pass_Error_Msg;
 use EMO_BUPW\Repository\EWPU_Request_Handler;
 use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Csv_Handler;
 use EMO_BUPW\Utils\EWPU_Date_Generator;
@@ -67,7 +67,7 @@ if (!class_exists('EMO_BUPW_Form_Group_Discount')) {
 
 			$csvFile = new EMO_BUPW_Csv_Handler( $this->filePath, 'w' );
 			if ( ! $csvFile ) {
-				return [ 'error' => EWPU_Pass_Error_Msg::error_object( 'unable', __( "Unable to open file!", "emo-bulk-update-prices-for-woocommerce" ) ) ];
+				return [ 'error' => EMO_BUPW_Pass_Error_Msg::error_object( 'unable', __( "Unable to open file!", "emo-bulk-update-prices-for-woocommerce" ) ) ];
 			}
 			$writeCSV = array( $args['csv_fields'] );
 
@@ -80,7 +80,7 @@ if (!class_exists('EMO_BUPW_Form_Group_Discount')) {
 					}
 				} else {
 					return [
-						'error' => EWPU_Pass_Error_Msg::error_object(
+						'error' => EMO_BUPW_Pass_Error_Msg::error_object(
 							'returnedProducts',
 							__( "The selected product category has not contain any products", "emo-bulk-update-prices-for-woocommerce" ) )
 					];

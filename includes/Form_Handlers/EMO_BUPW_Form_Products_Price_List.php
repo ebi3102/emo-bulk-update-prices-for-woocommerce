@@ -5,7 +5,7 @@ namespace EMO_BUPW\Form_Handlers;
 
 use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
 use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Csv_Handler;
-use EMO_BUPW\Repository\File_Handlers\EWPU_Products_Price_List_Creator;
+use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Products_Price_List_Creator;
 use EMO_BUPW\Repository\EWPU_DB_Get_All_Products_ID;
 
 if (!class_exists('EMO_BUPW_Form_Products_Price_List')) {
@@ -37,7 +37,7 @@ if (!class_exists('EMO_BUPW_Form_Products_Price_List')) {
 						__( "The selected product category has not contain any products", "emo-bulk-update-prices-for-woocommerce" ) )
 				];
 			}
-			$productsCreator = new EWPU_Products_Price_List_Creator( $file );
+			$productsCreator = new EMO_BUPW_Products_Price_List_Creator( $file );
 			$productsCreator->setHeader( $args['csv_fields'] );
 			foreach ( $productsObj as $productObj ) {
 				$productsID[] = $productObj->ID;

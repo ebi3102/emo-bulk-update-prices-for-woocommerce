@@ -3,7 +3,6 @@
 use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
 use EMO_BUPW\EWPU_Notice_Template;
 
-global $wpdb;
 $months = new WP_Locale();
 // $product_categories = get_terms( 'product_cat');
 $product_categories = get_terms( array (

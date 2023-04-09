@@ -10,7 +10,7 @@ class EWPU_Products_Price_List_Creator {
 
 	private $file;
 
-	public function __construct(EWPU_Write_File_Interface $file){
+	public function __construct(EMO_BUPW_Write_File_Interface $file){
 		$this->file = $file;
 	}
 

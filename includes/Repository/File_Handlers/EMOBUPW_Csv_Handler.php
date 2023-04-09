@@ -14,9 +14,9 @@ Namespace: EMO_BUPW\Repository\File_Handlers
 
 Parent Class: EWPU_File_Handler
 
-Interfaces Implemented: EMO_BUPW_Read_File_Interface, EWPU_Write_File_Interface
+Interfaces Implemented: EMO_BUPW_Read_File_Interface, EMO_BUPW_Write_File_Interface
 
-Description: The EMOBUPW_Csv_Handler class is responsible for handling CSV files. It extends the EWPU_File_Handler class and implements the EMO_BUPW_Read_File_Interface and EWPU_Write_File_Interface interfaces. It provides methods for reading and writing CSV files.
+Description: The EMOBUPW_Csv_Handler class is responsible for handling CSV files. It extends the EWPU_File_Handler class and implements the EMO_BUPW_Read_File_Interface and EMO_BUPW_Write_File_Interface interfaces. It provides methods for reading and writing CSV files.
 
 Methods:
 
@@ -68,8 +68,8 @@ This method does not return anything. If the file cannot be written, an error is
  namespace EMO_BUPW\Repository\File_Handlers;
  use EMO_BUPW\Repository\File_Handlers\EWPU_File_Handler;
  use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Read_File_Interface;
- use EMO_BUPW\Repository\File_Handlers\EWPU_Write_File_Interface;
-class EMOBUPW_Csv_Handler extends EWPU_File_Handler implements EMO_BUPW_Read_File_Interface,EWPU_Write_File_Interface
+ use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Write_File_Interface;
+class EMOBUPW_Csv_Handler extends EWPU_File_Handler implements EMO_BUPW_Read_File_Interface,EMO_BUPW_Write_File_Interface
 {
 	/**
 	 * Write array content on a csv file that each element of $content puts on each column of csv file

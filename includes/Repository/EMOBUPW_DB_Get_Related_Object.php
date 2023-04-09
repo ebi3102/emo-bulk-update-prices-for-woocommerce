@@ -1,9 +1,9 @@
 <?php
 
 namespace EMO_BUPW\Repository;
-use EMO_BUPW\Repository\EWPU_DB;
+use EMO_BUPW\Repository\EMO_BUPW_DB;
 
-class EWPU_DB_Get_Related_Object extends EWPU_DB
+class EMOBUPW_DB_Get_Related_Object extends EMO_BUPW_DB
 {
 	public function __construct($term_id) {
 		parent::__construct();

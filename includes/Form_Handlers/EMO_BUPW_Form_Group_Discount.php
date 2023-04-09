@@ -5,7 +5,7 @@ namespace EMO_BUPW\Form_Handlers;
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Field_Setter;
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Submit;
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Handler;
-use EMO_BUPW\Repository\EWPU_DB_Get_Related_Object;
+use EMO_BUPW\Repository\EMOBUPW_DB_Get_Related_Object;
 use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
 use EMO_BUPW\Repository\EWPU_Request_Handler;
 use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Csv_Handler;
@@ -72,7 +72,7 @@ if (!class_exists('EMO_BUPW_Form_Group_Discount')) {
 			$writeCSV = array( $args['csv_fields'] );
 
 			if ( $this->cat_id ) {
-				$relatedProductsDB = new EWPU_DB_Get_Related_Object( $this->cat_id );
+				$relatedProductsDB = new EMOBUPW_DB_Get_Related_Object( $this->cat_id );
 				$relatedProducts   = $relatedProductsDB->results();
 				if ( is_array( $relatedProducts ) && count( $relatedProducts ) > 0 ) {
 					foreach ( $relatedProducts as $relatedProduct ) {

@@ -7,8 +7,8 @@
  */
 
  namespace EMO_BUPW;
- use EMO_BUPW\EWPU_Form_Error;
-class EWPU_Form_File_Error extends EWPU_Form_Error {
+ use EMO_BUPW\EMO_BUPW_Form_Error;
+class EMOBUPW_Form_File_Error extends EMO_BUPW_Form_Error {
 
 	public static function extensions_inspection(){}
 

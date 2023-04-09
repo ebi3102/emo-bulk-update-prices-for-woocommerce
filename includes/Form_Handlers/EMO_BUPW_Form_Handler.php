@@ -2,7 +2,7 @@
 
 namespace EMO_BUPW\Form_Handlers;
 
-use EMO_BUPW\EWPU_Form_Error;
+use EMO_BUPW\EMO_BUPW_Form_Error;
 if(! trait_exists('EMO_BUPW_Form_Handler')) {
 	trait EMO_BUPW_Form_Handler {
 		/**
@@ -20,10 +20,10 @@ if(! trait_exists('EMO_BUPW_Form_Handler')) {
 		 * @return array|void
 		 */
 		protected function requirement_checker( array $checker_items ) {
-			$errors[] = EWPU_Form_Error::submit_status( $checker_items['submit_status'] );
-			$errors[] = EWPU_Form_Error::nonce_inspection( $checker_items['security'][0], ( $checker_items['security'][1] ) ? $checker_items['security'][1] : - 1 );
+			$errors[] = EMO_BUPW_Form_Error::submit_status( $checker_items['submit_status'] );
+			$errors[] = EMO_BUPW_Form_Error::nonce_inspection( $checker_items['security'][0], ( $checker_items['security'][1] ) ? $checker_items['security'][1] : - 1 );
 			foreach ( $checker_items['requirements'] as $item ) {
-				$errors[] = EWPU_Form_Error::requirement_inspection( $item );
+				$errors[] = EMO_BUPW_Form_Error::requirement_inspection( $item );
 			}
 			foreach ( $errors as $error ) {
 				if ( $error ) {

@@ -2,7 +2,7 @@
 
 namespace EMO_BUPW\Repository\File_Handlers;
 
-use EMO_BUPW\Repository\WOO_Product\EMOBUPW_Product;
+use EMO_BUPW\Repository\WOO_Product\EMO_BUPW_Product;
 use EMO_BUPW\Repository\WOO_Product\EMO_BUPW_Product_Interface;
 use EMO_BUPW\Repository\WOO_Product\EMOBUPW_Variation;
 if (!class_exists('EMO_BUPW_Products_Price_List_Creator')) {
@@ -27,7 +27,7 @@ if (!class_exists('EMO_BUPW_Products_Price_List_Creator')) {
 		 */
 		public function init( array $productIds ) {
 			foreach ( $productIds as $productId ) {
-				$product = $this->productInit( new EMOBUPW_Product( $productId ) );
+				$product = $this->productInit( new EMO_BUPW_Product( $productId ) );
 				if ( $product->get_product_type() == 'variable' ) {
 					$variationsId = $product->get_product_children();
 					if ( $variationsId ) {

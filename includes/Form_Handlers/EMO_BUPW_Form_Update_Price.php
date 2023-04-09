@@ -5,7 +5,7 @@ use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Submit;
 use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Handler;
 use EMO_BUPW\Repository\EWPU_Request_Handler;
 use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
-use EMO_BUPW\Repository\File_Handlers\EWPU_Csv_Handler;
+use EMO_BUPW\Repository\File_Handlers\EMOBUPW_Csv_Handler;
 use EMO_BUPW\Repository\EWPU_DB_Get_Related_Object;
 
 if (!class_exists('EMO_BUPW_Form_Update_Price')) {
@@ -48,7 +48,7 @@ if (!class_exists('EMO_BUPW_Form_Update_Price')) {
 			$this->field_setter( $args['fields'] );
 			$this->file_info( $args['file_info'] );
 
-			$csvFile = new EWPU_Csv_Handler( $this->filePath, 'w' );
+			$csvFile = new EMOBUPW_Csv_Handler( $this->filePath, 'w' );
 			if ( ! $csvFile ) {
 				return [ 'error' => EWPU_Pass_Error_Msg::error_object( 'unable', __( "Unable to open file!", "emo-bulk-update-prices-for-woocommerce" ) ) ];
 			}

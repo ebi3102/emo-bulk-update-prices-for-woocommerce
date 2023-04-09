@@ -65,7 +65,12 @@
 		  * )
 		  */
 		 public static function get_FILE( string $key, $default = null ): array|null {
-			 return ! empty( $_FILES[ $key ] ) ? $_FILES[ $key ] : null;
+		 	$file = ! empty( $_FILES[ $key ] ) ? $_FILES[ $key ] : null;
+		 	if(is_array($file)){
+			    $file['name'] = sanitize_file_name($file['name']);
+			    $file['full_path'] = sanitize_file_name($file['full_path']);
+		    }
+			 return $file;
 		 }
 	 }
  }

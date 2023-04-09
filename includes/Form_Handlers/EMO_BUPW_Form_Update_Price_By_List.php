@@ -5,7 +5,7 @@ namespace EMO_BUPW\Form_Handlers;
 use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
 use EMO_BUPW\Repository\EWPU_Request_Handler;
 use EMO_BUPW\Repository\EWPU_Uploader;
-use EMO_BUPW\Repository\File_Handlers\EMOBUPW_Csv_Handler;
+use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Csv_Handler;
 if (!class_exists('EMO_BUPW_Form_Update_Price_By_List')) {
 	class EMO_BUPW_Form_Update_Price_By_List implements EMO_BUPW_Form_Field_Setter, EMO_BUPW_Form_Submit {
 		private $file;
@@ -39,7 +39,7 @@ if (!class_exists('EMO_BUPW_Form_Update_Price_By_List')) {
 			}
 
 			// Read and store new prices
-			if ( ( $handle = new EMOBUPW_Csv_Handler( $uploadedFile->getFilePath(), "r" ) ) !== false ) {
+			if ( ( $handle = new EMO_BUPW_Csv_Handler( $uploadedFile->getFilePath(), "r" ) ) !== false ) {
 				$row  = 0;
 				$args = [ 'length' => 1000, 'separator' => ',' ];
 				while ( ( $data = $handle->readFile( $args ) ) !== false ) {

@@ -8,7 +8,7 @@ use  EMO_BUPW\Form_Handlers\EMO_BUPW_Form_Handler;
 use EMO_BUPW\Repository\EWPU_DB_Get_Related_Object;
 use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
 use EMO_BUPW\Repository\EWPU_Request_Handler;
-use EMO_BUPW\Repository\File_Handlers\EMOBUPW_Csv_Handler;
+use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Csv_Handler;
 use EMO_BUPW\Utils\EWPU_Date_Generator;
 
 if (!class_exists('EMO_BUPW_Form_Group_Discount')) {
@@ -65,7 +65,7 @@ if (!class_exists('EMO_BUPW_Form_Group_Discount')) {
 			$textEndDate = $endDate->text_Date();
 			$UTMEndDate  = $endDate->utm_Date();
 
-			$csvFile = new EMOBUPW_Csv_Handler( $this->filePath, 'w' );
+			$csvFile = new EMO_BUPW_Csv_Handler( $this->filePath, 'w' );
 			if ( ! $csvFile ) {
 				return [ 'error' => EWPU_Pass_Error_Msg::error_object( 'unable', __( "Unable to open file!", "emo-bulk-update-prices-for-woocommerce" ) ) ];
 			}

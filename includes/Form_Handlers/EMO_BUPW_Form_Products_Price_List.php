@@ -4,7 +4,7 @@ namespace EMO_BUPW\Form_Handlers;
 
 
 use EMO_BUPW\Repository\EWPU_Pass_Error_Msg;
-use EMO_BUPW\Repository\File_Handlers\EMOBUPW_Csv_Handler;
+use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Csv_Handler;
 use EMO_BUPW\Repository\File_Handlers\EWPU_Products_Price_List_Creator;
 use EMO_BUPW\Repository\EWPU_DB_Get_All_Products_ID;
 
@@ -27,7 +27,7 @@ if (!class_exists('EMO_BUPW_Form_Products_Price_List')) {
 
 			$this->file_info( $args['file_info'] );
 
-			$file = new EMOBUPW_Csv_Handler( $this->filePath, 'w' );
+			$file = new EMO_BUPW_Csv_Handler( $this->filePath, 'w' );
 
 			$productsObj = ( new EWPU_DB_Get_All_Products_ID )->results();
 			if ( count( $productsObj ) <= 0 ) {

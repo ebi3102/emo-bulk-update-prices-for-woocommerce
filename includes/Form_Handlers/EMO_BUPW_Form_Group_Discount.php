@@ -9,7 +9,7 @@ use EMO_BUPW\Repository\EMO_BUPW_DB_Get_Related_Object;
 use EMO_BUPW\Repository\EMO_BUPW_Pass_Error_Msg;
 use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
 use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Csv_Handler;
-use EMO_BUPW\Utils\EWPU_Date_Generator;
+use EMO_BUPW\Utils\EMO_BUPW_Date_Generator;
 
 if (!class_exists('EMO_BUPW_Form_Group_Discount')) {
 	class EMO_BUPW_Form_Group_Discount implements EMO_BUPW_Form_Field_Setter, EMO_BUPW_Form_Submit {
@@ -57,11 +57,11 @@ if (!class_exists('EMO_BUPW_Form_Group_Discount')) {
 			$this->field_setter( $args['fields'] );
 			$this->file_info( $args['file_info'] );
 
-			$startDate     = new EWPU_Date_Generator( intval( $this->startYear ), $this->startMonth, intval( $this->startDay ) );
+			$startDate     = new EMO_BUPW_Date_Generator( intval( $this->startYear ), $this->startMonth, intval( $this->startDay ) );
 			$textStartDate = $startDate->text_Date();
 			$UTMStartDate  = $startDate->utm_Date();
 
-			$endDate     = new EWPU_Date_Generator( intval( $this->endYear ), $this->endMonth, intval( $this->endDay ) );
+			$endDate     = new EMO_BUPW_Date_Generator( intval( $this->endYear ), $this->endMonth, intval( $this->endDay ) );
 			$textEndDate = $endDate->text_Date();
 			$UTMEndDate  = $endDate->utm_Date();
 

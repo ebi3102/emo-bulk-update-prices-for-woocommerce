@@ -4,7 +4,7 @@ namespace EMO_BUPW\Form_Handlers;
 
 use EMO_BUPW\Repository\EMO_BUPW_Pass_Error_Msg;
 use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
-use EMO_BUPW\Repository\EWPU_Uploader;
+use EMO_BUPW\Repository\EMO_BUPW_Uploader;
 use EMO_BUPW\Repository\File_Handlers\EMO_BUPW_Csv_Handler;
 if (!class_exists('EMO_BUPW_Form_Update_Price_By_List')) {
 	class EMO_BUPW_Form_Update_Price_By_List implements EMO_BUPW_Form_Field_Setter, EMO_BUPW_Form_Submit {
@@ -33,7 +33,7 @@ if (!class_exists('EMO_BUPW_Form_Update_Price_By_List')) {
 			}
 			$this->field_setter( $args['fields'] );
 
-			$uploadedFile = new EWPU_Uploader( $this->file, $args['file_info'] );
+			$uploadedFile = new EMO_BUPW_Uploader( $this->file, $args['file_info'] );
 			if ( $uploadedFile->hasError() ) {
 				return [ 'error' => $uploadedFile->getError() ];
 			}

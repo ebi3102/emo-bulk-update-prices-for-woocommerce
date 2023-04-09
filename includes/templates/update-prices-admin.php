@@ -9,7 +9,7 @@
  */
 
  use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
- use EMO_BUPW\EWPU_Notice_Template;
+ use EMO_BUPW\EMO_BUPW_Notice_Template;
 ?>
 <h1><?php echo __( 'Update prices by uploading excel file', 'emo-bulk-update-prices-for-woocommerce' ) ?></h1>
 <?php
@@ -81,21 +81,21 @@ if( EMO_BUPW_Request_Handler::get_POST('uploadSubmit') && EMO_BUPW_Request_Handl
     // Notice when uploading is happened
     if( EMO_BUPW_Request_Handler::get_POST('uploadSubmit') && EMO_BUPW_Request_Handler::get_FILE('price_list')){
         if(@$result['response']){
-	        echo EWPU_Notice_Template::success ($result['response']);
+	        echo EMO_BUPW_Notice_Template::success ($result['response']);
         }
 	    if(@$result['error']){
-		    echo EWPU_Notice_Template::warning ($result['error']->get_error_message());
+		    echo EMO_BUPW_Notice_Template::warning ($result['error']->get_error_message());
         }
     }
 
     //Notice and download link when product list is created
     if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
         if(@$result['error']){
-            echo EWPU_Notice_Template::warning ($result['error']->get_error_message());
+            echo EMO_BUPW_Notice_Template::warning ($result['error']->get_error_message());
         }elseif(@$result['filePath']){
             $massage = __('You can download the list of price products from ', 'emo-bulk-update-prices-for-woocommerce');
             $massage .= "<a href='".$result['filePath']."'>".$result['fileName']."</a>";
-            echo EWPU_Notice_Template::success ($massage);
+            echo EMO_BUPW_Notice_Template::success ($massage);
         }
     }
     ?>

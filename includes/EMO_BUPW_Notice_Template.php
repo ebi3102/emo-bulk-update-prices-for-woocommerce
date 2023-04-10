@@ -30,7 +30,7 @@
 				 $is_dismissible = '';
 				 $closeButton    = '';
 			 }
-			 self::$template = "<div class='notice notice-" . self::$noticeType . " settings-error " . $is_dismissible . "'>";
+			 self::$template = "<div class='notice notice-" . esc_attr(self::$noticeType) . " settings-error " . esc_attr($is_dismissible) . "'>";
 			 self::$template .= "<p><strong><span style='display: block; margin: 0.5em 0.5em 0 0; clear: both;'>
         <span style='display: block; margin: 0.5em 0.5em 0 0; clear: both;'>";
 			 self::$template .= esc_html(self::$massage) . "</span></strong></p>" . $closeButton . "</div>";

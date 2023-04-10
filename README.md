@@ -1,6 +1,6 @@
-=== Emo Woo Update Prices ===<br/>
+=== Emo Bulk Update Prices for WooCommerce ===<br/>
 
-Welcome to the Emo Woo Price Update repository on GitHub. You can find all versions that developed in this repository and also in develop branch there are the unstable version of plugin
+Welcome to the Emo Bulk Update Prices for WooCommerce repository on GitHub. You can find all versions that developed in this repository and also in develop branch there are the unstable version of plugin
 
 You can contact me from my [personal website](https://emoeini.com) or [email](mailto:ebi3102@gmail.com) me.
 
@@ -19,13 +19,13 @@ Requires PHP: 8.0
 Stable tag: 5.8.0
 
 #Description
-Emo Woocommerce Update Prices  is WordPress plugin that helps to update the prices of woocommerce products in bulk. <br/>
+Emo Bulk Update Prices for WooCommerce  is WordPress plugin that helps to update the prices of woocommerce products in bulk. <br/>
 
 
 #Installation
 
 This section describes how to install the plugin and get it working. e.g.
-1. Upload `emo-woo-price-update` directory to the `/wp-content/plugins/` directory.
+1. Upload `emo-bulk-update-prices-for-woocommerce` directory to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress. </li>
 3. In admin area from side menu click on `Prices management` to see other menus for different updating ways. </li> 
 

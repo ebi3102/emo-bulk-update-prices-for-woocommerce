@@ -25,7 +25,7 @@
 			 if ( self::$is_dismissible ) {
 				 $is_dismissible = 'is-dismissible';
 				 $closeButton    = "<button type='button' class='notice-dismiss'><span class='screen-reader-text'>" .
-				                   __( 'Dismiss this warning', 'emo-bulk-update-prices-for-woocommerce' ) . "</span></button>";
+				                   esc_html(__( 'Dismiss this warning', 'emo-bulk-update-prices-for-woocommerce' )) . "</span></button>";
 			 } else {
 				 $is_dismissible = '';
 				 $closeButton    = '';
@@ -33,9 +33,9 @@
 			 self::$template = "<div class='notice notice-" . self::$noticeType . " settings-error " . $is_dismissible . "'>";
 			 self::$template .= "<p><strong><span style='display: block; margin: 0.5em 0.5em 0 0; clear: both;'>
         <span style='display: block; margin: 0.5em 0.5em 0 0; clear: both;'>";
-			 self::$template .= self::$massage . "</span></strong></p>" . $closeButton . "</div>";
+			 self::$template .= esc_html(self::$massage) . "</span></strong></p>" . $closeButton . "</div>";
 
-			 return self::$template;
+			 return wp_kses_post(self::$template);
 		 }
 
 		 /**

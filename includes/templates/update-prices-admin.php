@@ -30,10 +30,10 @@ if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
                 <form method="post">
                     <div class="form-wrap">
                         <div style="width:fit-content; margin: 50px auto;">
-                            <h3><?php echo __( 'Create product price list', 'emo-bulk-update-prices-for-woocommerce' ) ?></h3>
+                            <h3><?php echo esc_html(__( 'Create product price list', 'emo-bulk-update-prices-for-woocommerce' )) ?></h3>
                             <?php // nounce ?>
                             <?php wp_nonce_field( 'emo_bupw_action', 'emo_bupw_nonce_field' ); ?>
-                            <?php submit_button( __('Create', 'emo-bulk-update-prices-for-woocommerce'), 'primary', 'btnSubmit');  ?>
+                            <?php submit_button(esc_html( __('Create', 'emo-bulk-update-prices-for-woocommerce')), esc_attr('primary'), esc_attr('btnSubmit'));  ?>
                         </div>
                     </div>
                 </form>
@@ -53,19 +53,19 @@ if( EMO_BUPW_Request_Handler::get_POST('uploadSubmit') && EMO_BUPW_Request_Handl
             <div class="col-wrap">
                 <div class="form-wrap">
                     <div style="width:fit-content; margin: 50px auto;">
-                        <h3><?php echo __( 'Upload products list', 'emo-bulk-update-prices-for-woocommerce' ) ?></h3>
+                        <h3><?php echo esc_html(__( 'Upload products list', 'emo-bulk-update-prices-for-woocommerce' )) ?></h3>
                         <form action="" method="post" enctype="multipart/form-data">
                             <div>
-                                <label for="price_list"><?php echo __( 'Upload new price list', 'emo-bulk-update-prices-for-woocommerce' ) ?></label>
+                                <label for="price_list"><?php echo esc_html(__( 'Upload new price list', 'emo-bulk-update-prices-for-woocommerce' )) ?></label>
                                 <input id="price_list" type="file" name="price_list">
                             </div>
                             <p>
-                                <description><?php echo __( 'It should be a csv file.<br>For getting the sample template you can download and use product list file', 'emo-bulk-update-prices-for-woocommerce' ) ?></description>
+                                <description><?php echo esc_html(__( 'It should be a csv file.<br>For getting the sample template you can download and use product list file', 'emo-bulk-update-prices-for-woocommerce' )) ?></description>
                             </p>
                             <?php // nounce ?>
                             <?php wp_nonce_field( 'emo_bupw_action', 'emo_bupw_nonce_field' ); ?>
                             <div>
-                                <input type="submit" name="uploadSubmit" class="button button-primary" value="<?php echo __( 'Submit', 'emo-bulk-update-prices-for-woocommerce' ) ?>">
+                                <input type="submit" name="uploadSubmit" class="button button-primary" value="<?php echo esc_attr(esc_html(__( 'Submit', 'emo-bulk-update-prices-for-woocommerce' ))) ?>">
                             </div>
                         </form>
 
@@ -94,7 +94,7 @@ if( EMO_BUPW_Request_Handler::get_POST('uploadSubmit') && EMO_BUPW_Request_Handl
             echo EMO_BUPW_Notice_Template::warning ($result['error']->get_error_message());
         }elseif(@$result['filePath']){
             $massage = __('You can download the list of price products from ', 'emo-bulk-update-prices-for-woocommerce');
-            $massage .= "<a href='".$result['filePath']."'>".$result['fileName']."</a>";
+            $massage .= "<a href='".esc_url($result['filePath'])."'>".esc_html($result['fileName'])."</a>";
             echo EMO_BUPW_Notice_Template::success ($massage);
         }
     }

@@ -24,8 +24,8 @@ if ( ! function_exists( 'emo_bupw_add_admin_page' )) {
 		//Generate update prices by file page
 		add_submenu_page(
 			'emo_bupw_slug',
-			__( 'Update whole prices', 'emo-bulk-update-prices-for-woocommerce' ),
-			__( 'Update whole prices', 'emo-bulk-update-prices-for-woocommerce' ),
+			__( 'Update by CSV', 'emo-bulk-update-prices-for-woocommerce' ),
+			__( 'Update by CSV', 'emo-bulk-update-prices-for-woocommerce' ),
 			'manage_woocommerce',
 			'emo_bupw_slug',
 			'emo_bupw_update_prices_create_page'

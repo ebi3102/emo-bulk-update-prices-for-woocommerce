@@ -11,7 +11,7 @@
  use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
  use EMO_BUPW\EMO_BUPW_Notice_Template;
 ?>
-<h1><?php echo __( 'Update prices by uploading excel file', 'emo-bulk-update-prices-for-woocommerce' ) ?></h1>
+<h1><?php echo __( 'Update prices by uploading CSV file', 'emo-bulk-update-prices-for-woocommerce' ) ?></h1>
 <?php
 
 //Download Current prices
@@ -60,7 +60,7 @@ if( EMO_BUPW_Request_Handler::get_POST('uploadSubmit') && EMO_BUPW_Request_Handl
                                 <input id="price_list" type="file" name="price_list">
                             </div>
                             <p>
-                                <description><?php echo esc_html(__( 'It should be a csv file.<br>For getting the sample template you can download and use product list file', 'emo-bulk-update-prices-for-woocommerce' )) ?></description>
+                                <description><?php echo esc_html(__( 'It should be a csv file. For getting the sample template you can download and use product list file', 'emo-bulk-update-prices-for-woocommerce' )) ?></description>
                             </p>
                             <?php // nounce ?>
                             <?php wp_nonce_field( 'emo_bupw_action', 'emo_bupw_nonce_field' ); ?>

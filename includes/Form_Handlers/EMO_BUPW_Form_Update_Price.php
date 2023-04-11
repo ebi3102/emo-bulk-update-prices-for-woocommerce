@@ -98,24 +98,26 @@ if (!class_exists('EMO_BUPW_Form_Update_Price')) {
 						if ( $this->activeSalePrice ) {
 							$vSalerPrices = $variationsPrices['sale_price']; //array
 							foreach ( $vSalerPrices as $vID => $vSalerPrice ) {
-								$newSalePrice = emo_bupw_change_price( $this->rate_type, $this->change_type, $vSalerPrice, $this->change_rate );
 								$variation    = wc_get_product_object( 'variation', $vID );
-								//set...
-								$variation->set_props(
-									array(
-										// 'regular_price' => $newRegularPrice,
-										'sale_price' => $newSalePrice,
-									)
-								);
-								$variation->save();
-								array_push( $writeCSV, array(
-									$product,
-									$vID,
-									$variation->get_title(),
-									'sale',
-									$vSalerPrice,
-									$newSalePrice
-								) );
+								if($variation->is_on_sale()) {
+									$newSalePrice = emo_bupw_change_price( $this->rate_type, $this->change_type, $vSalerPrice, $this->change_rate );
+									//set...
+									$variation->set_props(
+										array(
+											// 'regular_price' => $newRegularPrice,
+											'sale_price' => $newSalePrice,
+										)
+									);
+									$variation->save();
+									array_push( $writeCSV, array(
+										$product,
+										$vID,
+										$variation->get_title(),
+										'sale',
+										$vSalerPrice,
+										$newSalePrice
+									) );
+								}
 							}
 
 						}
@@ -141,25 +143,27 @@ if (!class_exists('EMO_BUPW_Form_Update_Price')) {
 						) );
 
 						if ( $this->activeSalePrice ) {
-							$salePrice    = $_product->get_sale_price();
-							$newSalePrice = emo_bupw_change_price( $this->rate_type, $this->change_type, $salePrice, $this->change_rate );
-							//set...
-							$productObject = wc_get_product_object( 'simple', $product );
-							$productObject->set_props(
-								array(
-									// 'regular_price' => $newRegularPrice,
-									'sale_price' => $newSalePrice,
-								)
-							);
-							$productObject->save();
-							array_push( $writeCSV, array(
-								'0',
-								$product,
-								$_product->get_title(),
-								'sale',
-								$salePrice,
-								$newSalePrice
-							) );
+							if($_product->is_on_sale()) {
+								$salePrice    = $_product->get_sale_price();
+								$newSalePrice = emo_bupw_change_price( $this->rate_type, $this->change_type, $salePrice, $this->change_rate );
+								//set...
+								$productObject = wc_get_product_object( 'simple', $product );
+								$productObject->set_props(
+									array(
+										// 'regular_price' => $newRegularPrice,
+										'sale_price' => $newSalePrice,
+									)
+								);
+								$productObject->save();
+								array_push( $writeCSV, array(
+									'0',
+									$product,
+									$_product->get_title(),
+									'sale',
+									$salePrice,
+									$newSalePrice
+								) );
+							}
 						}
 					}
 				}

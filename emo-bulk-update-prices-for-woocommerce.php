@@ -9,7 +9,7 @@
  * Version: 1.2.0
  * Requires at least: 5.8
  * Tested up to: 6.2
- * WC requires at least: 6.0 //TODO: not Complete
+ * WC requires at least: 5.5.0
  * WC tested up to: 7.3  //TODO: not Complete
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -36,7 +36,7 @@ if ( ! function_exists( 'emo_bupw_init' ) ) {
 
 	function emo_bupw_init() {
 
-        if ( ! function_exists( 'WC' ) || ! version_compare( WC()->version, '3.0', '>=' ) ) {
+        if ( ! function_exists( 'WC' ) || ! version_compare( WC()->version, '5.5', '>=' ) ) {
 			add_action( 'admin_notices', 'emo_bupw_notice_wc' );
 			return;
 		}

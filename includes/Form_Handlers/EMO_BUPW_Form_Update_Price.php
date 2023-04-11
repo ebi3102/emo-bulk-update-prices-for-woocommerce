@@ -27,6 +27,7 @@ if (!class_exists('EMO_BUPW_Form_Update_Price')) {
 		 * @param $fields
 		 */
 		public function field_setter( $fields ): void {
+			// TODO: Set some rules to check the correctness of input values
 			$this->cat_id          = EMO_BUPW_Request_Handler::get_POST( $fields['category'] );
 			$this->change_rate     = EMO_BUPW_Request_Handler::get_POST( $fields['change_rate'] );
 			$this->rate_type       = EMO_BUPW_Request_Handler::get_POST( $fields['rate_type'] );

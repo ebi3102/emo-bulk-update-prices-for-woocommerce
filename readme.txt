@@ -2,10 +2,10 @@
 
 Contributors: (ebi3102)
 Tags: woocommerce, woocommerce add-on, update price, bulk update prices
-Requires at least: 5.6
-Tested up to: 5.8.3
-Requires PHP: 8.0
-Stable tag: 5.8.0
+Requires at least: 5.6 //TODO: not Complete
+Tested up to: 6.2
+Requires PHP:  7.2
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,13 +30,14 @@ When economic conditions are unstable and prices are constantly changing, or whe
 - Ability to set the sale price date.
 
 = Workflow of Emo Bulk Update Prices for WooCommerce =
+//TODO: not Complete
 
 = Minimum Requirements =
 
-* Requires at least: 5.6
-* Tested up to: 5.8.3
-* Requires PHP: 8.0
-* Stable tag: 5.8.0
+* PHP version 5.2.4 or greater (PHP 5.6 or greater is recommended) //TODO: not Complete
+* MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended) //TODO: not Complete
+* WordPress 5.8+ //TODO: not Complete
+* WooCommerce 6.0+ //TODO: not Complete
 
 == Installation ==
 

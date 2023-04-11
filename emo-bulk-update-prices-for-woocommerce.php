@@ -4,9 +4,13 @@
  * Plugin Name: Emo Bulk Update Prices for WooCommerce
  * Plugin URI:
  * Description: A powerful system in bulk update WooCommerce products prices that additionally, is able to set discount in bulk way on WooCommerce products.
- * Version: 1.1.1
  * Author: Ebrahim Moeini
  * Author URI: https://emoeini.com
+ * Version: 1.2.0
+ * Requires at least: 5.8 //TODO: not Complete
+ * Tested up to: 6.2
+ * WC requires at least: 6.0 //TODO: not Complete
+ * WC tested up to: 7.3  //TODO: not Complete
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: emo-bulk-update-prices-for-woocommerce

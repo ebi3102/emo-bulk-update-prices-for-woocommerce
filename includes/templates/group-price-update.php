@@ -51,7 +51,13 @@ if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
                                 <span>*</span>
                             </h3>
                             <select name="cat_id" style="width:322px" required>
-                                <?php echo wp_kses($options_html,  array( 'option' => array())); ?>
+                                <?php
+                                $allowedHtml = array(
+                                        'option' => array(
+                                                'value'=>array()
+                                        )
+                                );
+                                echo wp_kses($options_html,  $allowedHtml); ?>
                             </select>
                         </div>
 

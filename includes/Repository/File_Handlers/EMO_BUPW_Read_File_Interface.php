@@ -13,6 +13,6 @@ if (!interface_exists('EMO_BUPW_Read_File_Interface')) {
 		 *
 		 * @return array | false
 		 */
-		public function readFile( array $arg ): array|false;
+		public function readFile( array $arg ): mixed;
 	}
 }

@@ -40,7 +40,13 @@ if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
                                 <span>*</span>
                             </h3>
                             <select name="cat_id" style="width:322px" required>
-                                <?php echo wp_kses_post($options_html) ?>
+	                            <?php
+	                            $allowedHtml = array(
+		                            'option' => array(
+			                            'value'=>array()
+		                            )
+	                            );
+	                            echo wp_kses($options_html,  $allowedHtml); ?>
                             </select>
                         </div>
                         <div>
@@ -61,7 +67,7 @@ if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
                                 <?php echo esc_html(__('Change value', 'emo-bulk-update-prices-for-woocommerce')) ?>
                                 <span>*</span>
                             </h3>
-                            <input type="number" name="change_rate" style="width:320px" required>
+                            <input type="number" name="change_rate" style="width:320px" min="1" required>
                             <p class="description">
                             <?php echo esc_html(__('If you have selected the percentage in the previous step, enter the percentage number for the amount of changes. For example, if it is 10%, enter the number 10.', 'emo-bulk-update-prices-for-woocommerce')) ?>
                             </p>

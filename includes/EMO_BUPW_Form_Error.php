@@ -63,7 +63,7 @@ if (!class_exists('EMO_BUPW_Form_Error')) {
 		 *
 		 * @return \WP_Error|false
 		 */
-		public static function nonce_inspection( string $nonceName, string|int $nonceAction = - 1 )
+		public static function nonce_inspection( string $nonceName, $nonceAction = - 1 )
 		{
 			$nonce             = EMO_BUPW_Request_Handler::get_POST( $nonceName );
 			$nonceVerification = EMO_BUPW_Nonce_Inspection::nonce( $nonceName, $nonceAction );

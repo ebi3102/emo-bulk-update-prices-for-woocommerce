@@ -57,14 +57,14 @@ if (!class_exists('EMO_BUPW_Uploader')) {
 		/**
 		 * @return mixed
 		 */
-		public function getFileName(): mixed {
+		public function getFileName()  {
 			return $this->fileName;
 		}
 
 		/**
 		 * @return mixed
 		 */
-		public function getFileUrl(): mixed {
+		public function getFileUrl()  {
 			if ( ! $this->error ) {
 				return $this->file_url;
 			} else {
@@ -75,7 +75,7 @@ if (!class_exists('EMO_BUPW_Uploader')) {
 		/**
 		 * @return mixed
 		 */
-		public function getFilePath(): mixed {
+		public function getFilePath()  {
 			if ( ! $this->error ) {
 				return $this->filePath;
 			} else {
@@ -97,7 +97,7 @@ if (!class_exists('EMO_BUPW_Uploader')) {
 		/**
 		 * @return mixed
 		 */
-		public function getError(): mixed {
+		public function getError()  {
 			return $this->error;
 		}
 	}

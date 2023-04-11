@@ -21,7 +21,7 @@
 		  *
 		  * @return string|null
 		  */
-		 public static function get_request( string $key, $default = null ): mixed {
+		 public static function get_request( string $key, $default = null )  {
 			 return ! empty( $_REQUEST[ $key ] ) ? sanitize_text_field($_REQUEST[ $key ]) : $default;
 		 }
 
@@ -33,7 +33,7 @@
 		  *
 		  * @return string|null
 		  */
-		 public static function get_POST( string $key, $default = null ): mixed {
+		 public static function get_POST( string $key, $default = null )  {
 			 return ! empty( $_POST[ $key ] ) ? sanitize_text_field($_POST[ $key ]) : $default;
 		 }
 
@@ -45,7 +45,7 @@
 		  *
 		  * @return string|null
 		  */
-		 public static function get_GET( string $key, $default = null ): mixed {
+		 public static function get_GET( string $key, $default = null )  {
 			 return ! empty( $_GET[ $key ] ) ? sanitize_text_field($_GET[ $key ]) : $default;
 		 }
 
@@ -64,7 +64,7 @@
 		  *          size        the size of uploaded file
 		  * )
 		  */
-		 public static function get_FILE( string $key, $default = null ): mixed {
+		 public static function get_FILE( string $key, $default = null )  {
 		 	$file = ! empty( $_FILES[ $key ] ) ? $_FILES[ $key ] : null;
 		 	if(is_array($file)){
 			    $file['name'] = sanitize_file_name($file['name']);

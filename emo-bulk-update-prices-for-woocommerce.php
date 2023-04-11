@@ -10,7 +10,7 @@
  * Requires at least: 5.8
  * Tested up to: 6.2
  * WC requires at least: 5.5.0
- * WC tested up to: 7.3  //TODO: not Complete
+ * WC tested up to: 7.5.1
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: emo-bulk-update-prices-for-woocommerce

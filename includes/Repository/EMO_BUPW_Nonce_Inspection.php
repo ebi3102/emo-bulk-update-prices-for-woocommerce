@@ -15,7 +15,7 @@ if (!class_exists('EMO_BUPW_Nonce_Inspection')) {
 		 * @return int|false 1 if the nonce is valid and generated between 0-12 hours ago, 2 if the nonce is valid and generated between 12-24 hours ago.
 		 * False if the nonce is invalid.
 		 */
-		public static function nonce( string $nonce, string|int $action = - 1 ): int|false {
+		public static function nonce( string $nonce, string|int $action = - 1 ): mixed {
 			return wp_verify_nonce( $nonce, $action );
 		}
 	}

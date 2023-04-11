@@ -28,7 +28,7 @@
 		  * @return array|false Returns an indexed array containing the fields read on success, or false on failure.
 		  *
 		  */
-		 public function readFile( array $arg ): array|false {
+		 public function readFile( array $arg ): mixed {
 			 $length    = ( $arg['length'] ) ? $arg['length'] : 1000;
 			 $separator = ( $arg['separator'] ) ? $arg['separator'] : ',';
 			 $enclosure = ( $arg['enclosure'] ) ? $arg['enclosure'] : "\"";

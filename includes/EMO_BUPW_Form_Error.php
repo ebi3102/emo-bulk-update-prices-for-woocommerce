@@ -15,8 +15,8 @@ use EMO_BUPW\Repository\WP_Error;
 if (!class_exists('EMO_BUPW_Form_Error')) {
 	class EMO_BUPW_Form_Error {
 
-		private function __construct() {
-		}
+		private function __construct()
+		{}
 
 		/**
 		 * Inspect the condition if it is true method will be returned false
@@ -28,7 +28,8 @@ if (!class_exists('EMO_BUPW_Form_Error')) {
 		 *
 		 * @return \WP_Error|false
 		 */
-		private function error_inspection( bool $conditioner, string $errorName, string $errorMsg ): \WP_Error|false {
+		private function error_inspection( bool $conditioner, string $errorName, string $errorMsg )
+		{
 			if ( $conditioner ) {
 				$error = false;
 			} else {
@@ -45,7 +46,8 @@ if (!class_exists('EMO_BUPW_Form_Error')) {
 		 *
 		 * @return \WP_Error|false
 		 */
-		public static function submit_status( string $submitName ): \WP_Error|false {
+		public static function submit_status( string $submitName )
+		{
 			$conditioner = (bool) EMO_BUPW_Request_Handler::get_POST( $submitName );
 
 			return ( new self )->error_inspection(
@@ -61,7 +63,8 @@ if (!class_exists('EMO_BUPW_Form_Error')) {
 		 *
 		 * @return \WP_Error|false
 		 */
-		public static function nonce_inspection( string $nonceName, string|int $nonceAction = - 1 ): \WP_Error|false {
+		public static function nonce_inspection( string $nonceName, string|int $nonceAction = - 1 )
+		{
 			$nonce             = EMO_BUPW_Request_Handler::get_POST( $nonceName );
 			$nonceVerification = EMO_BUPW_Nonce_Inspection::nonce( $nonceName, $nonceAction );
 			if ( $nonce || $nonceVerification ) {
@@ -81,7 +84,8 @@ if (!class_exists('EMO_BUPW_Form_Error')) {
 		 *
 		 * @return \WP_Error|false
 		 */
-		public static function requirement_inspection( string $fieldName ): \WP_Error|false {
+		public static function requirement_inspection( string $fieldName )
+		{
 			$conditioner = (bool) EMO_BUPW_Request_Handler::get_POST( $fieldName );
 
 			return ( new self )->error_inspection(

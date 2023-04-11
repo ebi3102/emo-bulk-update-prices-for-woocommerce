@@ -21,7 +21,7 @@
 		  *
 		  * @return string|null
 		  */
-		 public static function get_request( string $key, $default = null ): string|null {
+		 public static function get_request( string $key, $default = null ): mixed {
 			 return ! empty( $_REQUEST[ $key ] ) ? sanitize_text_field($_REQUEST[ $key ]) : $default;
 		 }
 

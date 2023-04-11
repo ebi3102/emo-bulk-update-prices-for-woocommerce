@@ -7,7 +7,7 @@
  * Author: Ebrahim Moeini
  * Author URI: https://emoeini.com
  * Version: 1.2.0
- * Requires at least: 5.8 //TODO: not Complete
+ * Requires at least: 5.8
  * Tested up to: 6.2
  * WC requires at least: 6.0 //TODO: not Complete
  * WC tested up to: 7.3  //TODO: not Complete

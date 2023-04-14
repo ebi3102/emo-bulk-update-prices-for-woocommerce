@@ -9,12 +9,12 @@ class ComposerStaticInit64b65addad2fc0a806ff571db05a32d0
     public static $prefixLengthsPsr4 = array (
         'E' => 
         array (
-            'EmoWooPriceUpdate\\' => 18,
+            'EMO_BUPW\\' => 18,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'EmoWooPriceUpdate\\' => 
+        'EMO_BUPW\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
         ),

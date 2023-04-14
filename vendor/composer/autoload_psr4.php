@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'EmoWooPriceUpdate\\' => array($baseDir . '/includes'),
+    'EMO_BUPW\\' => array($baseDir . '/includes'),
 );

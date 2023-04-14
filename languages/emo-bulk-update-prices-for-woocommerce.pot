@@ -1,0 +1,257 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Emo Bulk Update Prices for WooCommerce\n"
+"POT-Creation-Date: 2023-04-14 11:47+0330\n"
+"PO-Revision-Date: 2023-04-14 11:46+0330\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: emo-bulk-update-prices-for-woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: includes/EMO_BUPW_Form_Error.php:56
+msgid "There are an error while you update"
+msgstr ""
+
+#: includes/EMO_BUPW_Form_Error.php:73
+msgid "Sorry, your nonce did not verify."
+msgstr ""
+
+#: includes/EMO_BUPW_Form_Error.php:94
+msgid "There are some required fields that not filled"
+msgstr ""
+
+#: includes/EMO_BUPW_Notice_Template.php:30
+msgid "Dismiss this warning"
+msgstr ""
+
+#: includes/Form_Handlers/EMO_BUPW_Form_Group_Discount.php:71
+#: includes/Form_Handlers/EMO_BUPW_Form_Update_Price.php:54
+msgid "Unable to open file!"
+msgstr ""
+
+#: includes/Form_Handlers/EMO_BUPW_Form_Group_Discount.php:86
+#: includes/Form_Handlers/EMO_BUPW_Form_Products_Price_List.php:37
+#: includes/Form_Handlers/EMO_BUPW_Form_Update_Price.php:68
+msgid "The selected product category has not contain any products"
+msgstr ""
+
+#: includes/Form_Handlers/EMO_BUPW_Form_Update_Price_By_List.php:61
+msgid "Your prices are updated successfully."
+msgstr ""
+
+#: includes/Form_Handlers/EMO_BUPW_Form_Update_Price_By_List.php:69
+msgid "The plugin is not able to open the uploaded file "
+msgstr ""
+
+#: includes/Repository/EMO_BUPW_Uploader.php:33
+msgid ""
+"The extension of uploaded file is not allowed, please choose a csv file."
+msgstr ""
+
+#: includes/Repository/EMO_BUPW_Uploader.php:36
+msgid "File size is more than allowed size."
+msgstr ""
+
+#: includes/Repository/EMO_BUPW_Uploader.php:53
+msgid "Unable to upload file"
+msgstr ""
+
+#: includes/functions/functions-admin.php:16
+msgid "Update whole prices"
+msgstr ""
+
+#: includes/functions/functions-admin.php:17
+msgid "Prices management"
+msgstr ""
+
+#: includes/functions/functions-admin.php:27
+#: includes/functions/functions-admin.php:28
+msgid "Update by CSV"
+msgstr ""
+
+#: includes/functions/functions-admin.php:37
+#: includes/functions/functions-admin.php:38
+msgid "Group price update"
+msgstr ""
+
+#: includes/functions/functions-admin.php:47
+#: includes/functions/functions-admin.php:48
+msgid "Group discount"
+msgstr ""
+
+#: includes/templates/group-discount.php:1
+msgid "Group discount settings"
+msgstr ""
+
+#: includes/templates/group-discount.php:17
+#: includes/templates/group-price-update.php:27
+msgid "Select one category"
+msgstr ""
+
+#: includes/templates/group-discount.php:39
+#: includes/templates/group-price-update.php:50
+msgid "Select a product category"
+msgstr ""
+
+#: includes/templates/group-discount.php:53
+#: includes/templates/group-price-update.php:65
+msgid "Fixed rate or percentage"
+msgstr ""
+
+#: includes/templates/group-discount.php:57
+#: includes/templates/group-price-update.php:69
+msgid "Fixed rate"
+msgstr ""
+
+#: includes/templates/group-discount.php:62
+#: includes/templates/group-price-update.php:74
+msgid "Percentage"
+msgstr ""
+
+#: includes/templates/group-discount.php:67
+#: includes/templates/group-price-update.php:79
+msgid "Change value"
+msgstr ""
+
+#: includes/templates/group-discount.php:72
+#: includes/templates/group-price-update.php:84
+msgid ""
+"If you have selected the percentage in the previous step, enter the "
+"percentage number for the amount of changes. For example, if it is 10%, "
+"enter the number 10."
+msgstr ""
+
+#: includes/templates/group-discount.php:76
+msgid "Date and time settings"
+msgstr ""
+
+#: includes/templates/group-discount.php:78
+msgid "Set times based on Gregorian date"
+msgstr ""
+
+#: includes/templates/group-discount.php:82
+msgid "From: "
+msgstr ""
+
+#: includes/templates/group-discount.php:85
+#: includes/templates/group-discount.php:118
+msgid "Year: "
+msgstr ""
+
+#: includes/templates/group-discount.php:90
+#: includes/templates/group-discount.php:123
+msgid "Month: "
+msgstr ""
+
+#: includes/templates/group-discount.php:107
+#: includes/templates/group-discount.php:140
+msgid "Day: "
+msgstr ""
+
+#: includes/templates/group-discount.php:115
+msgid "To: "
+msgstr ""
+
+#: includes/templates/group-discount.php:148
+#: includes/templates/group-price-update.php:113
+msgid "Update"
+msgstr ""
+
+#: includes/templates/group-discount.php:159
+#: includes/templates/group-price-update.php:125
+msgid "Your changes have been applied successfully. Please check the "
+msgstr ""
+
+#: includes/templates/group-discount.php:161
+#: includes/templates/group-price-update.php:127
+msgid " to check the correctness of the updated changes"
+msgstr ""
+
+#: includes/templates/group-price-update.php:14
+msgid "Group update price settings"
+msgstr ""
+
+#: includes/templates/group-price-update.php:88
+msgid "On sale products"
+msgstr ""
+
+#: includes/templates/group-price-update.php:91
+msgid "Doing changes on the product that are on sale"
+msgstr ""
+
+#: includes/templates/group-price-update.php:96
+msgid "Price increase or decrease"
+msgstr ""
+
+#: includes/templates/group-price-update.php:100
+msgid "Increase"
+msgstr ""
+
+#: includes/templates/group-price-update.php:105
+msgid "Decrease"
+msgstr ""
+
+#: includes/templates/update-prices-admin.php:14
+msgid "Update prices by uploading CSV file"
+msgstr ""
+
+#: includes/templates/update-prices-admin.php:33
+msgid "Create product price list"
+msgstr ""
+
+#: includes/templates/update-prices-admin.php:36
+msgid "Create"
+msgstr ""
+
+#: includes/templates/update-prices-admin.php:56
+msgid "Upload products list"
+msgstr ""
+
+#: includes/templates/update-prices-admin.php:59
+msgid "Upload new price list"
+msgstr ""
+
+#: includes/templates/update-prices-admin.php:63
+msgid ""
+"It should be a csv file. For getting the sample template you can download "
+"and use product list file"
+msgstr ""
+
+#: includes/templates/update-prices-admin.php:68
+msgid "Submit"
+msgstr ""
+
+#: includes/templates/update-prices-admin.php:96
+msgid "You can download the list of price products from "
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Emo Bulk Update Prices for WooCommerce"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"A powerful system in bulk update WooCommerce products prices that "
+"additionally, is able to set discount in bulk way on WooCommerce products."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Ebrahim Moeini"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://emoeini.com"
+msgstr ""

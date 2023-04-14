@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=== Emo Woo Update Prices ===<br/>
-=======
 ## Emo Bulk Update Prices for WooCommerce
->>>>>>> 1.2
 
 Welcome to the Emo Bulk Update Prices for WooCommerce repository on GitHub. You can find all versions that developed in this repository and also in develop branch there are the unstable version of plugin
 

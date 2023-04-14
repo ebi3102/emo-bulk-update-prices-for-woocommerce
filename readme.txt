@@ -29,9 +29,6 @@ When economic conditions are unstable and prices are constantly changing, or whe
 - Applying discounts on products as a percentage or a fixed amount based on product categories according to their regular prices.
 - Ability to set the sale price date.
 
-= Workflow of Emo Bulk Update Prices for WooCommerce =
-//TODO: not Complete
-
 = Minimum Requirements =
 
 * PHP version 7.2 or greater (PHP 7.2 or greater is recommended)

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/emo-woo-price-update.iml" filepath="$PROJECT_DIR$/.idea/emo-woo-price-update.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/emo-bulk-update-prices-for-woocommerce.iml" filepath="$PROJECT_DIR$/.idea/emo-bulk-update-prices-for-woocommerce.iml" />
     </modules>
   </component>
 </project>

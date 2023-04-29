@@ -1,28 +1,21 @@
+
+<?php
+/**
+ * Group discount template.
+ *
+ * Available variables:
+ *
+ *  WP_Commment $options_html
+ * WP_Locale $months
+ * string $successMassage
+ * string $errorMessage
+ */
+
+use EMO_BUPW\EMO_BUPW_Notice_Template;
+?>
 <h1><?php echo __( 'Group discount settings', 'emo-bulk-update-prices-for-woocommerce' ) ?></h1>
 <?php
-use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
-use EMO_BUPW\EMO_BUPW_Notice_Template;
 
-$months = new WP_Locale();
-// $product_categories = get_terms( 'product_cat');
-$product_categories = get_terms( array (
-    'taxonomy' => 'product_cat',
-    'orderby' => 'name',
-    'order' => 'ASC',
-    'hide_empty' => false
-));
-
-$options_html = '';
-if( !empty($product_categories) ){
-    $options_html .= '<option value="0">'.esc_html(__('Select one category', 'emo-bulk-update-prices-for-woocommerce')).'</option>';
-    foreach($product_categories as $cat) {
-        $options_html .= '<option value="'. esc_attr($cat->term_id) .'">'. $cat->name .'</option>';
-    }
-}
-
-if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
-    $result = emo_bupw_get_group_discount_data();
-}
 
 ?>
 <div class="wrap nosubsub emo-ewpu">
@@ -155,15 +148,9 @@ if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
     </div>
 
     <?php
-    if( EMO_BUPW_Request_Handler::get_POST('btnSubmit') && @!$result['error']){
-	    $massage = esc_html(__('Your changes have been applied successfully. Please check the ', 'emo-bulk-update-prices-for-woocommerce'));
-	    $massage .= "<a href='".esc_url($result['filePath'])."'>".esc_html($result['fileName'])."</a>";
-	    $massage .= esc_html(__(' to check the correctness of the updated changes', 'emo-bulk-update-prices-for-woocommerce'));
-	    echo EMO_BUPW_Notice_Template::success ($massage);
-    }
-    if( EMO_BUPW_Request_Handler::get_POST('btnSubmit') && @$result['error']){
-	    echo EMO_BUPW_Notice_Template::warning ($result['error']->get_error_message());
-    } ?>
+	    echo EMO_BUPW_Notice_Template::success ($successMessage);
+	    echo EMO_BUPW_Notice_Template::warning ($errorMessage);
+    ?>
 </div><!-- .wrap nosubsub -->
 
 

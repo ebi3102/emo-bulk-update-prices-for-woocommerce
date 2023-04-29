@@ -8,6 +8,10 @@
  * Text Domain: emo-bulk-update-prices-for-woocommerce
  */
 
+use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
+use EMO_BUPW\Templates\EMO_BUPW_Product_Category_Option_list;
+
+
 if ( ! function_exists( 'emo_bupw_add_admin_page' )) {
 	add_action( 'admin_menu', 'emo_bupw_add_admin_page' );
 	function emo_bupw_add_admin_page() {
@@ -72,7 +76,29 @@ if ( ! function_exists( 'emo_bupw_group_price_update' )) {
 
 if ( ! function_exists( 'emo_bupw_group_discount' )) {
 	function emo_bupw_group_discount() {
-		$url_template = EMO_BUPW_DIR . '/includes/templates/group-discount.php';
-		require_once $url_template;
+		$months = new WP_Locale();
+
+
+		$options_html = EMO_BUPW_Product_Category_Option_list::render_template();
+
+		if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
+			$result = emo_bupw_get_group_discount_data();
+		}
+
+		if( EMO_BUPW_Request_Handler::get_POST('btnSubmit') && @!$result['error']){
+			$successMassage = esc_html(__('Your changes have been applied successfully. Please check the ', 'emo-bulk-update-prices-for-woocommerce'));
+			$successMassage .= "<a href='".esc_url($result['filePath'])."'>".esc_html($result['fileName'])."</a>";
+			$successMassage .= esc_html(__(' to check the correctness of the updated changes', 'emo-bulk-update-prices-for-woocommerce'));
+		}else{
+			$successMassage = '';
+		}
+		if( EMO_BUPW_Request_Handler::get_POST('btnSubmit') && @$result['error']){
+			$errorMessage = $result['error']->get_error_message();
+		}else{
+			$errorMessage = '';
+		}
+
+		require_once  EMO_BUPW_DIR . '/includes/templates/group-discount.php';
+
 	}
 }

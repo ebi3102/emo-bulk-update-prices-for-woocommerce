@@ -53,9 +53,9 @@
 			 self::$noticeType     = 'success';
 			 self::$is_dismissible = $is_dismissible;
 			 self::$massage        = $massage;
-
-			 return self::render_template();
-
+			 if($massage) {
+				 return self::render_template();
+			 }
 		 }
 
 		 /**
@@ -72,7 +72,9 @@
 			 self::$is_dismissible = $is_dismissible;
 			 self::$massage        = $massage;
 
-			 return self::render_template();
+			 if($massage) {
+				 return self::render_template();
+			 }
 
 		 }
 	 }

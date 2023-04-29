@@ -19,8 +19,7 @@ class TemplateTest extends TestCase
 	public function it_echo_as_template(): void
 	{
 
-
-		$expected =  "Template is not echoed";
+		$expected =  "Template is echoed";
 
 		$this->assertSame($expected, $this->template->template());
 	}

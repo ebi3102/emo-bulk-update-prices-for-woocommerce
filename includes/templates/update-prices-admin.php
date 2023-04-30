@@ -17,7 +17,9 @@
  use EMO_BUPW\EMO_BUPW_Notice_Template;
 ?>
 <h1><?php echo __( 'Update prices by uploading CSV file', 'emo-bulk-update-prices-for-woocommerce' ) ?></h1>
-
+<?php
+//TODO: Add customization for customize extraction e.g create a csv file for a specific product category
+?>
 <?php //____________________ Download product lists ________________________________ ?>
 <div class="wrap nosubsub">
     <div id="col-container-1" class="wp-clearfix emo-flex-row">

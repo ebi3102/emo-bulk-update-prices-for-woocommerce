@@ -9,6 +9,7 @@ class EMO_BUPW_Change_Rate_Form_Template implements EMO_BUPW_From_Element_Templa
     public function __construct()
     {
         add_action('emo_bupw_group_price_form',array($this, 'template'),30);
+        add_action('emo_bupw_group_discount_form',array($this, 'template'),30);
     }
 
     /**

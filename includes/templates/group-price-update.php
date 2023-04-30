@@ -36,13 +36,6 @@
                         do_action('emo_bupw_group_price_form')
                         ?>
 
-                        <div>
-                            <h3><?php echo esc_html(__('On sale products', 'emo-bulk-update-prices-for-woocommerce')) ?></h3>
-                            <label for="sale_price">
-                                <input type="checkbox" name="sale_price" id="sale_price">
-                                <?php echo esc_html(__('Doing changes on the product that are on sale', 'emo-bulk-update-prices-for-woocommerce')) ?>
-                            </label>
-                        </div>
 
                         <div>
                             <h3><?php echo esc_html(__('Price increase or decrease', 'emo-bulk-update-prices-for-woocommerce')) ?></h3>

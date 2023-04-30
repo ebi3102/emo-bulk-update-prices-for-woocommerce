@@ -10,6 +10,7 @@ class EMO_BUPW_Product_Option_List_Form_Template implements EMO_BUPW_From_Elemen
     public function __construct()
     {
         add_action('emo_bupw_group_price_form',array($this, 'template'),10);
+        add_action('emo_bupw_group_discount_form',array($this, 'template'),10);
     }
 
     public function template()

@@ -6,36 +6,18 @@
  * Admin Update Prices PAGE
  * ========================
  * Text Domain: emo-bulk-update-prices-for-woocommerce
+ *
+ * Available variables:
+ *
+ * string $options_html
+ * WP_Locale $months
+ * string $successMassage
+ * string $errorMessage
  */
 
- use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
  use EMO_BUPW\EMO_BUPW_Notice_Template;
 ?>
 <h1><?php echo esc_html(__( 'Group update price settings', 'emo-bulk-update-prices-for-woocommerce' )) ?></h1>
-<?php
-global $wpdb;
-
-// get all product categories and render it as select input
-$product_categories = get_terms( array (
-    'taxonomy' => 'product_cat',
-    'orderby' => 'name',
-    'order' => 'ASC',
-    'hide_empty' => false
-));
-$options_html = '';
-if( !empty($product_categories) ){
-    $options_html .= '<option value="0">'.esc_html(__('Select one category', 'emo-bulk-update-prices-for-woocommerce')).'</option>';
-    foreach($product_categories as $cat) {
-        $options_html .= '<option value="'. esc_attr($cat->term_id) .'">'. esc_html($cat->name) .'</option>';
-    }
-}
-
-if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
-    $result = emo_bupw_get_price_update_data();
-}
-
-
-?>
 <div class="wrap nosubsub">
 
     <div id="col-container" class="wp-clearfix">
@@ -45,6 +27,7 @@ if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
                 <div class="form-wrap">
                     
                     <form method="post">
+
                         <div>
                             <h3>
                                 <?php echo esc_html(__('Select a product category', 'emo-bulk-update-prices-for-woocommerce')) ?>
@@ -121,14 +104,8 @@ if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
     </div>
 
    <?php
-    if( EMO_BUPW_Request_Handler::get_POST('btnSubmit') && @!$result['error']){
-        $massage = esc_html(__('Your changes have been applied successfully. Please check the ', 'emo-bulk-update-prices-for-woocommerce'));
-        $massage .= "<a href='".esc_url($result['filePath'])."'>".esc_html($result['fileName'])."</a>";
-        $massage .= esc_html(__(' to check the correctness of the updated changes', 'emo-bulk-update-prices-for-woocommerce'));
-        echo EMO_BUPW_Notice_Template::success ($massage);
-    }
-    if( EMO_BUPW_Request_Handler::get_POST('btnSubmit') && @$result['error']){
-        echo EMO_BUPW_Notice_Template::warning ($result['error']->get_error_message());
-    } ?>
+   echo EMO_BUPW_Notice_Template::success ($successMassage);
+   echo EMO_BUPW_Notice_Template::warning ($errorMessage);
+    ?>
 
 </div><!-- .wrap nosubsub -->

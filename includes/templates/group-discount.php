@@ -5,7 +5,7 @@
  *
  * Available variables:
  *
- *  WP_Commment $options_html
+ * string $options_html
  * WP_Locale $months
  * string $successMassage
  * string $errorMessage
@@ -148,7 +148,7 @@ use EMO_BUPW\EMO_BUPW_Notice_Template;
     </div>
 
     <?php
-	    echo EMO_BUPW_Notice_Template::success ($successMessage);
+	    echo EMO_BUPW_Notice_Template::success ($successMassage);
 	    echo EMO_BUPW_Notice_Template::warning ($errorMessage);
     ?>
 </div><!-- .wrap nosubsub -->

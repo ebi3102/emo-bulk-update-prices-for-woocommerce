@@ -69,8 +69,28 @@ if ( ! function_exists( 'emo_bupw_update_prices_create_page' )) {
 
 if ( ! function_exists( 'emo_bupw_group_price_update' )) {
 	function emo_bupw_group_price_update() {
-		$url_template = EMO_BUPW_DIR . '/includes/templates/group-price-update.php';
-		require_once $url_template;
+
+		$options_html = EMO_BUPW_Product_Category_Option_list::render_template();
+
+		if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
+			$result = emo_bupw_get_price_update_data();
+		}
+
+		if( EMO_BUPW_Request_Handler::get_POST('btnSubmit') && @!$result['error']){
+			$successMassage = esc_html(__('Your changes have been applied successfully. Please check the ', 'emo-bulk-update-prices-for-woocommerce'));
+			$successMassage .= "<a href='".esc_url($result['filePath'])."'>".esc_html($result['fileName'])."</a>";
+			$successMassage .= esc_html(__(' to check the correctness of the updated changes', 'emo-bulk-update-prices-for-woocommerce'));
+		}else{
+			$successMassage = '';
+		}
+
+		if( EMO_BUPW_Request_Handler::get_POST('btnSubmit') && @$result['error']){
+			$errorMessage = $result['error']->get_error_message();
+		}else{
+			$errorMessage = '';
+		}
+
+		require_once EMO_BUPW_DIR . '/includes/templates/group-price-update.php';;
 	}
 }
 

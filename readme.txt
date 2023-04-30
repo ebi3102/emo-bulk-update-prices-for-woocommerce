@@ -74,6 +74,8 @@ To disclose a security issue to our team put it [here](https://github.com/ebi310
 
 == Changelog ==
 
+* 1.2
+   * In this version some refactors are done and also the plugin is adapted based on PHP 7.2
 * 1.1
    * In this Version the plugin is rewrites based on Object-oriented programming with auto-loading
 * 1.0

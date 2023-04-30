@@ -6,22 +6,18 @@
  * Admin Update Prices PAGE
  * ========================
  * Text Domain: emo-bulk-update-prices-for-woocommerce
+ * Available variables:
+ *
+ * string $downloadSuccessMassage
+ * string $downloadErrorMassage
+ * string $uploadSuccessMassage
+ * string $uploadErrorMassage
  */
 
- use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
  use EMO_BUPW\EMO_BUPW_Notice_Template;
 ?>
 <h1><?php echo __( 'Update prices by uploading CSV file', 'emo-bulk-update-prices-for-woocommerce' ) ?></h1>
-<?php
 
-//Download Current prices
-/* Extract all Poducts site */
-
-if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
-    $result = emo_bupw_get_product_list();
-}
-
-?>
 <?php //____________________ Download product lists ________________________________ ?>
 <div class="wrap nosubsub">
     <div id="col-container-1" class="wp-clearfix emo-flex-row">
@@ -40,13 +36,6 @@ if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
             </div>
         </div><!-- #col-left -->
 
-<?php
-
-if( EMO_BUPW_Request_Handler::get_POST('uploadSubmit') && EMO_BUPW_Request_Handler::get_FILE('price_list')){
-    $result = emo_bupw_update_products_price_list();
-}
-
-?>
 <?php //____________________ Upload New prices ________________________________ ?>
 
         <div id="col-left">
@@ -74,30 +63,16 @@ if( EMO_BUPW_Request_Handler::get_POST('uploadSubmit') && EMO_BUPW_Request_Handl
             </div>
         </div><!-- #col-left -->
 
-
     </div>
 
     <?php
     // Notice when uploading is happened
-    if( EMO_BUPW_Request_Handler::get_POST('uploadSubmit') && EMO_BUPW_Request_Handler::get_FILE('price_list')){
-        if(@$result['response']){
-	        echo EMO_BUPW_Notice_Template::success ($result['response']);
-        }
-	    if(@$result['error']){
-		    echo EMO_BUPW_Notice_Template::warning ($result['error']->get_error_message());
-        }
-    }
+    echo EMO_BUPW_Notice_Template::success ($downloadSuccessMassage);
+    echo EMO_BUPW_Notice_Template::warning ($downloadErrorMassage);
 
     //Notice and download link when product list is created
-    if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
-        if(@$result['error']){
-            echo EMO_BUPW_Notice_Template::warning ($result['error']->get_error_message());
-        }elseif(@$result['filePath']){
-            $massage = __('You can download the list of price products from ', 'emo-bulk-update-prices-for-woocommerce');
-            $massage .= "<a href='".esc_url($result['filePath'])."'>".esc_html($result['fileName'])."</a>";
-            echo EMO_BUPW_Notice_Template::success ($massage);
-        }
-    }
+    echo EMO_BUPW_Notice_Template::warning ($uploadErrorMassage);
+    echo EMO_BUPW_Notice_Template::success ($uploadSuccessMassage);
     ?>
 </div><!-- .wrap nosubsub -->
 

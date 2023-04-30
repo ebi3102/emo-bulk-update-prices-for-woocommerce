@@ -68,8 +68,45 @@ if ( ! function_exists( 'emo_bupw_add_admin_page' )) {
 //Template submenu functions
 if ( ! function_exists( 'emo_bupw_update_prices_create_page' )) {
 	function emo_bupw_update_prices_create_page() {
-		$url_template = EMO_BUPW_DIR . '/includes/templates/update-prices-admin.php';
-		require_once $url_template;
+        if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
+            /* Extract all Products site */
+            $result = emo_bupw_get_product_list();
+        }
+
+        //Notice and download link when product list is created
+        if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
+            if(@$result['error']){
+                $downloadSuccessMassage = '';
+                $downloadErrorMassage = $result['error']->get_error_message();
+            }elseif(@$result['filePath']){
+                $downloadErrorMassage = '';
+                $downloadSuccessMassage = __('You can download the list of price products from ', 'emo-bulk-update-prices-for-woocommerce');
+                $downloadSuccessMassage .= "<a href='".esc_url($result['filePath'])."'>".esc_html($result['fileName'])."</a>";
+            }
+        }else{
+            $downloadErrorMassage = '';
+            $downloadSuccessMassage = '';
+        }
+
+
+        if( EMO_BUPW_Request_Handler::get_POST('uploadSubmit') && EMO_BUPW_Request_Handler::get_FILE('price_list')){
+            $result = emo_bupw_update_products_price_list();
+        }
+        // Notice when uploading is happened
+        if( EMO_BUPW_Request_Handler::get_POST('uploadSubmit') && EMO_BUPW_Request_Handler::get_FILE('price_list')){
+            if(@$result['response']){
+                $uploadSuccessMassage = $result['response'];
+            }else{
+                $uploadSuccessMassage = '';
+            }
+            if(@$result['error']){
+                $uploadErrorMassage = $result['error']->get_error_message();
+            }else{
+                $uploadErrorMassage = '';
+            }
+        }
+
+		require_once EMO_BUPW_DIR . '/includes/templates/update-prices-admin.php';
 	}
 }
 

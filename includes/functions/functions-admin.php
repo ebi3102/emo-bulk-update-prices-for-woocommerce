@@ -10,7 +10,8 @@
 
 use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
 use EMO_BUPW\Templates\EMO_BUPW_Form_Elements_Injection;
-use EMO_BUPW\Templates\EMO_BUPW_Product_Category_Option_list;
+
+//TODO: Convert the following functions to OOP classes
 
 /**
  * Inject all form element template classes

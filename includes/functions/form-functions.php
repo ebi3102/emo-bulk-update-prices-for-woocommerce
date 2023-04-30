@@ -44,9 +44,11 @@ if ( ! function_exists( 'emo_bupw_get_price_update_data' )) {
 				'new_price'
 			),
 		);
+        //TODO: add new action hook before submit process
 		$formHandler = new EMO_BUPW_Form_Update_Price();
 
 		return $formHandler->submit( $args );
+        //TODO: add new action hook after submit process
 	}
 }
 
@@ -88,10 +90,11 @@ if ( ! function_exists( 'emo_bupw_get_group_discount_data' )) {
 				'End_time'
 			),
 		);
-
+        //TODO: add new action hook before submit process
 		$formHandler = new EMO_BUPW_Form_Group_Discount();
 
 		return $formHandler->submit( $args );
+        //TODO: add new action hook after submit process
 	}
 }
 

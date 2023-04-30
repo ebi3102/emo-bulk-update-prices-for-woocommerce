@@ -28,9 +28,6 @@ class EMO_BUPW_Inc_Dec_Form_Template implements EMO_BUPW_From_Element_Template_I
                 <input type="radio" name="emo_ewpu_increase" id="decrease" value="decrease">
                 <?php echo esc_html(__('Decrease', 'emo-bulk-update-prices-for-woocommerce')) ?>
             </label>
-
-            <?php // nounce ?>
-            <?php wp_nonce_field( 'emo_bupw_action', 'emo_bupw_nonce_field' ); ?>
         </div>
     <?php }
 }

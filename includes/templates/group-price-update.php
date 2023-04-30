@@ -44,6 +44,9 @@
                         */
                         do_action('emo_bupw_group_price_form');
                         ?>
+
+                        <?php // nounce ?>
+                        <?php wp_nonce_field( 'emo_bupw_action', 'emo_bupw_nonce_field' ); ?>
                         <div style="padding-top: 20px;">
                             <?php submit_button( esc_html(__('Update', 'emo-bulk-update-prices-for-woocommerce')), esc_attr('primary'), esc_attr('btnSubmit'));  ?>
                         </div>

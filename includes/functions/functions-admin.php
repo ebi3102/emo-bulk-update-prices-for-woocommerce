@@ -100,8 +100,6 @@ if ( ! function_exists( 'emo_bupw_group_price_update' )) {
 
 if ( ! function_exists( 'emo_bupw_group_discount' )) {
 	function emo_bupw_group_discount() {
-		$months = new WP_Locale();
-
 
 		if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
 			$result = emo_bupw_get_group_discount_data();

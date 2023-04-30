@@ -60,7 +60,7 @@
     </div>
     <?php
     /**
-     * Add content before of form
+     * Add content after of form
      *
      */
     do_action('emo_bupw_after_group_price_form');

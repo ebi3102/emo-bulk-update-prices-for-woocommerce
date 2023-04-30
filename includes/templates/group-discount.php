@@ -21,15 +21,24 @@ use EMO_BUPW\EMO_BUPW_Notice_Template;
 <div class="wrap nosubsub emo-ewpu">
 
     <div id="col-container" class="wp-clearfix">
-
+        <?php
+        /**
+         * Add content before of form
+         *
+         */
+        do_action('emo_bupw_before_group_discount_form');
+        ?>
         <div id="col-left">
             <div class="col-wrap">
                 <div class="form-wrap">
                     <form method="post">
                         <?php
                         /**
-                         * Add element to the group update prices form
-                         *
+                         * Add element to the group discount form
+                         * add_action('emo_bupw_group_discount_form',array(EMO_BUPW_Product_Option_List_Form_Template, 'template'),10);
+                         * add_action('emo_bupw_group_discount_form',array(EMO_BUPW_Rate_Type_Form_Template, 'template'),20);
+                         * add_action('emo_bupw_group_discount_form',array(EMO_BUPW_Change_Rate_Form_Template, 'template'),30);
+                         * add_action('emo_bupw_group_discount_form',array(EMO_BUPW_Date_Form_Template, 'template'),40);
                          *
                          */
                         do_action('emo_bupw_group_discount_form')
@@ -45,7 +54,13 @@ use EMO_BUPW\EMO_BUPW_Notice_Template;
         </div><!-- #col-left -->
 
     </div>
-
+    <?php
+    /**
+     * Add content after of form
+     *
+     */
+    do_action('emo_bupw_after_group_discount_form');
+    ?>
     <?php
 	    echo EMO_BUPW_Notice_Template::success ($successMassage);
 	    echo EMO_BUPW_Notice_Template::warning ($errorMessage);

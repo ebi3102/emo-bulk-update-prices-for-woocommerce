@@ -53,7 +53,18 @@ To disclose a security issue to our team put it [here](https://github.com/ebi310
     1. The page of Group discount menu is shown in screenshot-3. In this page a user can set discount to products based on the product category.
 
 #Changelog
-   
+
+* 1.3
+   * Add following actions to the plugin
+      * `emo_bupw_before_group_price_form` Add content before of group update price form
+      * `emo_bupw_group_price_form` Add element (between form html tag) to the group update prices form
+      * `emo_bupw_after_group_price_form` Add content after of group update price form
+      * `emo_bupw_before_group_discount_form` Add content before of gorup discount form
+      * `emo_bupw_group_discount_form` Add element (between form html tag) to the group discount form
+      * `emo_bupw_after_group_discount_form` Add content after of gorup discount form
+
+* 1.2
+
 * 1.1
    * In this Version the plugin is rewrites based on Object-oriented programming with auto-loading 
 * 1.0 

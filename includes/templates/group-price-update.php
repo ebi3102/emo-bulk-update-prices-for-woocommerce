@@ -27,46 +27,15 @@
                 <div class="form-wrap">
                     
                     <form method="post">
+                        <?php
+                        /**
+                         * Add element to the group update prices form
+                         *
+                         *
+                        */
+                        do_action('emo_bupw_group_price_form')
+                        ?>
 
-                        <div>
-                            <h3>
-                                <?php echo esc_html(__('Select a product category', 'emo-bulk-update-prices-for-woocommerce')) ?>
-                                <span>*</span>
-                            </h3>
-                            <select name="cat_id" style="width:322px" required>
-                                <?php
-                                $allowedHtml = array(
-                                        'option' => array(
-                                                'value'=>array()
-                                        )
-                                );
-                                echo wp_kses($options_html,  $allowedHtml); ?>
-                            </select>
-                        </div>
-
-                        <div>
-                            <h3><?php echo esc_html(__('Fixed rate or percentage', 'emo-bulk-update-prices-for-woocommerce')) ?></h3>
-
-                            <label for="constant">
-                                <input type="radio" name="emo_ewpu_rate" id="constant" value="constant" checked="checked">
-                                <?php echo esc_html(__('Fixed rate', 'emo-bulk-update-prices-for-woocommerce')) ?>
-                            </label>
-                            
-                            <label for="percent">
-                                <input type="radio" name="emo_ewpu_rate" id="percent" value="percent">
-                                <?php echo esc_html(__('Percentage', 'emo-bulk-update-prices-for-woocommerce')) ?>
-                            </label>
-                        </div>
-                        <div>
-                            <h3>
-                                <?php echo esc_html(__('Change value', 'emo-bulk-update-prices-for-woocommerce')) ?>
-                                <span>*</span>
-                            </h3>
-                            <input type="number" name="change_rate" style="width:320px" min="1" required>
-                            <p class="description">
-                            <?php echo esc_html(__('If you have selected the percentage in the previous step, enter the percentage number for the amount of changes. For example, if it is 10%, enter the number 10.', 'emo-bulk-update-prices-for-woocommerce')) ?>
-                            </p>
-                        </div>
                         <div>
                             <h3><?php echo esc_html(__('On sale products', 'emo-bulk-update-prices-for-woocommerce')) ?></h3>
                             <label for="sale_price">

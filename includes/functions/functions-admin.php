@@ -9,6 +9,7 @@
  */
 
 use EMO_BUPW\Repository\EMO_BUPW_Request_Handler;
+use EMO_BUPW\Templates\EMO_BUPW_Form_Elements_Injection;
 use EMO_BUPW\Templates\EMO_BUPW_Product_Category_Option_list;
 
 
@@ -70,7 +71,7 @@ if ( ! function_exists( 'emo_bupw_update_prices_create_page' )) {
 if ( ! function_exists( 'emo_bupw_group_price_update' )) {
 	function emo_bupw_group_price_update() {
 
-		$options_html = EMO_BUPW_Product_Category_Option_list::render_template();
+        new EMO_BUPW_Form_Elements_Injection();
 
 		if(EMO_BUPW_Request_Handler::get_POST('btnSubmit')){
 			$result = emo_bupw_get_price_update_data();

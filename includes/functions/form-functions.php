@@ -45,10 +45,10 @@ if ( ! function_exists( 'emo_bupw_get_price_update_data' )) {
 			),
 		);
         //TODO: add new action hook before submit process
+		// to modify $args and also change the handler class that is able to work with edited $args
 		$formHandler = new EMO_BUPW_Form_Update_Price();
 
 		return $formHandler->submit( $args );
-        //TODO: add new action hook after submit process
 	}
 }
 
@@ -91,10 +91,12 @@ if ( ! function_exists( 'emo_bupw_get_group_discount_data' )) {
 			),
 		);
         //TODO: add new action hook before submit process
+		// to modify $args and also change the handler class that is able to work with edited $args
+		// do_action('emo_bupw_customize_group_discount_data', $args)
+		// $filtered_args = apply_filters('emo_bupw_customize_group_discount_data', $args, $args)
 		$formHandler = new EMO_BUPW_Form_Group_Discount();
 
 		return $formHandler->submit( $args );
-        //TODO: add new action hook after submit process
 	}
 }
 

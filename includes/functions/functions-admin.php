@@ -132,6 +132,7 @@ if ( ! function_exists( 'emo_bupw_group_price_update' )) {
 			$errorMessage = '';
 		}
 
+		//TODO: add new action hook after submit process and change the $result, $successMassage, $errorMessage
 		require_once EMO_BUPW_DIR . '/includes/templates/group-price-update.php';;
 	}
 }
@@ -155,7 +156,7 @@ if ( ! function_exists( 'emo_bupw_group_discount' )) {
 		}else{
 			$errorMessage = '';
 		}
-
+		//TODO: add new action hook after submit process and change the $result, $successMassage, $errorMessage
 		require_once  EMO_BUPW_DIR . '/includes/templates/group-discount.php';
 
 	}
